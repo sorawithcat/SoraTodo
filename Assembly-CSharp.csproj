@@ -62,9 +62,12 @@
   <ItemGroup>
     <Compile Include="Assets\Script\ClassifyButtonManager.cs" />
     <Compile Include="Assets\Script\AddTodoManager.cs" />
+    <Compile Include="Assets\Script\SerializableDictionary.cs" />
+    <Compile Include="Assets\Script\RightMenuManager.cs" />
     <Compile Include="Assets\Script\WindowTransparent.cs" />
     <Compile Include="Assets\Script\ClassifyButtonListManager.cs" />
     <Compile Include="Assets\Script\AllTodoManager.cs" />
+    <Compile Include="Assets\Script\RightMenuButtonManager.cs" />
     <Compile Include="Assets\Script\CustomVerticalLayoutGroup.cs" />
     <Compile Include="Assets\Script\TodoManager.cs" />
   </ItemGroup>

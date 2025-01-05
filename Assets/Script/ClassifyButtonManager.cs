@@ -29,8 +29,6 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         thisSpacing = todoList.GetComponent<RectTransform>().rect.height;
         customVerticalLayoutGroup = buttonsList.GetComponent<CustomVerticalLayoutGroup>();
         todoListRectTransform = todoList.GetComponent<RectTransform>();
-
-        Debug.Log(thisSpacing);
     }
 
     private void Update()
@@ -81,7 +79,12 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    // 控制子物体之间间距的 Lerp
+    /// <summary>
+    /// 控制子物体之间间距
+    /// </summary>
+    /// <param name="startValue"></param>
+    /// <param name="endValue"></param>
+    /// <returns></returns>
     private IEnumerator LerpButtonListSpacing(float startValue, float endValue)
     {
         float elapsedTime = 0f;
@@ -98,7 +101,12 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         isLerpChange = false;
     }
 
-    // 控制 RectTransform 位置的 Lerp
+    /// <summary>
+    /// 改变todo位置
+    /// </summary>
+    /// <param name="startValue"></param>
+    /// <param name="endValue"></param>
+    /// <returns></returns>
     private IEnumerator LerpTodoListPosition(float startValue, float endValue)
     {
         float elapsedTime = 0f;
@@ -115,6 +123,9 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         isLerpChange = false;
     }
 
+    /// <summary>
+    /// 设置todolist的激活状态为false
+    /// </summary>
     private void SetFalseTodoList()
     {
         todoList.SetActive(false);
@@ -123,10 +134,19 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "classifyButtonText" ? true : false)
+        if (eventData.pointerCurrentRaycast.gameObject.tag == "classifyButtonText")
         {
-            clickToHandoff();
+            //分类标签左键
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                clickToHandoff();
+                RightMenuManager.Instance.HideRightMenu();
+
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.classifyButtonText);
+            }
         }
 
     }

@@ -92,17 +92,33 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == 0)
+        RightMenuManager.Instance.HideRightMenu();
+        if (eventData.pointerCurrentRaycast.gameObject.tag == "todoThing")
         {
-            isPointer = true;
+            //左键
+            if (eventData.button == 0)
+            {
+
+                isPointer = true;
+
+            }
+            else if ((int)eventData.button == 1)
+            {
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.todoThing);
+            }
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (eventData.button == 0)
+        if (eventData.pointerCurrentRaycast.gameObject.tag == "todoThing")
         {
-            isPointer = false;
+            //左键
+            if (eventData.button == 0)
+            {
+
+                isPointer = false;
+            }
         }
     }
 }
