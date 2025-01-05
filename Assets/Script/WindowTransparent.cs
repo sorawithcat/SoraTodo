@@ -47,10 +47,23 @@ public class WindowTransparent : MonoBehaviour
     const uint LWA_COLORKEY = 0x00000001;  // 设置颜色键的标志（用于透明度）
     private IntPtr hWnd;  // 活动窗口的句柄
 
+
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindow(IntPtr hwnd, int nCmdShow);
+
+
+    const int SW_SHOWMINIMIZED = 2; //{最小化, 激活}  
+    const int SW_SHOWMAXIMIZED = 3;//最大化  
+    const int SW_SHOWRESTORE = 1;//还原 
+
+
+
     private void Start()
     {
+        //初始最小化
+        // ShowWindow(GetActiveWindow(), SW_SHOWMINIMIZED);
         // 显示一个消息框（仅用于演示目的）
-         //MessageBox(new IntPtr(0), "Hello world", "Hello Dialog", 0);
+        //MessageBox(new IntPtr(0), "Hello world", "Hello Dialog", 0);
 
 #if !UNITY_EDITOR
         // 获取活动窗口的句柄

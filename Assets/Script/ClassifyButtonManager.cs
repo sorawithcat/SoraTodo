@@ -19,6 +19,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float changeSpeed = 0.5f;
 
 
+
     private CustomVerticalLayoutGroup customVerticalLayoutGroup;
     private RectTransform todoListRectTransform;
 
