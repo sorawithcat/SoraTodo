@@ -29,7 +29,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private ClearFX clearFX;
     //是否在按住
     private bool isPointer = false;
-    private Material newMaterial;
+    [HideInInspector] public Material newMaterial;
     //是否完成
     private bool isTodo = false;
     void Start()
@@ -104,7 +104,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
             else if ((int)eventData.button == 1)
             {
-                RightMenuManager.Instance.GetMenuInfo(MenuTags.todoThing);
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.todoThing, transform);
             }
         }
     }

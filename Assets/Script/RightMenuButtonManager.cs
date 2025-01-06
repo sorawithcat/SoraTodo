@@ -26,7 +26,11 @@ public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
         {
             action = (Action)actions[buttonID];
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => action());
+            button.onClick.AddListener(() =>
+            {
+                RightMenuManager.Instance.HideRightMenu();
+                action();
+            });
         }
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -36,12 +40,12 @@ public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-
+                RightMenuManager.Instance.HideRightMenu();
             }
             //右键-右键菜单（？）
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                RightMenuManager.Instance.GetMenuInfo(MenuTags.menuThing);
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.menuThing, transform);
             }
         }
     }

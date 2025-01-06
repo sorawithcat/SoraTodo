@@ -146,7 +146,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                RightMenuManager.Instance.GetMenuInfo(MenuTags.classifyButtonText);
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.classifyButtonText,transform);
             }
         }
 

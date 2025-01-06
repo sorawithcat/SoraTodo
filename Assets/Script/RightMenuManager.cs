@@ -22,6 +22,11 @@ public enum MenuTags
 public class RightMenuManager : MonoBehaviour, IPointerClickHandler
 {
     public static RightMenuManager Instance;
+
+    /// <summary>
+    /// 目前所选内容（召唤出菜单的物体）
+    /// </summary>
+    private static Transform currentClickThing;
     [Header("按钮预制件")]
     [SerializeField] private GameObject rightMenuButtonPrefab;
     [Header("画布")]
@@ -34,6 +39,11 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
 
     private List<Action> currentActions = new List<Action>();
     private List<string> currentNames = new List<string>();
+
+
+    private void Start()
+    {
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -50,8 +60,9 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     /// 获取信息并设置按钮
     /// </summary>
     /// <param name="_menuTag"></param>
-    public void GetMenuInfo(MenuTags _menuTag)
+    public void GetMenuInfo(MenuTags _menuTag,Transform _currentClickThing)
     {
+        currentClickThing = _currentClickThing;
         currentActions = new List<Action>();
         currentNames = new List<string>();
         currentActions = menuFuns[_menuTag];
@@ -65,7 +76,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             MenuTags.None,new List<string>()
             {
                 "！！！",
-                "其实我很好奇你是怎么打开这个菜单的",
+                "其实我很好奇你是怎么打开这个菜单的"
             }
         },
         {
@@ -73,7 +84,10 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             {
                 "修改标题",
                 "修改标题基础颜色",
-                "统一修改所有子待办的颜色",
+                "修改标题字体颜色",
+                "统一修改所有子待办背景初始的颜色",
+                "统一修改所有子待办背景末尾的颜色",
+                "统一修改所有子待办字体的颜色",
                 "统一设置所有子待办的提醒时间",
                 "统一设置所有子待办的提醒闹钟",
                 "统一设置所有子待办的完成效果"
@@ -85,7 +99,9 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             MenuTags.todoThing,new List<string>()
             {
                 "修改待办事项",
-                "修改颜色",
+                "修改背景初始颜色",
+                "修改背景末尾颜色",
+                "修改字体颜色",
                 "设置提醒时间",
                 "设置提醒闹钟",
                 "设置完成效果"
@@ -114,12 +130,15 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         {
             MenuTags.classifyButtonText,new List<Action>()
             {
+                SetTitle,
+                SetBGColor,
+                SetTitleColor,
                 DefaultFun,
                 DefaultFun,
                 DefaultFun,
                 DefaultFun,
                 DefaultFun,
-                DefaultFun,
+                DefaultFun
 
             }
         },
@@ -127,10 +146,12 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             MenuTags.todoThing,new List<Action>()
             {
                 DefaultFun,
+                SetGradientStartColor,
+                SetGradientEndColor,
+                SetTitleColor,
                 DefaultFun,
                 DefaultFun,
-                DefaultFun,
-                DefaultFun,
+                DefaultFun
 
             }
         },
@@ -139,13 +160,14 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             {
                 DefaultFun,
                 DefaultFun,
-                DefaultFun,
+                DefaultFun
             }
         },
     };
-
+    //无效
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
         if (eventData.pointerCurrentRaycast.gameObject.tag == "menuThing")
         {
             //左键-隐藏右键菜单
@@ -230,9 +252,47 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
 
     #region todoThing
 
+    //    "修改标题",
+    //"修改标题基础颜色",
+    //"修改标题字体颜色",
+    //"统一修改所有子待办背景初始的颜色",
+    //"统一修改所有子待办背景末尾的颜色",
+    //"统一修改所有子待办字体的颜色",
+    //"统一设置所有子待办的提醒时间",
+    //"统一设置所有子待办的提醒闹钟",
+    //"统一设置所有子待办的完成效果"
 
+    public static void SetTitle()
+    {
+        SetText.Instance.SetOldText(currentClickThing);
+        SetText.Instance.OpenWindow();
+    }
+    public static void SetTitleColor()
+    {
+        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setType = SetThingType.Text;
+        SetColor.Instance.OpenWindow();
 
+    }
+    public static void SetBGColor()
+    {
+        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setType = SetThingType.Image;
+        SetColor.Instance.OpenWindow();
+    }
 
+    public static void SetGradientStartColor()
+    {
+        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setType = SetThingType.GradientStart;
+        SetColor.Instance.OpenWindow();
+    }
+    public static void SetGradientEndColor()
+    {
+        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setType = SetThingType.GradientEnd;
+        SetColor.Instance.OpenWindow();
+    }
     #endregion
 
     #region classifyButtonText
