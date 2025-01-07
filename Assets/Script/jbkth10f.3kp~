@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class SetAlarm : MonoBehaviour
+{
+    public static SetAlarm Instance;
+
+    [HideInInspector] public List<Transform> setTransforms;
+
+    private Animator animator;
+
+
+    [Header("定时类型的下拉框")]
+    [SerializeField] private TMP_Dropdown timeTypeDropdown;
+    [Header("倒计时输入框")]
+    [SerializeField] private TMP_InputField timeInputField;
+    [Header("年份")]
+    [SerializeField] private TextMeshProUGUI yearText;
+    [Header("月份")]
+    [SerializeField] private TextMeshProUGUI monthText;
+    [Header("日期")]
+    [SerializeField] private TextMeshProUGUI dayText;
+    [Header("小时")]
+    [SerializeField] private TextMeshProUGUI hourText;
+    [Header("分钟")]
+    [SerializeField] private TextMeshProUGUI minuteText;
+    [Header("秒")]
+    [SerializeField] private TextMeshProUGUI secondText;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+    }
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+
+    }
+    void Update()
+    {
+        
+    }
+    public void SetAlarm()
+    {
+
+    }
+    public void CloseWindow()
+    {
+        animator.SetBool("IsClose", true);
+
+    }
+    public void OpenWindow()
+    {
+        animator.SetBool("IsClose", false);
+
+    }
+}

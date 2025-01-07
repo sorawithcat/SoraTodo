@@ -37,7 +37,7 @@ public class SetColor : MonoBehaviour
 
 
     private Animator animator;
-    [HideInInspector] public Transform setTransform;
+    [HideInInspector] public List<Transform> setTransforms;
     [HideInInspector] public SetThingType setType;
 
     private void Awake()
@@ -134,21 +134,33 @@ public class SetColor : MonoBehaviour
     /// </summary>
     /// <param name="_toSetColorThing"></param>
     /// <returns></returns>
-    public Color GetAllColor(Transform _toSetColorThing, SetThingType _setType)
+    public Color GetAllColor(List<Transform> _toSetColorThing, SetThingType _setType)
     {
         switch (_setType)
         {
             case SetThingType.Image:
-                _toSetColorThing.GetComponent<Image>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                for (int i = 0; i < _toSetColorThing.Count; i++)
+                {
+                    _toSetColorThing[i].GetComponent<Image>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                }
                 break;
             case SetThingType.Text:
-                _toSetColorThing.GetComponentInChildren<TextMeshProUGUI>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                for (int i = 0; i < _toSetColorThing.Count; i++)
+                {
+                    _toSetColorThing[i].GetComponentInChildren<TextMeshProUGUI>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                }
                 break;
             case SetThingType.GradientStart:
-                _toSetColorThing.GetComponent<TodoManager>().newMaterial.SetColor("_GradientStartColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                for (int i = 0; i < _toSetColorThing.Count; i++)
+                {
+                    _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientStartColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                }
                 break;
             case SetThingType.GradientEnd:
-                _toSetColorThing.GetComponent<TodoManager>().newMaterial.SetColor("_GradientEndColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                for (int i = 0; i < _toSetColorThing.Count; i++)
+                {
+                    _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientEndColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                }
                 break;
         }
         return new Color(redValue, greenValue, blueValue, alphaValue);
@@ -157,9 +169,9 @@ public class SetColor : MonoBehaviour
 
     public void ToSetColor()
     {
-        if (setTransform != null)
+        if (setTransforms != null)
         {
-            GetAllColor(setTransform, setType);
+            GetAllColor(setTransforms, setType);
         }
         else
         {

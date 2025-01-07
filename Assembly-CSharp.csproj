@@ -60,15 +60,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.34f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\setAlarm.cs" />
+    <Compile Include="Assets\Script\TimerManager.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager.cs" />
     <Compile Include="Assets\Script\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\SwitchThemesManager.cs" />
     <Compile Include="Assets\Script\AddTodoManager.cs" />
+    <Compile Include="Assets\Script\SetAlarm.cs" />
     <Compile Include="Assets\Script\SerializableDictionary.cs" />
     <Compile Include="Assets\Script\RightMenuManager.cs" />
     <Compile Include="Assets\Script\WindowTransparent.cs" />
     <Compile Include="Assets\Script\SliderToIntegerTextUpdater.cs" />
     <Compile Include="Assets\Script\ThemeColor.cs" />
+    <Compile Include="Assets\Script\FileSelector.cs" />
     <Compile Include="Assets\Script\SetColor.cs" />
     <Compile Include="Assets\Script\MouseHover.cs" />
     <Compile Include="Assets\Script\ClassifyButtonListManager.cs" />
@@ -78,6 +82,7 @@
     <Compile Include="Assets\Script\SetText.cs" />
     <Compile Include="Assets\Script\CustomVerticalLayoutGroup.cs" />
     <Compile Include="Assets\Script\TodoManager.cs" />
+    <Compile Include="Assets\Script\FileItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

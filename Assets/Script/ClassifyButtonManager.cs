@@ -13,7 +13,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject todoList;
 
     private float thisSpacing;
-    private int isOpen = -1;
+    [HideInInspector] public int isOpen = -1;
     [HideInInspector] public int thisID;
     [Header("TodoList收缩速度")]
     [SerializeField] private float changeSpeed = 0.5f;
@@ -146,7 +146,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                RightMenuManager.Instance.GetMenuInfo(MenuTags.classifyButtonText,transform);
+                RightMenuManager.Instance.GetMenuInfo(MenuTags.classifyButtonText, transform);
             }
         }
 

@@ -46,6 +46,7 @@ public class SetText : MonoBehaviour
     public void SetTexts()
     {
         setTransform.GetComponentInChildren<TextMeshProUGUI>().text = newTMP.text;
+        CloseWindow();
     }
     public void CloseWindow()
     {

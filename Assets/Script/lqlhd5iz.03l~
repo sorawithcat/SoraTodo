@@ -1,0 +1,241 @@
+using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
+using System;
+
+public class FileSelector : MonoBehaviour
+{
+    public GameObject fileBrowserPanel; // 文件浏览器面板
+    public Button selectButton; // 选择按钮
+    public Button cancelButton; // 取消按钮
+    public TMP_InputField pathText; // 可编辑的路径输入框（原 pathText）
+    public Transform fileListParent; // 文件列表父节点
+    public GameObject fileItemPrefab; // 文件项的预制体
+    public string initialPath = "C:/"; // 初始路径
+
+    [Header("文件类型过滤")]
+    public TMP_Dropdown fileTypeDropdown; // 文件类型下拉框
+    private string[] supportedFileTypes = { "*.txt", "*.png", "*.jpg", "*.json", "*.wav", "*.mp3", "*.mp4", "*.mkv" }; // 支持的文件类型
+
+    // 用于显示自动补全建议的下拉框
+    public GameObject suggestionPanel;
+    public Transform suggestionListParent;
+    public GameObject suggestionItemPrefab;
+
+    private string currentPath;
+
+    void Start()
+    {
+        currentPath = initialPath;
+        OpenFileBrowser(currentPath);
+
+        selectButton.onClick.AddListener(OnSelectButtonClicked);
+        cancelButton.onClick.AddListener(OnCancelButtonClicked);
+
+        // 设置文件类型过滤器
+        fileTypeDropdown.onValueChanged.AddListener(OnFileTypeChanged);
+
+        // 监听路径文本框的变化（现在pathText是可编辑的）
+        pathText.onValueChanged.AddListener(OnPathInputChanged);
+    }
+
+    // 打开文件浏览器
+    void OpenFileBrowser(string path)
+    {
+        currentPath = path;
+        pathText.text = currentPath;  // 更新路径文本框为当前路径
+
+        // 清空文件列表
+        foreach (Transform child in fileListParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        try
+        {
+            // 获取文件夹和文件
+            DirectoryInfo directoryInfo = new DirectoryInfo(currentPath);
+            DirectoryInfo[] directories = directoryInfo.GetDirectories();
+            FileInfo[] files = directoryInfo.GetFiles();
+
+            // 显示文件夹
+            foreach (var dir in directories)
+            {
+                CreateFileItem(dir.Name, true, dir.FullName); // true 表示这是一个文件夹
+            }
+
+            // 显示文件（根据选择的文件类型进行过滤）
+            foreach (var file in files)
+            {
+                // 只显示符合选择的文件类型
+                if (IsValidFileType(file))
+                {
+                    CreateFileItem(file.Name, false, file.FullName); // false 表示这是一个文件
+                }
+            }
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            Debug.LogWarning("无法访问目录: " + currentPath + " (" + ex.Message + ")");
+            ShowWarning("无法访问该路径，请检查权限！");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("访问目录时出错: " + ex.Message);
+            ShowWarning("无法访问该路径！");
+        }
+    }
+
+    // 判断文件是否符合选择的文件类型
+    bool IsValidFileType(FileInfo file)
+    {
+        string extension = file.Extension.ToLower();
+        // 检查扩展名是否在支持的类型中
+        foreach (var filter in supportedFileTypes)
+        {
+            if (extension == filter.Substring(1).ToLower()) // 去掉 "*" 并比较
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 创建文件项（文件或文件夹）
+    void CreateFileItem(string name, bool isDirectory, string path)
+    {
+        GameObject fileItem = Instantiate(fileItemPrefab, fileListParent);
+        fileItem.GetComponentInChildren<TextMeshProUGUI>().text = name;
+        Button itemButton = fileItem.GetComponentInChildren<Button>();
+
+        itemButton.onClick.AddListener(() => OnFileItemClicked(isDirectory, path));
+    }
+
+    // 文件项被点击时的处理
+    void OnFileItemClicked(bool isDirectory, string path)
+    {
+        if (isDirectory)
+        {
+            // 如果是文件夹，进入该文件夹
+            OpenFileBrowser(path);
+        }
+        else
+        {
+            // 如果是文件，选择文件
+            currentPath = path;
+            pathText.text = "Selected: " + currentPath;
+        }
+    }
+
+    // 选择按钮的点击事件
+    void OnSelectButtonClicked()
+    {
+        // 如果用户手动输入了路径，尝试打开该路径
+        string manualPath = pathText.text;
+
+        if (Directory.Exists(manualPath))
+        {
+            OpenFileBrowser(manualPath);
+        }
+        else
+        {
+            Debug.LogError("无效的路径: " + manualPath);
+            ShowWarning("路径无效！");
+        }
+
+        fileBrowserPanel.SetActive(false); // 关闭文件选择器
+    }
+
+    // 取消按钮的点击事件
+    void OnCancelButtonClicked()
+    {
+        fileBrowserPanel.SetActive(false); // 关闭文件选择器
+    }
+
+    // 当用户选择文件类型时更新文件浏览器
+    void OnFileTypeChanged(int index)
+    {
+        // 更新支持的文件类型
+        string selectedType = fileTypeDropdown.options[index].text;
+        if (selectedType == "All Files")
+        {
+            supportedFileTypes = new string[] { "*.*" }; // 显示所有文件
+        }
+        else
+        {
+            supportedFileTypes = new string[] { "*" + selectedType }; // 根据选择的类型更新过滤器
+        }
+
+        // 重新加载当前文件夹，进行类型过滤
+        OpenFileBrowser(currentPath);
+    }
+
+    // 当路径输入框的内容变化时，进行自动补全
+    void OnPathInputChanged(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            suggestionPanel.SetActive(false);
+            return;
+        }
+
+        // 获取路径建议
+        List<string> suggestions = GetPathSuggestions(input);
+
+        // 清空建议列表
+        foreach (Transform child in suggestionListParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // 显示建议
+        foreach (var suggestion in suggestions)
+        {
+            GameObject suggestionItem = Instantiate(suggestionItemPrefab, suggestionListParent);
+            suggestionItem.GetComponentInChildren<TextMeshProUGUI>().text = suggestion;
+
+            Button suggestionButton = suggestionItem.GetComponentInChildren<Button>();
+            suggestionButton.onClick.AddListener(() => OnSuggestionItemClicked(suggestion));
+        }
+
+        // 显示/隐藏建议面板
+        suggestionPanel.SetActive(suggestions.Count > 0);
+    }
+
+    // 获取路径建议（例如：输入路径的一部分，提供补全建议）
+    List<string> GetPathSuggestions(string input)
+    {
+        List<string> suggestions = new List<string>();
+
+        // 获取磁盘根目录的文件夹（这里只列出 C: 和 D: 盘符，实际可以扩展）
+        string[] driveLetters = { "C:\\", "D:\\" };
+
+        foreach (var drive in driveLetters)
+        {
+            string fullPath = Path.Combine(drive, input);
+            if (Directory.Exists(fullPath))
+            {
+                suggestions.Add(fullPath);
+            }
+        }
+
+        // 你也可以扩展到支持更多的文件和文件夹补全逻辑
+        return suggestions;
+    }
+
+    // 当选择了路径建议时，自动填充到输入框
+    void OnSuggestionItemClicked(string suggestion)
+    {
+        pathText.text = suggestion;
+        suggestionPanel.SetActive(false);
+    }
+
+    // 显示警告信息
+    void ShowWarning(string message)
+    {
+        // 你可以在这里显示一个警告提示框，或者通过 Debug.Log 显示
+        Debug.LogWarning(message);
+    }
+}

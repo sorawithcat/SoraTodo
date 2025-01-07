@@ -27,6 +27,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     /// 目前所选内容（召唤出菜单的物体）
     /// </summary>
     private static Transform currentClickThing;
+    private static List<Transform> currentClickChildsThing;
     [Header("按钮预制件")]
     [SerializeField] private GameObject rightMenuButtonPrefab;
     [Header("画布")]
@@ -63,6 +64,18 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     public void GetMenuInfo(MenuTags _menuTag,Transform _currentClickThing)
     {
         currentClickThing = _currentClickThing;
+        currentClickChildsThing = new List<Transform>();
+        foreach (Transform child in currentClickThing)
+        {
+            foreach (Transform grandChild in child)
+            {
+                TodoManager todoManager = grandChild.GetComponent<TodoManager>();
+                if (todoManager != null)
+                {
+                    currentClickChildsThing.Add(todoManager.gameObject.transform);
+                }
+            }
+        }
         currentActions = new List<Action>();
         currentNames = new List<string>();
         currentActions = menuFuns[_menuTag];
@@ -89,7 +102,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "统一修改所有子待办背景末尾的颜色",
                 "统一修改所有子待办字体的颜色",
                 "统一设置所有子待办的提醒时间",
-                "统一设置所有子待办的提醒闹钟",
+                "统一设置所有子待办的提醒闹铃",
                 "统一设置所有子待办的完成效果"
 
 
@@ -103,7 +116,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "修改背景末尾颜色",
                 "修改字体颜色",
                 "设置提醒时间",
-                "设置提醒闹钟",
+                "设置提醒闹铃",
                 "设置完成效果"
             }
         },
@@ -133,10 +146,10 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetTitle,
                 SetBGColor,
                 SetTitleColor,
-                DefaultFun,
-                DefaultFun,
-                DefaultFun,
-                DefaultFun,
+                SetChildsGradientStartColor,
+                SetChildsGradientEndColor,
+                SetChildsTitleColor,
+                SetChildsAlarm,
                 DefaultFun,
                 DefaultFun
 
@@ -145,11 +158,11 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         {
             MenuTags.todoThing,new List<Action>()
             {
-                DefaultFun,
+                SetTitle,
                 SetGradientStartColor,
                 SetGradientEndColor,
                 SetTitleColor,
-                DefaultFun,
+                SetTodoAlarm,
                 DefaultFun,
                 DefaultFun
 
@@ -222,7 +235,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         RectTransformUtility.ScreenPointToLocalPointInRectangle(toolTipCanvas.transform as RectTransform, Input.mousePosition, null, out mousePosition);
         mousePosition = new Vector2(mousePosition.x - 200, mousePosition.y - 400);
         mousePosition.x = Mathf.Clamp(mousePosition.x, -732 + transform.GetComponent<RectTransform>().rect.width, 739 - transform.GetComponent<RectTransform>().rect.width);
-        mousePosition.y = Mathf.Clamp(mousePosition.y, -702 + transform.GetComponent<RectTransform>().rect.height, -167 - transform.GetComponent<RectTransform>().rect.height);
+        mousePosition.y = Mathf.Clamp(mousePosition.y, -902 + transform.GetComponent<RectTransform>().rect.height, -367 - transform.GetComponent<RectTransform>().rect.height);
 
         this.GetComponent<RectTransform>().anchoredPosition = mousePosition;
     }
@@ -252,44 +265,64 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
 
     #region todoThing
 
-    //    "修改标题",
-    //"修改标题基础颜色",
-    //"修改标题字体颜色",
-    //"统一修改所有子待办背景初始的颜色",
-    //"统一修改所有子待办背景末尾的颜色",
-    //"统一修改所有子待办字体的颜色",
-    //"统一设置所有子待办的提醒时间",
-    //"统一设置所有子待办的提醒闹钟",
-    //"统一设置所有子待办的完成效果"
-
     public static void SetTitle()
     {
+        SetText.Instance.setTransform = currentClickThing;
         SetText.Instance.SetOldText(currentClickThing);
         SetText.Instance.OpenWindow();
     }
     public static void SetTitleColor()
     {
-        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetColor.Instance.setType = SetThingType.Text;
+        SetColor.Instance.OpenWindow();
+
+    }
+    public static void SetTodoAlarm()
+    {
+        SetAlarm.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetAlarm.Instance.OpenWindow();
+    }
+    public static void SetChildsAlarm()
+    {
+        SetAlarm.Instance.setTransforms = currentClickChildsThing;
+        SetAlarm.Instance.OpenWindow();
+    }
+    public static void SetChildsTitleColor()
+    {
+        SetColor.Instance.setTransforms = currentClickChildsThing;
         SetColor.Instance.setType = SetThingType.Text;
         SetColor.Instance.OpenWindow();
 
     }
     public static void SetBGColor()
     {
-        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.Image;
         SetColor.Instance.OpenWindow();
     }
 
     public static void SetGradientStartColor()
     {
-        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetColor.Instance.setType = SetThingType.GradientStart;
+        SetColor.Instance.OpenWindow();
+    }
+    public static void SetChildsGradientStartColor()
+    {
+        SetColor.Instance.setTransforms = currentClickChildsThing;
         SetColor.Instance.setType = SetThingType.GradientStart;
         SetColor.Instance.OpenWindow();
     }
     public static void SetGradientEndColor()
     {
-        SetColor.Instance.setTransform = currentClickThing;
+        SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetColor.Instance.setType = SetThingType.GradientEnd;
+        SetColor.Instance.OpenWindow();
+    }
+    public static void SetChildsGradientEndColor()
+    {
+        SetColor.Instance.setTransforms = currentClickChildsThing;
         SetColor.Instance.setType = SetThingType.GradientEnd;
         SetColor.Instance.OpenWindow();
     }
