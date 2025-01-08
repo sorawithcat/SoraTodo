@@ -80,7 +80,7 @@ public class SetColor : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("无法转换颜色值为整数: " + _colorNumb.text);
+                    TipWindowManager.Instance.ShowTip("无法转换颜色值为整数: " + _colorNumb.text);
                 }
                 break;
 
@@ -92,7 +92,7 @@ public class SetColor : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("无法转换颜色值为整数: " + _colorNumb.text);
+                    TipWindowManager.Instance.ShowTip("无法转换颜色值为整数: " + _colorNumb.text);
                 }
                 break;
 
@@ -104,7 +104,7 @@ public class SetColor : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("无法转换颜色值为整数: " + _colorNumb.text);
+                    TipWindowManager.Instance.ShowTip("无法转换颜色值为整数: " + _colorNumb.text);
                 }
                 break;
 
@@ -116,7 +116,7 @@ public class SetColor : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("无法转换颜色值为整数: " + _colorNumb.text);
+                    TipWindowManager.Instance.ShowTip("无法转换颜色值为整数: " + _colorNumb.text);
                 }
                 break;
         }
@@ -175,7 +175,7 @@ public class SetColor : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("错误的打开了调节颜色盘;");
+            TipWindowManager.Instance.ShowTip("错误的打开了调节颜色盘",Color.yellow);
         }
         animator.SetBool("IsClose", true);
     }

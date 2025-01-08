@@ -1,0 +1,119 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using UnityEngine;
+using System.IO;
+
+#if UNITY_STANDALONE_WIN
+using System.Runtime.InteropServices;
+#endif
+
+public class FileDropArea : MonoBehaviour
+{
+    private string targetFolderPath = "Assets/Resources/AlarmClockSounds";
+
+    void Start()
+    {
+        // 创建文件夹（如果没有的话）
+        if (!Directory.Exists(targetFolderPath))
+        {
+            Directory.CreateDirectory(targetFolderPath);
+        }
+    }
+
+    // 编辑器环境下使用 OpenFilePanel 选择文件
+    public void OpenFileDialogEditor()
+    {
+#if UNITY_EDITOR
+        string selectedFilePath = EditorUtility.OpenFilePanel("Select an Audio File", "", "mp3,wav");
+
+        if (!string.IsNullOrEmpty(selectedFilePath))
+        {
+            ProcessFile(selectedFilePath);
+        }
+#endif
+    }
+
+    // 在运行时使用平台相关的文件对话框（Windows/macOS）
+    public void OpenFileDialogRuntime()
+    {
+#if UNITY_STANDALONE_WIN
+        // Windows 平台使用原生文件对话框
+        string selectedFilePath = OpenFileDialogWindows();
+
+        if (!string.IsNullOrEmpty(selectedFilePath))
+        {
+            ProcessFile(selectedFilePath);
+        }
+#elif UNITY_STANDALONE_OSX
+        // macOS 平台使用原生文件对话框
+        string selectedFilePath = OpenFileDialogMac();
+
+        if (!string.IsNullOrEmpty(selectedFilePath))
+        {
+            ProcessFile(selectedFilePath);
+        }
+#else
+        Debug.LogWarning("File dialog not supported on this platform.");
+#endif
+    }
+
+    // 处理文件
+    private void ProcessFile(string selectedFilePath)
+    {
+        // 获取文件扩展名
+        string fileExtension = Path.GetExtension(selectedFilePath).ToLower();
+
+        // 检查文件类型
+        if (fileExtension == ".mp3" || fileExtension == ".wav")
+        {
+            string targetFilePath = Path.Combine(targetFolderPath, "Customize" + fileExtension);
+
+            // 如果文件已存在，询问用户是否替换
+#if UNITY_EDITOR
+            bool replace = EditorUtility.DisplayDialog(
+                "File Already Exists",
+                "A file named 'Customize' already exists. Do you want to replace it?",
+                "Yes", "No");
+#else
+            // 运行时平台需要替代方案，例如弹出确认框
+            bool replace = false;
+            // 需要使用插件支持的方式或自定义弹窗
+#endif
+
+            if (replace)
+            {
+                File.Copy(selectedFilePath, targetFilePath, true); // 覆盖文件
+                Debug.Log("File replaced and saved as 'Customize'.");
+            }
+            else
+            {
+                Debug.Log("File was not replaced.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Invalid file type. Please select an MP3 or WAV file.");
+        }
+    }
+
+#if UNITY_STANDALONE_WIN
+    // Windows 原生文件对话框
+    private string OpenFileDialogWindows()
+    {
+        // Windows 上可以使用 .NET 提供的文件选择对话框，但是 Unity 不直接支持此类
+        // 在这里，可以选择使用 Unity 兼容的文件选择方案，如调用系统的原生API（例如通过插件）。
+
+        // 插件推荐：NativeFilePicker
+        return string.Empty; // 返回空字符串表示没有文件选中
+    }
+#endif
+
+    // macOS 原生文件对话框
+    private string OpenFileDialogMac()
+    {
+        // macOS 平台需要使用 NativeFilePicker 或其他插件来处理文件选择
+        // 这里同样需要额外的插件或自定义代码支持
+        return string.Empty; // 返回空字符串表示没有文件选中
+    }
+}

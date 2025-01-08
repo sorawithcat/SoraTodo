@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 /// <summary>
 /// 完成效果
 /// </summary>
@@ -79,10 +79,13 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private float countdownTime = 60f;
-    [SerializeField] private DateTime dateTime = DateTime.Now.AddHours(1);
+    [SerializeField] public float countdownTime = 60;
+    public DateTime dateTime;
     private AudioClip alarmClip;
     public float timer;
+
+    [Header("自定义闹钟的文件路径")]
+    public string customizePath;
 
     // 定时器状态
     private bool isCountingDown = false;
@@ -114,21 +117,19 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
             else
             {
-                Debug.LogError("未找到指定的Shader: " + useShader.name);
+                TipWindowManager.Instance.ShowTip("未找到指定的Shader: " + useShader.name, Color.yellow);
             }
         }
         else
         {
-            Debug.LogError("当前物体上没有找到Renderer组件！");
+            TipWindowManager.Instance.ShowTip("当前物体上没有找到Renderer组件！", Color.red);
         }
     }
 
     public void SetAlarm()
     {
-        // 根据AlarmType加载铃声
         LoadAlarmSound();
 
-        // 根据定时类型设置定时器
         if (timingType == TimingType.Countdown)
         {
             timer = countdownTime; // 设置倒计时的初始时间
@@ -219,30 +220,33 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             case AlarmType.Alarm1:
                 soundPath += "Alarm1";
+                alarmClip = Resources.Load<AudioClip>(soundPath);
+                if (alarmClip == null)
+                {
+                    TipWindowManager.Instance.ShowTip("未找到铃声文件: " + soundPath, Color.red);
+                }
+                else
+                {
+                    audioSource.clip = alarmClip;
+                }
                 break;
             case AlarmType.Customize:
-                soundPath += "Customize";
+                FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
                 break;
         }
 
-        alarmClip = Resources.Load<AudioClip>(soundPath);
 
-        if (alarmClip == null)
-        {
-            Debug.LogError("未找到铃声文件: " + soundPath);
-        }
     }
 
     public void PlayAlarmSound()
     {
         if (alarmClip != null && audioSource != null)
         {
-            audioSource.clip = alarmClip;
             audioSource.Play();
         }
         else
         {
-            Debug.LogError("铃声或AudioSource为空，无法播放铃声！");
+            TipWindowManager.Instance.ShowTip("铃声或AudioSource为空，无法播放铃声！", Color.red);
         }
     }
 
@@ -274,11 +278,13 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     // 用于外部更新定时器设置
-    public void UpdateTimerSettings(TimingType newTimingType,AlarmType newAlarmType, float newTime = 60f, DateTime? _newDate = null)
+    public void UpdateTimerSettings(TimingType newTimingType, AlarmType newAlarmType, float newTime = 60f, DateTime? _newDate = null,string _customizePath = "")
     {
         timingType = newTimingType;
         alarmType = newAlarmType;
+        customizePath = _customizePath;
         countdownTime = newTime;
+
         if (!_newDate.HasValue)
         {
             _newDate = DateTime.Now.AddHours(1);
@@ -292,11 +298,30 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         else if (newTimingType == TimingType.Date)
         {
             DateTime currentDate = DateTime.Now;
-            TimeSpan timeRemaining = dateTime - currentDate;
-            timer = (float)timeRemaining.TotalSeconds;
+           long currentTime =  ConvertDateTimeToSeconds(currentDate);
+           long toTime =  ConvertDateTimeToSeconds(dateTime);
+            timer =toTime-currentTime;
+            if (timer <= 0)
+            {
+                timer = 0;
+            }
         }
 
         isCountingDown = (newTimingType == TimingType.Countdown || newTimingType == TimingType.Date);
         isAlarmPlayed = false;
+    }
+    public long ConvertDateTimeToSeconds(DateTime _datetime)
+    {
+        long totalSeconds = 0;
+
+        long year = _datetime.Year;
+        long month = _datetime.Month;
+        long day = _datetime.Day;
+        long hour = _datetime.Hour;
+        long minute = _datetime.Minute;
+        long second = _datetime.Second;
+
+        totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
+        return totalSeconds;
     }
 }

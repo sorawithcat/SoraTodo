@@ -30,7 +30,6 @@ public class SliderToIntegerTextUpdater : MonoBehaviour
     {
         if (slider == null || textDisplay == null)
         {
-            Debug.LogError(gameObject.name + "滑动条或者文本缺失");
             return;
         }
 

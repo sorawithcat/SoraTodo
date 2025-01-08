@@ -271,6 +271,7 @@ MonoBehaviour:
   audioSource: {fileID: -1479640108696164962}
   countdownTime: 60
   timer: 0
+  customizePath: 
   newMaterial: {fileID: 0}
 --- !u!82 &-1479640108696164962
 AudioSource:
@@ -283,7 +284,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 209a591cc968de94ea221ef51fcc5e29, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

@@ -36,6 +36,8 @@ public class AddTodoManager : MonoBehaviour
     [Header("秒")]
     [SerializeField] private TextMeshProUGUI secondText;
 
+    private string customizePath;
+
     private void Awake()
     {
         if (Instance == null)
@@ -74,7 +76,7 @@ public class AddTodoManager : MonoBehaviour
         int second = int.Parse(secondText.text);
 
         DateTime _dateTime = new DateTime(year, month, day, hour, minute, second);
-        TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType,(AlarmType)selectedAlarmType, timeValue, _dateTime);
+        TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType,(AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
     }
 
     public void AddClassify(Transform _setTransform)

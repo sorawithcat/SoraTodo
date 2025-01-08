@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class TimerManager : MonoBehaviour
@@ -133,7 +132,7 @@ public class TimerManager : MonoBehaviour
             {
                 if (todoManager != null)
                 {
-                    todoManager.UpdateTimerSettings(TimingType.None,AlarmType.None); // 重置定时器为无定时状态
+                    todoManager.UpdateTimerSettings(TimingType.None, AlarmType.None); // 重置定时器为无定时状态
                 }
             }
         }
@@ -145,7 +144,7 @@ public class TimerManager : MonoBehaviour
     /// <param name="timingType"></param>
     /// <param name="newTime"></param>
     /// <param name="_newDate"></param>
-   public void UpdateTodoTimerSetting(TodoManager _todoManager,TimingType timingType = TimingType.None,AlarmType alarmType = AlarmType.None, float newTime = 60f, DateTime? _newDate = null)
+    public void UpdateTodoTimerSetting(TodoManager _todoManager, TimingType timingType = TimingType.None, AlarmType alarmType = AlarmType.None, float newTime = 60f, DateTime? _newDate = null, string _customizePath = "")
     {
         if (!_newDate.HasValue)
         {
@@ -153,7 +152,7 @@ public class TimerManager : MonoBehaviour
         }
         if (_todoManager != null)
         {
-            _todoManager.UpdateTimerSettings(timingType,alarmType,newTime,_newDate);
+            _todoManager.UpdateTimerSettings(timingType, alarmType, newTime, _newDate,_customizePath);
             _todoManager.SetAlarm();
         }
     }

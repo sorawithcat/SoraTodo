@@ -101,8 +101,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "统一修改所有子待办背景初始的颜色",
                 "统一修改所有子待办背景末尾的颜色",
                 "统一修改所有子待办字体的颜色",
-                "统一设置所有子待办的提醒时间",
-                "统一设置所有子待办的提醒闹铃",
+                "统一设置所有子待办的提醒",
                 "统一设置所有子待办的完成效果"
 
 
@@ -115,8 +114,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "修改背景初始颜色",
                 "修改背景末尾颜色",
                 "修改字体颜色",
-                "设置提醒时间",
-                "设置提醒闹铃",
+                "设置提醒",
                 "设置完成效果"
             }
         },
@@ -151,7 +149,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetChildsTitleColor,
                 SetChildsAlarm,
                 DefaultFun,
-                DefaultFun
 
             }
         },
@@ -164,7 +161,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetTitleColor,
                 SetTodoAlarm,
                 DefaultFun,
-                DefaultFun
 
             }
         },
@@ -180,7 +176,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     //无效
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
         if (eventData.pointerCurrentRaycast.gameObject.tag == "menuThing")
         {
             //左键-隐藏右键菜单
@@ -257,7 +252,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public static void DefaultFun()
     {
-        Debug.Log("success");
+        TipWindowManager.Instance.ShowTip("你点击了一个空的按钮，如果此按钮是功能性按钮，请联系作者修改。",Color.red);
     }
 
     #endregion
@@ -281,11 +276,15 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     public static void SetTodoAlarm()
     {
         SetAlarm.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetAlarm.Instance.SetCurrentAlarmThing();
+        TipWindowManager.Instance.ShowTip("已自动填充该待办的属性.");
         SetAlarm.Instance.OpenWindow();
     }
     public static void SetChildsAlarm()
     {
         SetAlarm.Instance.setTransforms = currentClickChildsThing;
+        SetAlarm.Instance.SetCurrentAlarmThing();
+        TipWindowManager.Instance.ShowTip("已自动填充第一个待办的属性.");
         SetAlarm.Instance.OpenWindow();
     }
     public static void SetChildsTitleColor()

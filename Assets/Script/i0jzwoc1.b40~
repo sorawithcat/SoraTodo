@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class SetAlarm : MonoBehaviour
@@ -26,13 +25,12 @@ public class SetAlarm : MonoBehaviour
     [SerializeField] private TMP_Dropdown alarmTypeDropdown;
     [Header("自定义框")]
     [SerializeField] private GameObject customizeGO;
+    private string targetFolderPath = "Resources/AlarmClockSounds";
     [Header("音效试听")]
     [SerializeField] private GameObject audioSourceButton;
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
     private AudioClip alarmClip;
-
-    private string customizePath;
     private void Awake()
     {
         if (Instance == null)
@@ -66,16 +64,10 @@ public class SetAlarm : MonoBehaviour
         TodoManager todomanager = setTransforms[0].GetComponent<TodoManager>();
         alarmTypeDropdown.value = (int)todomanager.alarmType;
         timeTypeDropdown.value = (int)todomanager.timingType;
-        timeInputField.text = ConvertSecondsToTimeString((long)todomanager.countdownTime);
-        if (todomanager.timingType != TimingType.Date)
-        {
-            dateInputField.text = ConvertSecondsToTimeString(ConvertDateTimeToSeconds(DateTime.Now));
-
-        }
-        else
-        {
-            dateInputField.text = ConvertSecondsToTimeString(ConvertDateTimeToSeconds(todomanager.dateTime));
-        }
+        DateTime currentDate = DateTime.Now;
+        TimeSpan timeRemaining = todomanager.dateTime - currentDate;
+        timeInputField.text = ConvertSecondsToTimeString((int)todomanager.countdownTime);
+        dateInputField.text = ConvertSecondsToTimeString((int)timeRemaining.TotalSeconds);
         OnAlarmDropdownValueChanged(alarmTypeDropdown.value);
         OnTimeDropdownValueChanged(timeTypeDropdown.value);
     }
@@ -84,6 +76,7 @@ public class SetAlarm : MonoBehaviour
     {
         if (alarmClip != null && audioSource != null)
         {
+            audioSource.clip = alarmClip;
             audioSource.Play();
         }
         else
@@ -94,7 +87,37 @@ public class SetAlarm : MonoBehaviour
 
 
 
+    /// <summary>
+    /// 打开指定文件夹
+    /// </summary>
+    public void OpenFolder(string targetFolderPath)
+    {
+        // 使用 Application.dataPath 获取当前项目的路径
+        string folderPath = Path.Combine(Application.dataPath, targetFolderPath);
+        folderPath = Path.GetFullPath(folderPath);
 
+        if (Directory.Exists(folderPath))
+        {
+            // Windows 操作系统
+#if UNITY_STANDALONE_WIN
+            Process.Start("explorer.exe", folderPath);
+#endif
+
+            // macOS 操作系统
+#if UNITY_STANDALONE_OSX
+        Process.Start("open", folderPath);
+#endif
+
+            // Linux 操作系统
+#if UNITY_STANDALONE_LINUX
+        Process.Start("xdg-open", folderPath);
+#endif
+        }
+        else
+        {
+            TipWindowManager.Instance.ShowTip("Folder does not exist: " + folderPath, Color.red);
+        }
+    }
 
     void OnTimeDropdownValueChanged(int index)
     {
@@ -127,6 +150,12 @@ public class SetAlarm : MonoBehaviour
                 customizeGO.SetActive(false);
                 break;
             case AlarmType.Customize:
+                soundPath += "Customize";
+                alarmClip = Resources.Load<AudioClip>(soundPath);
+                if (alarmClip == null)
+                {
+                    TipWindowManager.Instance.ShowTip("未找到铃声文件: " + soundPath, Color.red);
+                }
                 audioSourceButton.SetActive(true);
                 customizeGO.SetActive(true);
                 break;
@@ -137,11 +166,6 @@ public class SetAlarm : MonoBehaviour
                 {
                     TipWindowManager.Instance.ShowTip("未找到铃声文件: " + soundPath, Color.red);
                 }
-                else
-                {
-                    audioSource.clip = alarmClip;
-
-                }
                 audioSourceButton.SetActive(true);
 
                 customizeGO.SetActive(false);
@@ -151,34 +175,32 @@ public class SetAlarm : MonoBehaviour
 
     public void OpenAlarmFile()
     {
-        FolderBrowserHelper.SelectFile((filePath) =>
-        {
-            customizePath = filePath;
-            FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
+        TextEditor te = new TextEditor();
+        te.text = "Customize";
+        te.SelectAll();
+        te.Copy();
 
-            ;
-        }, FolderBrowserHelper.AUDIOFILTER);
+        OpenFolder(targetFolderPath);
+        TipWindowManager.Instance.ShowTip("已复制文件名。");
     }
     public void SetAlarms()
     {
         int selectedTimeType = timeTypeDropdown.value;
         int selectedAlarmType = alarmTypeDropdown.value;
 
-        long timeValue = GetTimeAndConvertToSeconds(timeInputField);
-        List<int> ints = GetTimeAndConvertToArrary(dateInputField);
-        DateTime _dateTime = new DateTime(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5], DateTimeKind.Utc);
+        int timeValue = GetTimeAndConvertToSeconds(timeInputField);
+        DateTime _dateTime = DateTime.Now.AddSeconds(GetTimeAndConvertToSeconds(dateInputField));
 
         foreach (Transform transform in setTransforms)
         {
             TodoManager todoManager = transform.GetComponent<TodoManager>();
-            TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
+            TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime);
         }
         CloseWindow();
 
     }
     public void CloseWindow()
     {
-        audioSource.Stop();
         animator.SetBool("IsClose", true);
 
     }
@@ -187,78 +209,15 @@ public class SetAlarm : MonoBehaviour
         animator.SetBool("IsClose", false);
 
     }
-    public long ConvertDateTimeToSeconds(DateTime _datetime)
-    {
-        long totalSeconds = 0;
 
-        long year = _datetime.Year;
-        long month = _datetime.Month;
-        long day = _datetime.Day;
-        long hour = _datetime.Hour;
-        long minute = _datetime.Minute;
-        long second = _datetime.Second;
-
-        totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
-        return totalSeconds;
-    }
-
-
-    public List<int> ConvertTimeToArray(string input)
-    {
-        int year = 0;
-        int month = 0;
-        int day = 0;
-        int hour = 0;
-        int minute = 0;
-        int second = 0;
-
-        string pattern = @"(\d+)(year|mon|day|hour|min|sec)";
-        MatchCollection matches = Regex.Matches(input, pattern);
-
-        foreach (Match match in matches)
-        {
-            string numberStr = match.Groups[1].Value;
-            string unit = match.Groups[2].Value.ToLower();
-
-            int number = int.Parse(numberStr);
-
-            switch (unit)
-            {
-                case "year":
-                    year = number;
-                    break;
-                case "mon":
-                    month = number;
-                    break;
-                case "day":
-                    day = number;
-                    break;
-                case "hour":
-                    hour = number;
-                    break;
-                case "min":
-                    minute = number;
-                    break;
-                case "sec":
-                    second = number;
-                    break;
-                default:
-                    TipWindowManager.Instance.ShowTip("未知的单位 " + unit, Color.red);
-                    break;
-            }
-        }
-
-        List<int> longs = new List<int> { year, month, day, hour, minute, second };
-        return longs;
-    }
     /// <summary>
     /// 字符串转秒
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    public long ConvertTimeToSeconds(string input)
+    public int ConvertTimeToSeconds(string input)
     {
-        long totalSeconds = 0;
+        int totalSeconds = 0;
 
         string pattern = @"(\d+)(year|mon|day|hour|min|sec)";
         MatchCollection matches = Regex.Matches(input, pattern);
@@ -299,30 +258,31 @@ public class SetAlarm : MonoBehaviour
 
         return totalSeconds;
     }
+
     /// <summary>
     /// 秒转字符串
     /// </summary>
     /// <param name="totalSeconds"></param>
     /// <returns></returns>
-    public string ConvertSecondsToTimeString(long totalSeconds)
+    public string ConvertSecondsToTimeString(int totalSeconds)
     {
         // 时间单位的秒数
-        long years = totalSeconds / (365 * 24 * 60 * 60);
+        int years = totalSeconds / (365 * 24 * 60 * 60);
         totalSeconds %= (365 * 24 * 60 * 60);
 
-        long months = totalSeconds / (30 * 24 * 60 * 60);
+        int months = totalSeconds / (30 * 24 * 60 * 60);
         totalSeconds %= (30 * 24 * 60 * 60);
 
-        long days = totalSeconds / (24 * 60 * 60);
+        int days = totalSeconds / (24 * 60 * 60);
         totalSeconds %= (24 * 60 * 60);
 
-        long hours = totalSeconds / (60 * 60);
+        int hours = totalSeconds / (60 * 60);
         totalSeconds %= (60 * 60);
 
-        long minutes = totalSeconds / 60;
+        int minutes = totalSeconds / 60;
         totalSeconds %= 60;
 
-        long seconds = totalSeconds;
+        int seconds = totalSeconds;
 
         // 拼接字符串（没有空格）
         List<string> timeParts = new List<string>();
@@ -345,7 +305,7 @@ public class SetAlarm : MonoBehaviour
     }
 
     // 获取输入框中的文字，并转换为秒
-    public long GetTimeAndConvertToSeconds(TMP_InputField _InputField)
+    public int GetTimeAndConvertToSeconds(TMP_InputField _InputField)
     {
         string inputText = _InputField.text;
 
@@ -356,18 +316,7 @@ public class SetAlarm : MonoBehaviour
         }
 
         return ConvertTimeToSeconds(inputText);
-    }
 
-    public List<int> GetTimeAndConvertToArrary(TMP_InputField _InputField)
-    {
-        string inputText = _InputField.text;
 
-        if (string.IsNullOrEmpty(inputText))
-        {
-            TipWindowManager.Instance.ShowTip("输入框为空", Color.yellow);
-            return new List<int> { 0, 0, 0, 0, 0, 0 };
-        }
-
-        return ConvertTimeToArray(inputText);
     }
 }
