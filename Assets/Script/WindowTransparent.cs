@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using System;
+using TMPro;
 
 public class WindowTransparent : MonoBehaviour
 {
     // 导入 user32.dll 库以使用 Windows API 函数
     [DllImport("user32.dll")]
     public static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
-
     // 定义一个结构来存储窗口边框的边距大小
     private struct MARGINS
     {

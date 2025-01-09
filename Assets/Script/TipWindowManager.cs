@@ -84,6 +84,8 @@ public class TipWindowManager : MonoBehaviour
         tipTexts.text = message;
         tipText.color = textColor ?? defaultTextColor;
         tipTexts.color = textColor ?? defaultTextColor;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(tipWindowFather.GetComponent<RectTransform>());
+
     }
 
     // 隐藏提示窗口

@@ -190,6 +190,7 @@ public class SetColor : MonoBehaviour
     public void OpenWindow()
     {
         animator.SetBool("IsClose", false);
-
+        TipWindowManager.Instance.ShowTip("(ToT)也许你发现了，纯黑色的物体会变透明，我也不知道怎么解决", closeTime:3f);
+        TipWindowManager.Instance.ShowTip("发现的时候已经来（lan）不（de）及（qu）改了", closeTime:3f);
     }
 }
