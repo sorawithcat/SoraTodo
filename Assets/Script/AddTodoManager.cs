@@ -88,6 +88,7 @@ public class AddTodoManager : MonoBehaviour
     public void CloseWindow()
     {
         animator.SetBool("IsClose", true);
+        TodoWindowManager.Instance.OpenWindow();
     }
 
     // 打开窗口的动画

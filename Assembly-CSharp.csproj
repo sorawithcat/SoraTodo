@@ -75,12 +75,14 @@
     <Compile Include="Assets\Script\ThemeColor.cs" />
     <Compile Include="Assets\Script\FileSelector.cs" />
     <Compile Include="Assets\Script\SetColor.cs" />
+    <Compile Include="Assets\Script\TodoWindowManager.cs" />
     <Compile Include="Assets\Script\MouseHover.cs" />
     <Compile Include="Assets\Script\ClassifyButtonListManager.cs" />
     <Compile Include="Assets\Script\AllTodoManager.cs" />
     <Compile Include="Assets\Script\SetColorPopWindow.cs" />
     <Compile Include="Assets\Script\RightMenuButtonManager.cs" />
     <Compile Include="Assets\Script\SetText.cs" />
+    <Compile Include="Assets\Script\DraggableObject.cs" />
     <Compile Include="Assets\Script\CustomVerticalLayoutGroup.cs" />
     <Compile Include="Assets\Script\TodoManager.cs" />
     <Compile Include="Assets\Script\FileItem.cs" />

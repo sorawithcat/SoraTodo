@@ -14,7 +14,7 @@ public class CustomVerticalLayoutGroup : LayoutGroup
 
     // 自定义的间距（替代默认的 spacing 字段）
     public float defaultSpacing = 0f;  // 默认间距
-
+    private float thisHeight;
     public override void CalculateLayoutInputHorizontal()
     {
         base.CalculateLayoutInputHorizontal();
@@ -49,7 +49,6 @@ public class CustomVerticalLayoutGroup : LayoutGroup
 
         // 添加子物体之间的额外间距
         totalHeight += spacingSum;
-
         // 返回计算出来的总高度，供布局系统使用
         SetLayoutInputForAxis(totalHeight, totalHeight, totalHeight, 1);  // 仅设置垂直方向（轴 1）
     }
@@ -85,6 +84,8 @@ public class CustomVerticalLayoutGroup : LayoutGroup
 
         // 考虑下边距
         yOffset += bottomPadding;
+        thisHeight = yOffset;
+
     }
 
     // 可选：通过检视器直接设置内边距（topPadding 和 bottomPadding）
@@ -100,8 +101,14 @@ public class CustomVerticalLayoutGroup : LayoutGroup
     {
         // 只更新 childSpacings，如果需要额外的验证可以添加
         //childSpacings = newChildSpacings;
+        UpdateThisHeight(thisHeight);
 
         // 强制重新计算布局
         SetLayoutVertical();
+    }
+
+    public void UpdateThisHeight(float _height)
+    {
+        transform.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().rect.width, _height);
     }
 }

@@ -185,7 +185,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    // 添加 UpdateTimer 方法
     public bool UpdateTimer()
     {
         // 如果处于倒计时状态，更新倒计时器

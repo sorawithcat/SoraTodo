@@ -175,14 +175,16 @@ public class SetColor : MonoBehaviour
         }
         else
         {
-            TipWindowManager.Instance.ShowTip("错误的打开了调节颜色盘",Color.yellow);
+            TipWindowManager.Instance.ShowTip("错误的打开了调节颜色盘", Color.yellow);
         }
-        animator.SetBool("IsClose", true);
+        CloseWindow();
+
     }
 
     public void CloseWindow()
     {
         animator.SetBool("IsClose", true);
+        TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()

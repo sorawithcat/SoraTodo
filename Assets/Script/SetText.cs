@@ -51,6 +51,7 @@ public class SetText : MonoBehaviour
     public void CloseWindow()
     {
         animator.SetBool("IsClose", true);
+        TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()

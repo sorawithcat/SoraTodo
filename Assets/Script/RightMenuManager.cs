@@ -265,12 +265,14 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetText.Instance.setTransform = currentClickThing;
         SetText.Instance.SetOldText(currentClickThing);
         SetText.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetTitleColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.Text;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
 
     }
     public static void SetTodoAlarm()
@@ -279,6 +281,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetAlarm.Instance.SetCurrentAlarmThing();
         TipWindowManager.Instance.ShowTip("已自动填充该待办的属性.");
         SetAlarm.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetChildsAlarm()
     {
@@ -286,6 +289,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetAlarm.Instance.SetCurrentAlarmThing();
         TipWindowManager.Instance.ShowTip("已自动填充第一个待办的属性.");
         SetAlarm.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetChildsTitleColor()
     {
@@ -293,12 +297,14 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetColor.Instance.setType = SetThingType.Text;
         SetColor.Instance.OpenWindow();
 
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetBGColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.Image;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
 
     public static void SetGradientStartColor()
@@ -306,24 +312,28 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.GradientStart;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetChildsGradientStartColor()
     {
         SetColor.Instance.setTransforms = currentClickChildsThing;
         SetColor.Instance.setType = SetThingType.GradientStart;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetGradientEndColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.GradientEnd;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     public static void SetChildsGradientEndColor()
     {
         SetColor.Instance.setTransforms = currentClickChildsThing;
         SetColor.Instance.setType = SetThingType.GradientEnd;
         SetColor.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
     #endregion
 

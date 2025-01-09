@@ -180,6 +180,7 @@ public class SetAlarm : MonoBehaviour
     {
         audioSource.Stop();
         animator.SetBool("IsClose", true);
+        TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
