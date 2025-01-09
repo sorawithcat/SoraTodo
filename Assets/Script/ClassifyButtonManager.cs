@@ -30,6 +30,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         thisSpacing = todoList.GetComponent<RectTransform>().rect.height;
         customVerticalLayoutGroup = buttonsList.GetComponent<CustomVerticalLayoutGroup>();
         todoListRectTransform = todoList.GetComponent<RectTransform>();
+        clickToHandoff();
     }
 
     private void Update()

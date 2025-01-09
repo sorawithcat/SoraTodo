@@ -97,10 +97,12 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     // 是否完成
     private bool isTodo = false;
+    //自定义的路径是否更改
+    //private bool isChangeCustomize = false;
 
     void Start()
     {
-        SetAlarm();
+            SetAlarm();
 
         // 渐变shader设置
         if (bg.TryGetComponent<Image>(out var image))
@@ -187,24 +189,30 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public bool UpdateTimer()
     {
-        // 如果处于倒计时状态，更新倒计时器
+        bool isTimer = false;
+
         if (isCountingDown && timingType != TimingType.None)
         {
             timer -= Time.deltaTime;
 
+            if (timer <= 1f && timer > 0f && isAlarmPlayed)
+            {
+                isTimer = true; 
+            }
+
             if (timer <= 0f && !isAlarmPlayed)
             {
-                // 时间到，播放铃声
                 PlayAlarmSound();
                 isAlarmPlayed = true;
 
-                // 设置为无定时状态
                 timingType = TimingType.None;
-                return false;
+                isTimer = false; 
             }
         }
-        return true;
+
+        return isTimer;
     }
+
 
     private void LoadAlarmSound()
     {
@@ -230,7 +238,10 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
                 break;
             case AlarmType.Customize:
-                FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
+                //if (isChangeCustomize)
+                //{
+                    FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
+               // }
                 break;
         }
 
@@ -275,13 +286,20 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
     }
-
     // 用于外部更新定时器设置
-    public void UpdateTimerSettings(TimingType newTimingType, AlarmType newAlarmType, float newTime = 60f, DateTime? _newDate = null,string _customizePath = "")
+    public void UpdateTimerSettings(TimingType newTimingType, AlarmType newAlarmType, float newTime = 60f, DateTime? _newDate = null, string _customizePath = "")
     {
         timingType = newTimingType;
         alarmType = newAlarmType;
-        customizePath = _customizePath;
+        if (_customizePath != customizePath && newAlarmType == AlarmType.Customize)
+        {
+            customizePath = _customizePath;
+            //isChangeCustomize = true;
+        }
+        else if (_customizePath == customizePath && newAlarmType == AlarmType.Customize)
+        {
+            //isChangeCustomize = false;
+        }
         countdownTime = newTime;
 
         if (!_newDate.HasValue)
@@ -297,9 +315,9 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         else if (newTimingType == TimingType.Date)
         {
             DateTime currentDate = DateTime.Now;
-           long currentTime =  ConvertDateTimeToSeconds(currentDate);
-           long toTime =  ConvertDateTimeToSeconds(dateTime);
-            timer =toTime-currentTime;
+            long currentTime = ConvertDateTimeToSeconds(currentDate);
+            long toTime = ConvertDateTimeToSeconds(dateTime);
+            timer = toTime - currentTime;
             if (timer <= 0)
             {
                 timer = 0;
