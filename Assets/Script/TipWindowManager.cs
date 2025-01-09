@@ -1,11 +1,8 @@
 using System.Collections;
-using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
-using UnityEditor.VersionControl;
-using UnityEditor;
+
 
 public class TipWindowManager : MonoBehaviour
 {
