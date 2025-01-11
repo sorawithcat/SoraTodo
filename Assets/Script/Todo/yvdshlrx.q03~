@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,8 +11,8 @@ using static UnityEditor.Progress;
 public enum ClearFX
 {
     /// <summary>
-    /// </summary>
     /// 删除线和字体变灰
+    /// </summary>
     StrikethroughAndFontAreGrayedOut,
     /// <summary>
     /// 删除自身
@@ -60,7 +58,7 @@ public enum AlarmType
     Customize
 }
 [System.Serializable]
-public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,ISaveManger
+public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [Header("待办的字体组件")]
     [SerializeField] private TextMeshProUGUI todoText;
@@ -107,28 +105,20 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     //自定义的路径是否更改
     private bool isChangeCustomize = true;
     [Header("todo的guid")]
-    public TodoManagerData todoManagerData;
+    public string todoGuid;
     [Header("父分类的guid")]
     public string fatherClassifyButtonGuid;
-    /// <summary>
-    /// 自己所处第几个元素
-    /// </summary>
-    public int siblingIndex;
-
-
     private void Awake()
     {
-        if(todoManagerData == null)
+#if UNITY_EDITOR
+        string path = AssetDatabase.GetAssetPath(this);
+        todoGuid = AssetDatabase.AssetPathToGUID(path);
+#endif
+        if(fatherClassifyButtonGuid == "")
         {
-            todoManagerData = new TodoManagerData();
+            fatherClassifyButtonGuid = GetComponentInParent<ClassifyButtonManager>().classifyButtonGuid;
         }
-        if (todoManagerData != null && string.IsNullOrEmpty(todoManagerData.todoGuid))
-        {
-            todoManagerData.GenerateNewGuid();
-        }
-        
     }
-
     void Start()
     {
 
@@ -366,51 +356,5 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
         return totalSeconds;
-    }
-
-    public void LoadData(GameData _data)
-    {
-       
-        //foreach (KeyValuePair<TodoManagerData,TodoManager> pair in _data.todos)
-        //{
-        //    if(pair.Key.todoGuid == todoManagerData.todoGuid)
-        //    {
-        //        todoText = pair.Value.todoText;
-        //        bg = pair.Value.bg;
-        //        useShader = pair.Value.useShader;  
-        //        startColor = pair.Value.startColor;
-        //        endColor = pair.Value.endColor;
-        //        clearFX = pair.Value.clearFX;
-        //        timingType = pair.Value.timingType;
-        //        alarmType = pair.Value.alarmType;
-        //        audioSource = pair.Value.audioSource;
-        //        countdownTime = pair.Value.countdownTime;
-        //        dateTime = pair.Value.dateTime;
-        //        alarmClip = pair.Value.alarmClip;
-        //        timer = pair.Value.timer;
-        //        customizePath = pair.Value.customizePath;
-        //        isCountingDown = pair.Value.isCountingDown;
-        //        isAlarmPlayed = pair.Value.isAlarmPlayed;
-        //        isPointer = false;
-        //        newMaterial = pair.Value.newMaterial;
-        //        isTodo = pair.Value.isTodo;
-        //        isChangeCustomize = pair.Value.isChangeCustomize;
-        //        todoManagerData.todoGuid = pair.Key.todoGuid;
-        //        fatherClassifyButtonGuid = pair.Value.fatherClassifyButtonGuid;
-
-        //    }
-        //}
-    }
-
-    public void SaveData(ref GameData _data)
-    {
-        //if(_data.todos.ContainsKey(todoManagerData.todoGuid))
-        //{
-        //    _data.todos[todoManagerData.todoGuid] = this;
-        //}
-        //else
-        //{
-        //    _data.todos.Add(todoManagerData.todoGuid, this);
-        //}
     }
 }

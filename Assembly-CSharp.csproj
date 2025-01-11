@@ -73,8 +73,10 @@
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\SetPanle\SetClearFX.cs" />
+    <Compile Include="Assets\Script\Todo\TodoManagerData.cs" />
     <Compile Include="Assets\Script\SO\SwitchThemesManager.cs" />
     <Compile Include="Assets\Script\Todo\AddTodoManager.cs" />
+    <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonManagerData.cs" />
     <Compile Include="Assets\Script\Other\SliderToIntegerTextUpdater.cs" />
     <Compile Include="Assets\Script\Other\MouseHover.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\GameData.cs" />
@@ -998,6 +1000,10 @@
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">

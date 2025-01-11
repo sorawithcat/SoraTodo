@@ -21,6 +21,24 @@ public class TimerManager : MonoBehaviour
     private void Start()
     {
         AddTodoManagersRecursively(todoFather);
+        SetTodosFatherGuid();
+    }
+
+    private void SetTodosFatherGuid()
+    {
+        foreach (var classifyButtonManager in classifyToTodoManagers.Keys)
+        {
+            List<TodoManager> todoManagers = classifyToTodoManagers[classifyButtonManager];
+            foreach (var todoManager in todoManagers)
+            {
+                if (todoManager != null)
+                {
+
+                    ClassifyButtonManager classifyButtonManage = GetKeyForTodoManager(todoManager);
+                    todoManager.fatherClassifyButtonGuid = classifyButtonManage.classifyButtonManagerData.classifyButtonManagerDataGuid;
+                }
+            }
+        }
     }
 
     /// <summary>

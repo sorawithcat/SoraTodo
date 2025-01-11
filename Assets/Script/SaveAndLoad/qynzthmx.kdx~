@@ -27,10 +27,6 @@ public class Inventory : MonoBehaviour, ISaveManger
     /// 分类数据
     /// </summary>
     public List<ClassifyButtonManagerData> classifyButtonManagerDataList = new List<ClassifyButtonManagerData>();
-    /// <summary>
-    /// 待办数据
-    /// </summary>
-    public List<TodoManagerData> todoManagerDataList = new List<TodoManagerData>();
 
     private void Awake()
     {
@@ -69,27 +65,27 @@ public class Inventory : MonoBehaviour, ISaveManger
         loadedTodds = new SerializableDictionary<string, TodoManager>();
         loadedClassifyButtons = new SerializableDictionary<string, ClassifyButtonManager>();
         //获取分类的guid
-        foreach (KeyValuePair<ClassifyButtonManagerData, ClassifyButtonManager> pair in _data.classifyButtons)
+        foreach (KeyValuePair<string, ClassifyButtonManager> pair in _data.classifyButtons)
         {
             //获取分类的信息
-            loadedClassifyButtons.Add(pair.Key.classifyButtonManagerDataGuid, pair.Value);
-            if (!classifyButtonGuid.Contains(pair.Key.classifyButtonManagerDataGuid))
+            loadedClassifyButtons.Add(pair.Key, pair.Value);
+            if (!classifyButtonGuid.Contains(pair.Key))
             {
-                classifyButtonGuid.Add(pair.Key.classifyButtonManagerDataGuid);
+                classifyButtonGuid.Add(pair.Key);
             }
         }
         //获取每个分类下的待办
-        foreach (KeyValuePair<TodoManagerData, TodoManager> pair in _data.todos)
+        foreach (KeyValuePair<string, TodoManager> pair in _data.todos)
         {
             //获取todo的信息
-            loadedTodds.Add(pair.Key.todoGuid, pair.Value);
+            loadedTodds.Add(pair.Key, pair.Value);
             if (classifyButtonGuid.Contains(pair.Value.fatherClassifyButtonGuid))
             {
-                classifyButtonSons[pair.Value.fatherClassifyButtonGuid].Add(pair.Key.todoGuid);
+                classifyButtonSons[pair.Value.fatherClassifyButtonGuid].Add(pair.Key);
             }
             else
             {
-                classifyButtonSons.Add(pair.Value.fatherClassifyButtonGuid, new List<string> { pair.Key.todoGuid });
+                classifyButtonSons.Add(pair.Value.fatherClassifyButtonGuid, new List<string> { pair.Key });
             }
 
 
@@ -111,35 +107,26 @@ public class Inventory : MonoBehaviour, ISaveManger
         //}
 
     }
-#if UNITY_EDITOR
-
-    [ContextMenu("填充项目数据库")]
-    private void FillUpItemDataBase()
-    {
-        themeDataBase = new List<ThemeColor>(GetThemeDataBase());
-        classifyButtonManagerDataList = new List<ClassifyButtonManagerData>(GetAllClassifyButtonData());
-        todoManagerDataList = new List<TodoManagerData>(GetAllTodoManagerData());
-    }
-
-
-    private List<ThemeColor> GetThemeDataBase()
-    {
-        List<ThemeColor> itemDataBase = new List<ThemeColor>();
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/Themes" });
-        foreach (string SOName in assetNames)
-        {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var itemData = AssetDatabase.LoadAssetAtPath<ThemeColor>(SOpath);
-            itemDataBase.Add(itemData);
-        }
-        return itemDataBase;
-    }
 
     /// <summary>
     /// 获取所有分类数据
     /// </summary>
     private List<ClassifyButtonManagerData> GetAllClassifyButtonData()
     {
+        //if (classifyButtonManagerDataList.Count == 0)
+        //{
+        //    ClassifyButtonManagerData[] allData = Resources.LoadAll<ClassifyButtonManagerData>("");
+        //    classifyButtonManagerDataList.AddRange(allData);
+
+            //if (classifyButtonManagerDataList.Count == 0)
+            //{
+            //    ClassifyButtonManagerData newData = ScriptableObject.CreateInstance<ClassifyButtonManagerData>();
+            //    newData.GenerateNewGuid();
+            //    classifyButtonManagerDataList.Add(newData);
+            //    AssetDatabase.CreateAsset(newData, "Assets/Resources/TodoManagerData.asset");
+            //    AssetDatabase.SaveAssets();
+            //}
+       // }
         List<ClassifyButtonManagerData> itemDataBase = new List<ClassifyButtonManagerData>();
         string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/ClassifyButtonManagerData" });
         foreach (string SOName in assetNames)
@@ -150,14 +137,24 @@ public class Inventory : MonoBehaviour, ISaveManger
         }
         return itemDataBase;
     }
-    private List<TodoManagerData> GetAllTodoManagerData()
+#if UNITY_EDITOR
+
+    [ContextMenu("填充项目数据库")]
+    private void FillUpItemDataBase()
     {
-        List<TodoManagerData> itemDataBase = new List<TodoManagerData>();
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/TodoManagerData" });
+        themeDataBase = new List<ThemeColor>(GetItemDataBase());
+        GetAllClassifyButtonData();
+    }
+
+
+    private List<ThemeColor> GetItemDataBase()
+    {
+        List<ThemeColor> itemDataBase = new List<ThemeColor>();
+        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/Themes" });
         foreach (string SOName in assetNames)
         {
             var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var itemData = AssetDatabase.LoadAssetAtPath<TodoManagerData>(SOpath);
+            var itemData = AssetDatabase.LoadAssetAtPath<ThemeColor>(SOpath);
             itemDataBase.Add(itemData);
         }
         return itemDataBase;

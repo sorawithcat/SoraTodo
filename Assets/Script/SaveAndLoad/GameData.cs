@@ -17,18 +17,18 @@ public class GameData
     /// <summary>
     /// 待办
     /// </summary>
-    public SerializableDictionary<string, TodoManager> todos;
+    public SerializableDictionary<TodoManagerData, TodoManager> todos;
     /// <summary>
     /// 分类
     /// </summary>
-    public SerializableDictionary<string, ClassifyButtonManager> classifyButtons;
+    public SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager> classifyButtons;
 
 
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
         selectedTheme = 0;
-        todos = new SerializableDictionary<string, TodoManager>();
-        classifyButtons = new SerializableDictionary<string, ClassifyButtonManager>();
+        todos = new SerializableDictionary<TodoManagerData, TodoManager>();
+        classifyButtons = new SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager>();
     }
 }

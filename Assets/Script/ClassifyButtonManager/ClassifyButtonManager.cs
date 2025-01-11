@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,19 +20,19 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float changeSpeed = 0.5f;
 
 
-    public string classifyButtonGuid;
+    public ClassifyButtonManagerData classifyButtonManagerData;
+
     private CustomVerticalLayoutGroup customVerticalLayoutGroup;
     private RectTransform todoListRectTransform;
 
     private bool isLerpChange = false;
 
-    private void OnValidate()
-    {
-#if UNITY_EDITOR
-        string path = AssetDatabase.GetAssetPath(this);
-        classifyButtonGuid = AssetDatabase.AssetPathToGUID(path);
-#endif
-    }
+    /// <summary>
+    /// 自己所处第几个元素
+    /// </summary>
+    public int siblingIndex;
+
+
     private void Start()
     {
         // 获取初始高度（todoList 的高度）
