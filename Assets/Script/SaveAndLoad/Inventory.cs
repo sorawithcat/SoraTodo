@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -46,7 +45,7 @@ public class Inventory : MonoBehaviour, ISaveManger
 
     private void Start()
     {
-
+        FillUpItemDataBase();
 
     }
 
@@ -111,7 +110,6 @@ public class Inventory : MonoBehaviour, ISaveManger
         //}
 
     }
-#if UNITY_EDITOR
 
     [ContextMenu("填充项目数据库")]
     private void FillUpItemDataBase()
@@ -122,45 +120,45 @@ public class Inventory : MonoBehaviour, ISaveManger
     }
 
 
-    private List<ThemeColor> GetThemeDataBase()
+    // 加载所有主题颜色数据
+    public List<ThemeColor> GetThemeDataBase()
     {
         List<ThemeColor> itemDataBase = new List<ThemeColor>();
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/Themes" });
-        foreach (string SOName in assetNames)
+        ThemeColor[] themeColors = Resources.LoadAll<ThemeColor>("Themes");
+
+        foreach (var themeColor in themeColors)
         {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var itemData = AssetDatabase.LoadAssetAtPath<ThemeColor>(SOpath);
-            itemDataBase.Add(itemData);
+            itemDataBase.Add(themeColor);
         }
+
         return itemDataBase;
     }
 
-    /// <summary>
-    /// 获取所有分类数据
-    /// </summary>
-    private List<ClassifyButtonManagerData> GetAllClassifyButtonData()
+    // 获取所有分类数据
+    public List<ClassifyButtonManagerData> GetAllClassifyButtonData()
     {
         List<ClassifyButtonManagerData> itemDataBase = new List<ClassifyButtonManagerData>();
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/ClassifyButtonManagerData" });
-        foreach (string SOName in assetNames)
+        ClassifyButtonManagerData[] classifyButtonData = Resources.LoadAll<ClassifyButtonManagerData>("ClassifyButtonManagerData");
+
+        foreach (var data in classifyButtonData)
         {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var itemData = AssetDatabase.LoadAssetAtPath<ClassifyButtonManagerData>(SOpath);
-            itemDataBase.Add(itemData);
+            itemDataBase.Add(data);
         }
+
         return itemDataBase;
     }
-    private List<TodoManagerData> GetAllTodoManagerData()
+
+    // 获取所有待办事项数据
+    public List<TodoManagerData> GetAllTodoManagerData()
     {
         List<TodoManagerData> itemDataBase = new List<TodoManagerData>();
-        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Resources/TodoManagerData" });
-        foreach (string SOName in assetNames)
+        TodoManagerData[] todoManagerData = Resources.LoadAll<TodoManagerData>("TodoManagerData");
+
+        foreach (var data in todoManagerData)
         {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var itemData = AssetDatabase.LoadAssetAtPath<TodoManagerData>(SOpath);
-            itemDataBase.Add(itemData);
+            itemDataBase.Add(data);
         }
+
         return itemDataBase;
     }
-#endif
 }

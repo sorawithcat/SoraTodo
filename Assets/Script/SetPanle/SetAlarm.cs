@@ -150,9 +150,9 @@ public class SetAlarm : MonoBehaviour
     {
         FolderBrowserHelper.SelectFile((filePath) =>
         {
-            if (filePath == customizePath) return;
+           // if (filePath == customizePath) return;
             customizePath = filePath;
-            StartCoroutine(FolderBrowserHelper.SetAudioClip(customizePath, audioSource));
+            FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
 
             ;
         }, FolderBrowserHelper.AUDIOFILTER);
@@ -184,6 +184,7 @@ public class SetAlarm : MonoBehaviour
     public void OpenWindow()
     {
         animator.SetBool("IsClose", false);
+        TipWindowManager.Instance.ShowTip("自定义铃声不建议导入过大的音频资源");
 
     }
     public long ConvertDateTimeToSeconds(DateTime _datetime)

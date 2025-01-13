@@ -148,7 +148,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetChildsGradientEndColor,
                 SetChildsTitleColor,
                 SetChildsAlarm,
-                DefaultFun,
+                SetChildsClearFX,
                 DefaultFun,
                 DefaultFun
 
@@ -162,7 +162,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetGradientEndColor,
                 SetTitleColor,
                 SetTodoAlarm,
-                DefaultFun,
+                SetClearFx,
 
             }
         },
@@ -308,7 +308,18 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
-
+    public static void SetChildsClearFX()
+    {
+        SetClearFX.Instance.setTransforms = currentClickChildsThing;
+        SetClearFX.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
+    }
+    public static void SetClearFx()
+    {
+        SetClearFX.Instance.setTransforms = new List<Transform>() { currentClickThing };
+        SetClearFX.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
+    }
     public static void SetGradientStartColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };

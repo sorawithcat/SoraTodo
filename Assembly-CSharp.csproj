@@ -70,6 +70,7 @@
     <Compile Include="Assets\Script\Todo\TimerManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ITodoData.cs" />
     <Compile Include="Assets\Script\Todo\AllTodoManager.cs" />
+    <Compile Include="Assets\Script\Other\SystemTrayIcon.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\SetPanle\SetClearFX.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Script\SaveAndLoad\GameData.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonManager.cs" />
     <Compile Include="Assets\Script\RightMenu\RightMenuButtonManager.cs" />
+    <Compile Include="Assets\Script\Other\ErrorLogger.cs" />
     <Compile Include="Assets\Script\RightMenu\RightMenuManager.cs" />
     <Compile Include="Assets\Script\Other\FileItem.cs" />
     <Compile Include="Assets\Script\SetPanle\SetText.cs" />
@@ -1000,10 +1002,6 @@
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">

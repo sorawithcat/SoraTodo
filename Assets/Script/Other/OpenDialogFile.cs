@@ -110,44 +110,35 @@ public static class FolderBrowserHelper
 
 
     /// <summary>
-    /// 异步加载音频文件并设置为 AudioSource 的 AudioClip
+    /// 添加一个函数来加载音频文件并设置为 AudioClip
     /// </summary>
-    /// <param name="filePath">音频文件的路径</param>
-    /// <param name="audioSource">用于播放音频的 AudioSource</param>
-    public static IEnumerator SetAudioClip(string filePath, AudioSource audioSource)
+    /// <param name="filePath"></param>
+    /// <param name="audioSource"></param>
+    public static void SetAudioClip(string filePath, AudioSource audioSource)
     {
         TipWindowManager.Instance.ShowTip("音频加载中: " + filePath);
-
         if (File.Exists(filePath))
         {
-            var uri = "file:///" + filePath.Replace("\\", "/");
-            var www = UnityWebRequestMultimedia.GetAudioClip(uri, AudioType.UNKNOWN);
-
-            yield return www.SendWebRequest(); // 等待请求完成
-
-            if (www.result == UnityWebRequest.Result.Success)
+            // 创建 UnityWebRequest 来加载音频文件
+            UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + filePath, AudioType.UNKNOWN);
+            www.SendWebRequest().completed += (operation) =>
             {
-                AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
-                if (audioClip != null)
+                if (www.result == UnityWebRequest.Result.Success)
                 {
+                    // 加载成功，获取 AudioClip
+                    AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
                     audioSource.clip = audioClip;
                     TipWindowManager.Instance.ShowTip("音频加载成功: " + filePath);
                 }
                 else
                 {
-                    TipWindowManager.Instance.ShowTip("音频加载失败: 无法获取 AudioClip", Color.red);
+                    TipWindowManager.Instance.ShowTip("音频加载失败: " + www.error, Color.red);
                 }
-            }
-            else
-            {
-                TipWindowManager.Instance.ShowTip("音频加载失败: " + www.error, Color.red);
-            }
-
-            www.Dispose();
+            };
         }
         else
         {
-            TipWindowManager.Instance.ShowTip("错误的文件路径: " + filePath, Color.red);
+            TipWindowManager.Instance.ShowTip("错误的文件路径" + filePath, Color.red);
         }
     }
 

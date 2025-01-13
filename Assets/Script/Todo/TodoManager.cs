@@ -76,7 +76,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Color endColor = new Color(143f / 255f, 0f / 255f, 16f / 255f, 1f);
 
     [Header("完成效果")]
-    [SerializeField] private ClearFX clearFX;
+    public ClearFX clearFX;
 
     [Header("定时类型")]
     public TimingType timingType;
@@ -103,7 +103,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [HideInInspector] public Material newMaterial;
 
     // 是否完成
-    private bool isTodo = false;
+    public bool isTodo = false;
     //自定义的路径是否更改
     private bool isChangeCustomize = true;
     [Header("todo的guid")]
@@ -195,13 +195,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 isTodo = true;
 
-                switch (clearFX)
-                {
-                    case ClearFX.StrikethroughAndFontAreGrayedOut:
-                        todoText.color = Color.gray;
-                        todoText.text = $"<s>{todoText.text}</s>";
-                        break;
-                }
+                SetClearFX();
             }
             else
             {
@@ -215,6 +209,21 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _GradientStartUVNumb = newMaterial.GetVector("_GradientStartUV").x - Time.deltaTime * 4f;
             _GradientStartUVNumb = Mathf.Clamp(_GradientStartUVNumb, 0f, 2f);
             newMaterial.SetVector("_GradientStartUV", new Vector4(_GradientStartUVNumb, 0.5f, 0, 0));
+        }
+    }
+
+    public void SetClearFX()
+    {
+        switch (clearFX)
+        {
+            case ClearFX.StrikethroughAndFontAreGrayedOut:
+                todoText.color = Color.gray;
+                todoText.text = $"<s>{todoText.text}</s>";
+                break;
+            case ClearFX.DestroyThis:
+                TimerManager.Instance.UnregisterTodoManager(this);
+                Destroy(this.gameObject);
+                break;
         }
     }
 
@@ -266,7 +275,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             case AlarmType.Customize:
                 if (isChangeCustomize)
                 {
-                    StartCoroutine(FolderBrowserHelper.SetAudioClip(customizePath, audioSource));
+                    FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
                 }
                 break;
         }

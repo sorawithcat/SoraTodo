@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -22,13 +23,22 @@ public class GameData
     /// 分类
     /// </summary>
     public SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager> classifyButtons;
-
-
+    /// <summary>
+    /// 主题
+    /// </summary>
+    public List<ThemeColor> themeColors;
+    /// <summary>
+    /// 自动删除7天前的文件
+    /// </summary>
+    public bool autoClearLogs;
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
         selectedTheme = 0;
         todos = new SerializableDictionary<TodoManagerData, TodoManager>();
         classifyButtons = new SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager>();
+        themeColors = new List<ThemeColor>();
+        autoClearLogs = false;
+
     }
 }

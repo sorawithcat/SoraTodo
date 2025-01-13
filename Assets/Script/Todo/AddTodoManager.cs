@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class AddTodoManager : MonoBehaviour
 
     [Header("分类按钮预制体")]
     [SerializeField] private GameObject classifyButtonPrefab;
+    [Header("分类按钮父节点")]
+    [SerializeField] private GameObject classifyButtonFather;
     [Header("Todo预制体")]
     [SerializeField] private GameObject todoPrefab;
 
@@ -24,6 +27,17 @@ public class AddTodoManager : MonoBehaviour
     [Header("倒计时输入框")]
     [SerializeField] private TMP_InputField timeInputField;
 
+
+    [Header("日期输入框")]
+    [SerializeField] private TMP_InputField dateInputField;
+
+    [Header("自定义框")]
+    [SerializeField] private GameObject customizeGO;
+    [Header("音效试听")]
+    [SerializeField] private GameObject audioSourceButton;
+    [Header("音效设置")]
+    [SerializeField] private AudioSource audioSource;
+    private AudioClip alarmClip;
     private string customizePath;
     /// <summary>
     /// 分类数据
@@ -46,6 +60,20 @@ public class AddTodoManager : MonoBehaviour
 
 
     }
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        classifyButtonManagerDataList.Clear();
+        todoManagerDataList.Clear();
+        classifyButtonManagerDataList = Inventory.Instance.classifyButtonManagerDataList;
+        todoManagerDataList = Inventory.Instance.todoManagerDataList;
+
+    }
+
+    void Update()
+    {
+    }
+
     /// <summary>
     /// 添加新的分类
     /// </summary>
@@ -77,15 +105,6 @@ public class AddTodoManager : MonoBehaviour
     {
         _classifyButton.siblingIndex = _classifyButton.transform.GetSiblingIndex();
     }
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-    }
-
     public void AddTodo(Transform _setTransform)
     {
         GameObject newTodo = Instantiate(todoPrefab, _setTransform);
