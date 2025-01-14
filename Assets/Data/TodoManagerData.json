@@ -1,0 +1,58 @@
+{
+    "items": [
+      {
+        "id": "0",
+        "title": "Hello~",
+        "titleColor": "Color.Black",
+        "titleBGStartColor": "#FF6F60",
+        "titleBGEndColor": "#8F0010",
+        "clearFX": 0,
+        "timeType": 0,
+        "alarmType": 1,
+        "countdownTime": 60.0,
+        "dateTime": 0,
+        "timer": 0.0,
+        "customizePath": "",
+        "isCountingDown": false,
+        "isAlarmPlayed": false,
+        "isTodo": false,
+        "isChangeCustomize": true
+      },
+      {
+        "id": "1",
+        "title": "Hello~~~~",
+        "titleColor": "Color.Black",
+        "titleBGStartColor": "#000",
+        "titleBGEndColor": "#8F0010",
+        "clearFX": 0,
+        "timeType": 1,
+        "alarmType": 2,
+        "countdownTime": 60.0,
+        "dateTime": 0,
+        "timer": 30.04240,
+        "customizePath": "C:\\Users\\31537\\Music\\Ludicin - Echoes Of Memoria.ogg",
+        "isCountingDown": false,
+        "isAlarmPlayed": false,
+        "isTodo": false,
+        "isChangeCustomize": true
+      },
+      {
+        "id": "2",
+        "title": "Hello~",
+        "titleColor": "Color.Black",
+        "titleBGStartColor": "#FF6F60",
+        "titleBGEndColor": "#000",
+        "clearFX": 1,
+        "timeType": 0,
+        "alarmType": 1,
+        "countdownTime": 60.0,
+        "dateTime": 0,
+        "timer": 0.0,
+        "customizePath": "",
+        "isCountingDown": false,
+        "isAlarmPlayed": false,
+        "isTodo": false,
+        "isChangeCustomize": true
+      }
+    ]
+}

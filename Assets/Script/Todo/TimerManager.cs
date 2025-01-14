@@ -35,7 +35,7 @@ public class TimerManager : MonoBehaviour
                 {
 
                     ClassifyButtonManager classifyButtonManage = GetKeyForTodoManager(todoManager);
-                    todoManager.fatherClassifyButtonGuid = classifyButtonManage.classifyButtonManagerData.classifyButtonManagerDataGuid;
+                   // todoManager.fatherClassifyButtonGuid = classifyButtonManage.classifyButtonManagerData.classifyButtonManagerDataGuid;
                 }
             }
         }
@@ -68,7 +68,7 @@ public class TimerManager : MonoBehaviour
                         if (todoManager != null)
                         {
                             classifyToTodoManagers[classifyButtonManager].Add(todoManager);
-                            todoManager.SetAlarm();
+                            //todoManager.SetAlarm();
                         }
                     }
                 }

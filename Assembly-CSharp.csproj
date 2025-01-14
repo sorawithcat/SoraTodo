@@ -74,14 +74,13 @@
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\SetPanle\SetClearFX.cs" />
-    <Compile Include="Assets\Script\Todo\TodoManagerData.cs" />
     <Compile Include="Assets\Script\SO\SwitchThemesManager.cs" />
     <Compile Include="Assets\Script\Todo\AddTodoManager.cs" />
-    <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonManagerData.cs" />
     <Compile Include="Assets\Script\Other\SliderToIntegerTextUpdater.cs" />
     <Compile Include="Assets\Script\Other\MouseHover.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\GameData.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonManager.cs" />
+    <Compile Include="Assets\Script\ClassifyButtonManager\TodoList.cs" />
     <Compile Include="Assets\Script\RightMenu\RightMenuButtonManager.cs" />
     <Compile Include="Assets\Script\Other\ErrorLogger.cs" />
     <Compile Include="Assets\Script\RightMenu\RightMenuManager.cs" />
@@ -91,6 +90,7 @@
     <Compile Include="Assets\Script\Other\SerializableDictionary.cs" />
     <Compile Include="Assets\Script\SetPanle\SetAlarm.cs" />
     <Compile Include="Assets\Script\TipWindow\TipWindowManager.cs" />
+    <Compile Include="Assets\Script\SaveAndLoad\LoadAllData.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonListManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\FileDataHandler.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\Inventory.cs" />

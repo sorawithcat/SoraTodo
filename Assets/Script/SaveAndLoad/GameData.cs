@@ -15,14 +15,14 @@ public class GameData
     /// 选择的主题
     /// </summary>
     public int selectedTheme;
-    /// <summary>
-    /// 待办
-    /// </summary>
-    public SerializableDictionary<TodoManagerData, TodoManager> todos;
-    /// <summary>
-    /// 分类
-    /// </summary>
-    public SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager> classifyButtons;
+    ///// <summary>
+    ///// 待办
+    ///// </summary>
+    //public SerializableDictionary<TodoManagerData, TodoManager> todos;
+    ///// <summary>
+    ///// 分类
+    ///// </summary>
+    //public SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager> classifyButtons;
     /// <summary>
     /// 主题
     /// </summary>
@@ -35,8 +35,8 @@ public class GameData
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
         selectedTheme = 0;
-        todos = new SerializableDictionary<TodoManagerData, TodoManager>();
-        classifyButtons = new SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager>();
+        //todos = new SerializableDictionary<TodoManagerData, TodoManager>();
+        //classifyButtons = new SerializableDictionary<ClassifyButtonManagerData, ClassifyButtonManager>();
         themeColors = new List<ThemeColor>();
         autoClearLogs = false;
 

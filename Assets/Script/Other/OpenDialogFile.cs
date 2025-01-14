@@ -128,7 +128,15 @@ public static class FolderBrowserHelper
                     // 加载成功，获取 AudioClip
                     AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
                     audioSource.clip = audioClip;
-                    TipWindowManager.Instance.ShowTip("音频加载成功: " + filePath);
+                    if (audioSource.clip != null)
+                    {
+                        TipWindowManager.Instance.ShowTip("音频加载成功: " + filePath);
+                    }
+                    else
+                    {
+                        TipWindowManager.Instance.ShowTip("音频加载失败: " + www.error, Color.red);
+
+                    }
                 }
                 else
                 {

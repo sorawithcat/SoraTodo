@@ -9,18 +9,15 @@ using UnityEngine.UI;
 public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
 {
     [Header("按钮的父节点")]
-    [SerializeField] private GameObject buttonsList;
+    public GameObject buttonsList;
     [Header("Todo的父节点")]
-    [SerializeField] private GameObject todoList;
+    public GameObject todoList;
 
     private float thisSpacing;
     [HideInInspector] public int isOpen = -1;
     [HideInInspector] public int thisID;
     [Header("TodoList收缩速度")]
     [SerializeField] private float changeSpeed = 0.5f;
-
-
-    public ClassifyButtonManagerData classifyButtonManagerData;
 
     private CustomVerticalLayoutGroup customVerticalLayoutGroup;
     private RectTransform todoListRectTransform;
@@ -35,7 +32,11 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        // 获取初始高度（todoList 的高度）
+        Invoke("Init", 0.1f);
+    }
+
+    private void Init()
+    {
         thisSpacing = todoList.GetComponent<RectTransform>().rect.height;
         customVerticalLayoutGroup = buttonsList.GetComponent<CustomVerticalLayoutGroup>();
         todoListRectTransform = todoList.GetComponent<RectTransform>();

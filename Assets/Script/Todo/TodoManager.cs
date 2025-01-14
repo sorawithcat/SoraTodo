@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 /// <summary>
 /// 完成效果
 /// </summary>
@@ -60,20 +56,20 @@ public enum AlarmType
     Customize
 }
 [System.Serializable]
-public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,ISaveManger
+public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [Header("待办的字体组件")]
-    [SerializeField] private TextMeshProUGUI todoText;
-    [SerializeField] private Image bg;
+    public TextMeshProUGUI todoText;
+    public Image bg;
 
     [Header("渐变的shader")]
     [SerializeField] private Shader useShader;
 
     [Header("渐变的开始颜色")]
-    [SerializeField] private Color startColor = new Color(1f, 0.435f, 0.376f, 1f);
+    public Color startColor = new Color(1f, 0.435f, 0.376f, 1f);
 
     [Header("渐变的结束颜色")]
-    [SerializeField] private Color endColor = new Color(143f / 255f, 0f / 255f, 16f / 255f, 1f);
+    public Color endColor = new Color(143f / 255f, 0f / 255f, 16f / 255f, 1f);
 
     [Header("完成效果")]
     public ClearFX clearFX;
@@ -95,7 +91,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public string customizePath;
 
     // 定时器状态
-    private bool isCountingDown = false;
+    public bool isCountingDown = false;
     public bool isAlarmPlayed = false;
 
     // 是否在按住
@@ -106,28 +102,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool isTodo = false;
     //自定义的路径是否更改
     private bool isChangeCustomize = true;
-    [Header("todo的guid")]
-    public TodoManagerData todoManagerData;
-    [Header("父分类的guid")]
-    public string fatherClassifyButtonGuid;
-    /// <summary>
-    /// 自己所处第几个元素
-    /// </summary>
-    public int siblingIndex;
 
-
-    private void Awake()
-    {
-        if(todoManagerData == null)
-        {
-            todoManagerData = new TodoManagerData();
-        }
-        if (todoManagerData != null && string.IsNullOrEmpty(todoManagerData.todoGuid))
-        {
-            todoManagerData.GenerateNewGuid();
-        }
-        
-    }
 
     void Start()
     {
@@ -321,7 +296,14 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
     }
-    // 用于外部更新定时器设置
+    /// <summary>
+    /// 用于外部更新定时器设置
+    /// </summary>
+    /// <param name="newTimingType"></param>
+    /// <param name="newAlarmType"></param>
+    /// <param name="newTime"></param>
+    /// <param name="_newDate"></param>
+    /// <param name="_customizePath"></param>
     public void UpdateTimerSettings(TimingType newTimingType, AlarmType newAlarmType, float newTime = 60f, DateTime? _newDate = null, string _customizePath = "")
     {
         timingType = newTimingType;
@@ -377,49 +359,4 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         return totalSeconds;
     }
 
-    public void LoadData(GameData _data)
-    {
-       
-        //foreach (KeyValuePair<TodoManagerData,TodoManager> pair in _data.todos)
-        //{
-        //    if(pair.Key.todoGuid == todoManagerData.todoGuid)
-        //    {
-        //        todoText = pair.Value.todoText;
-        //        bg = pair.Value.bg;
-        //        useShader = pair.Value.useShader;  
-        //        startColor = pair.Value.startColor;
-        //        endColor = pair.Value.endColor;
-        //        clearFX = pair.Value.clearFX;
-        //        timingType = pair.Value.timingType;
-        //        alarmType = pair.Value.alarmType;
-        //        audioSource = pair.Value.audioSource;
-        //        countdownTime = pair.Value.countdownTime;
-        //        dateTime = pair.Value.dateTime;
-        //        alarmClip = pair.Value.alarmClip;
-        //        timer = pair.Value.timer;
-        //        customizePath = pair.Value.customizePath;
-        //        isCountingDown = pair.Value.isCountingDown;
-        //        isAlarmPlayed = pair.Value.isAlarmPlayed;
-        //        isPointer = false;
-        //        newMaterial = pair.Value.newMaterial;
-        //        isTodo = pair.Value.isTodo;
-        //        isChangeCustomize = pair.Value.isChangeCustomize;
-        //        todoManagerData.todoGuid = pair.Key.todoGuid;
-        //        fatherClassifyButtonGuid = pair.Value.fatherClassifyButtonGuid;
-
-        //    }
-        //}
-    }
-
-    public void SaveData(ref GameData _data)
-    {
-        //if(_data.todos.ContainsKey(todoManagerData.todoGuid))
-        //{
-        //    _data.todos[todoManagerData.todoGuid] = this;
-        //}
-        //else
-        //{
-        //    _data.todos.Add(todoManagerData.todoGuid, this);
-        //}
-    }
 }

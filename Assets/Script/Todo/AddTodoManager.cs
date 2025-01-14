@@ -63,10 +63,6 @@ public class AddTodoManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        classifyButtonManagerDataList.Clear();
-        todoManagerDataList.Clear();
-        classifyButtonManagerDataList = Inventory.Instance.classifyButtonManagerDataList;
-        todoManagerDataList = Inventory.Instance.todoManagerDataList;
 
     }
 
@@ -74,30 +70,13 @@ public class AddTodoManager : MonoBehaviour
     {
     }
 
-    /// <summary>
-    /// 添加新的分类
-    /// </summary>
-    public void AddNewClassifyButtonData()
-    {
-        ClassifyButtonManagerData newData = ScriptableObject.CreateInstance<ClassifyButtonManagerData>();
-        newData.GenerateNewGuid();
-        AssetDatabase.CreateAsset(newData, "Assets/Resources/ClassifyButtonManagerData/ClassifyButtonManagerData.asset");
-        AssetDatabase.SaveAssets();
-    }
-    public void AddNewTodoData()
-    {
-        TodoManagerData newData = ScriptableObject.CreateInstance<TodoManagerData>();
-        newData.GenerateNewGuid();
-        AssetDatabase.CreateAsset(newData, "Assets/Resources/TodoManagerData/TodoManagerData.asset");
-        AssetDatabase.SaveAssets();
-    }
-    /// <summary>
-    /// 更新待办索引
-    /// </summary>
-    public void UpdateTodoSiblingIndex(TodoManager _todo)
-    {
-        _todo.siblingIndex = _todo.transform.GetSiblingIndex();
-    }
+    ///// <summary>
+    ///// 更新待办索引
+    ///// </summary>
+    //public void UpdateTodoSiblingIndex(TodoManager _todo)
+    //{
+    //    _todo.siblingIndex = _todo.transform.GetSiblingIndex();
+    //}
     /// <summary>
     /// 更新分类索引
     /// </summary>

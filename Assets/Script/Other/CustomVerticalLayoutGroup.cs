@@ -15,6 +15,7 @@ public class CustomVerticalLayoutGroup : LayoutGroup
     // 自定义的间距（替代默认的 spacing 字段）
     public float defaultSpacing = 0f;  // 默认间距
     private float thisHeight;
+
     public override void CalculateLayoutInputHorizontal()
     {
         base.CalculateLayoutInputHorizontal();
@@ -86,6 +87,8 @@ public class CustomVerticalLayoutGroup : LayoutGroup
         yOffset += bottomPadding;
         thisHeight = yOffset;
 
+        // 更新布局的高度
+        UpdateThisHeight(thisHeight);
     }
 
     // 可选：通过检视器直接设置内边距（topPadding 和 bottomPadding）
@@ -100,7 +103,6 @@ public class CustomVerticalLayoutGroup : LayoutGroup
     public void UpdateChildSpacings()
     {
         // 只更新 childSpacings，如果需要额外的验证可以添加
-        //childSpacings = newChildSpacings;
         UpdateThisHeight(thisHeight);
 
         // 强制重新计算布局
@@ -110,5 +112,57 @@ public class CustomVerticalLayoutGroup : LayoutGroup
     public void UpdateThisHeight(float _height)
     {
         transform.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().rect.width, _height);
+    }
+
+    // 动态添加子物体
+    public void AddChild(RectTransform newChild)
+    {
+        newChild.SetParent(transform); // 将新子物体加入父物体
+        rectChildren.Add(newChild); // 更新 rectChildren 列表
+
+        // 重新计算布局
+        SetLayoutVertical();
+    }
+
+    // 动态删除子物体
+    public void RemoveChild(RectTransform childToRemove)
+    {
+        rectChildren.Remove(childToRemove); // 从 rectChildren 中移除
+
+        // 销毁子物体
+        Destroy(childToRemove.gameObject);
+
+        // 重新计算布局
+        SetLayoutVertical();
+    }
+
+    // 新增方法：重新计算总高度并更新布局
+    public void RecalculateTotalHeight()
+    {
+        // 计算并设置总高度
+        float totalHeight = 0;
+        float spacingSum = 0;
+
+        totalHeight += topPadding;
+        totalHeight += bottomPadding;
+
+        for (int i = 0; i < rectChildren.Count; i++)
+        {
+            totalHeight += rectChildren[i].rect.height;
+
+            if (i < childSpacings.Count)
+            {
+                spacingSum += childSpacings[i];
+            }
+            else
+            {
+                spacingSum += defaultSpacing;
+            }
+        }
+
+        totalHeight += spacingSum;
+
+        // 更新布局的高度
+        UpdateThisHeight(totalHeight);
     }
 }
