@@ -3,28 +3,60 @@
   "WorkspaceRootPath": "D:\\GitHUB\\SoraTodo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\setpanle\\setalarm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\setpanle\\setalarm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\soraanimator\\easysoraanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\soraanimator\\easysoraanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\soraanimator\\soratimemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\soraanimator\\soratimemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\soraanimator\\soraanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\soraanimator\\soraanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\other\\opendialogfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\opendialogfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\other\\serializabledictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\serializabledictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\GitHUB\\SoraTodo\\Assets\\Data\\TodoManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Data\\TodoManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\todo\\todomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\todomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\GitHUB\\SoraTodo\\Assets\\Data\\ClassifyButtonManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Data\\ClassifyButtonManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\GitHUB\\SoraTodo\\Assets\\Data\\TodoManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Data\\TodoManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\todo\\todomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\todomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\todo\\timermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\timermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,77 +75,181 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "SoraTimeManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\SoraTimeManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SoraAnimator\\SoraTimeManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\SoraTimeManager.cs",
+              "RelativeToolTip": "Assets\\Script\\SoraAnimator\\SoraTimeManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T06:11:13.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EasySoraAnimator.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\EasySoraAnimator.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SoraAnimator\\EasySoraAnimator.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\EasySoraAnimator.cs",
+              "RelativeToolTip": "Assets\\Script\\SoraAnimator\\EasySoraAnimator.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAkwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T05:47:29.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SerializableDictionary.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\SerializableDictionary.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Other\\SerializableDictionary.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\SerializableDictionary.cs",
+              "RelativeToolTip": "Assets\\Script\\Other\\SerializableDictionary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvx0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T03:43:07.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SoraAnimator.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\SoraAnimator.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SoraAnimator\\SoraAnimator.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SoraAnimator\\SoraAnimator.cs",
+              "RelativeToolTip": "Assets\\Script\\SoraAnimator\\SoraAnimator.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAAAwBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T02:24:54.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OpenDialogFile.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\OpenDialogFile.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Other\\OpenDialogFile.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\OpenDialogFile.cs",
+              "RelativeToolTip": "Assets\\Script\\Other\\OpenDialogFile.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAkwIkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T05:14:31.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SetAlarm.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\SetAlarm.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SetPanle\\SetAlarm.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\SetAlarm.cs",
+              "RelativeToolTip": "Assets\\Script\\SetPanle\\SetAlarm.cs",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAQwNQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T05:11:34.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TimerManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\TimerManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Todo\\TimerManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\TimerManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Todo\\TimerManager.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAArwK0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T05:10:19.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddTodoManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\AddTodoManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Todo\\AddTodoManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\AddTodoManager.cs",
+              "RelativeToolTip": "Assets\\Script\\Todo\\AddTodoManager.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAADwv1EAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T04:56:29.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "CustomVerticalLayoutGroup.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "RelativeToolTip": "Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowKgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T03:30:59.824Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "TodoManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\TodoManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Todo\\TodoManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\TodoManager.cs",
               "RelativeToolTip": "Assets\\Script\\Todo\\TodoManager.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAADABAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAhwGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T02:37:59.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "ClassifyButtonManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "RelativeToolTip": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAmwJkAAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T02:30:01.319Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "TodoManagerData.json",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Data\\TodoManagerData.json",
               "RelativeDocumentMoniker": "Assets\\Data\\TodoManagerData.json",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Data\\TodoManagerData.json",
               "RelativeToolTip": "Assets\\Data\\TodoManagerData.json",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABgAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-14T02:25:11.581Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "ClassifyButtonManagerData.json",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Data\\ClassifyButtonManagerData.json",
               "RelativeDocumentMoniker": "Assets\\Data\\ClassifyButtonManagerData.json",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Data\\ClassifyButtonManagerData.json",
               "RelativeToolTip": "Assets\\Data\\ClassifyButtonManagerData.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-14T02:20:51.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "LoadAllData.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
               "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAQwE4AAAByAAAAAAAAAA==",
+              "ViewState": "AgIAABEBAAAAAAAAAAAkwCIBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T01:39:45.11Z",
               "EditorCaption": ""
