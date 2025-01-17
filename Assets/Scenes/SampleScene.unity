@@ -13197,7 +13197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classifyButtonPrefab: {fileID: 1464195694856783411, guid: fdd8b1601a64f4744a2f6ff6ccb0330a, type: 3}
-  todoListPrefab: {fileID: 4369861416999872451, guid: b7e707b8d230be545994d73eb67bcbeb, type: 3}
   todoManagerPrefab: {fileID: 7390990693646767373, guid: 42f21b252219ee749b8a5ba8f1338318, type: 3}
   classifyButtonContainer: {fileID: 1342942322}
 --- !u!1 &852052893

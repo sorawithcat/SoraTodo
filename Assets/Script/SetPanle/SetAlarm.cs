@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SetAlarm : MonoBehaviour
@@ -11,7 +14,7 @@ public class SetAlarm : MonoBehaviour
     [HideInInspector] public List<Transform> setTransforms;
 
     private Animator animator;
-
+    private CanvasGroup canvasGroup;
 
     [Header("定时类型的下拉框")]
     [SerializeField] private TMP_Dropdown timeTypeDropdown;
@@ -44,6 +47,7 @@ public class SetAlarm : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
         alarmTypeDropdown.onValueChanged.AddListener(OnAlarmDropdownValueChanged);
 
@@ -150,7 +154,7 @@ public class SetAlarm : MonoBehaviour
     {
         FolderBrowserHelper.SelectFile((filePath) =>
         {
-           // if (filePath == customizePath) return;
+            // if (filePath == customizePath) return;
             customizePath = filePath;
             FolderBrowserHelper.SetAudioClip(customizePath, audioSource);
 

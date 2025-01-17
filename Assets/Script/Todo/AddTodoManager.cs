@@ -84,29 +84,30 @@ public class AddTodoManager : MonoBehaviour
     {
         _classifyButton.siblingIndex = _classifyButton.transform.GetSiblingIndex();
     }
+    /// <summary>
+    /// 添加待办
+    /// </summary>
+    /// <param name="_setTransform"></param>
     public void AddTodo(Transform _setTransform)
     {
         GameObject newTodo = Instantiate(todoPrefab, _setTransform);
         TodoManager todoManager = newTodo.GetComponent<TodoManager>();
 
+
         int selectedTimeType = timeTypeDropdown.value;
         int selectedAlarmType = alarmTypeDropdown.value;
-        int timeValue = int.Parse(timeInputField.text);
 
-        //int year = int.Parse(yearText.text);
-        //int month = int.Parse(monthText.text);
-        //int day = int.Parse(dayText.text);
-        //int hour = int.Parse(hourText.text);
-        //int minute = int.Parse(minuteText.text);
-        //int second = int.Parse(secondText.text);
+        long timeValue = SetAlarm.Instance.GetTimeAndConvertToSeconds(timeInputField);
+        List<int> ints = SetAlarm.Instance.GetTimeAndConvertToArrary(dateInputField);
+        DateTime _dateTime = new DateTime(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5], DateTimeKind.Utc);
+        TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
+        //Todo:刷新索引，添加json
 
-        //DateTime _dateTime = new DateTime(year, month, day, hour, minute, second);
-       // TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
     }
 
     public void AddClassify(Transform _setTransform)
     {
-
+        GameObject newClassify = Instantiate(classifyButtonPrefab, classifyButtonFather.transform);
     }
 
     // 关闭窗口的动画
