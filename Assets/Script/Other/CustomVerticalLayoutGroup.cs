@@ -114,11 +114,14 @@ public class CustomVerticalLayoutGroup : LayoutGroup
         transform.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().rect.width, _height);
     }
 
-    // 动态添加子物体
+    /// <summary>
+    /// 动态添加子物体
+    /// </summary>
+    /// <param name="newChild"></param>
     public void AddChild(RectTransform newChild)
     {
-        newChild.SetParent(transform); // 将新子物体加入父物体
-        rectChildren.Add(newChild); // 更新 rectChildren 列表
+        //newChild.SetParent(transform);
+        rectChildren.Add(newChild); //更新rectChildren列表
 
         // 重新计算布局
         SetLayoutVertical();
@@ -136,7 +139,9 @@ public class CustomVerticalLayoutGroup : LayoutGroup
         SetLayoutVertical();
     }
 
-    // 新增方法：重新计算总高度并更新布局
+    /// <summary>
+    /// 重新计算总高度并更新布局
+    /// </summary>
     public void RecalculateTotalHeight()
     {
         // 计算并设置总高度
@@ -164,5 +169,26 @@ public class CustomVerticalLayoutGroup : LayoutGroup
 
         // 更新布局的高度
         UpdateThisHeight(totalHeight);
+    }
+
+    /// <summary>
+    /// 更新指定索引的子物体间距，并更新布局
+    /// </summary>
+    /// <param name="index">要更新的子物体索引</param>
+    /// <param name="newSpacing">新的间距值</param>
+    public void UpdateChildSpacingAtIndex(int index, float newSpacing)
+    {
+        if (index >= 0 && index < childSpacings.Count)
+        {
+            // 更新指定索引位置的间距
+            childSpacings[index] = newSpacing;
+
+            // 重新计算并更新布局
+            SetLayoutVertical();
+        }
+        else
+        {
+            Debug.LogWarning("索引超出范围，无法更新间距！");
+        }
     }
 }

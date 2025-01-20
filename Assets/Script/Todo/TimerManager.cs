@@ -20,26 +20,14 @@ public class TimerManager : MonoBehaviour
     }
     private void Start()
     {
-        AddTodoManagersRecursively(todoFather);
-        SetTodosFatherGuid();
+        Invoke("Init", 0.3f);
     }
-
-    private void SetTodosFatherGuid()
+    public void Init()
     {
-        foreach (var classifyButtonManager in classifyToTodoManagers.Keys)
-        {
-            List<TodoManager> todoManagers = classifyToTodoManagers[classifyButtonManager];
-            foreach (var todoManager in todoManagers)
-            {
-                if (todoManager != null)
-                {
-
-                    ClassifyButtonManager classifyButtonManage = GetKeyForTodoManager(todoManager);
-                   // todoManager.fatherClassifyButtonGuid = classifyButtonManage.classifyButtonManagerData.classifyButtonManagerDataGuid;
-                }
-            }
-        }
+        AddTodoManagersRecursively(todoFather);
+        
     }
+
 
     /// <summary>
     /// 递归遍历所有子物体，检查 ClassifyButtonManager 和 TodoManager

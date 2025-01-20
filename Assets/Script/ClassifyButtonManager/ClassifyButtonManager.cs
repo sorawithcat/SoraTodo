@@ -13,7 +13,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
     [Header("Todo的父节点")]
     public GameObject todoList;
 
-    private float thisSpacing;
+    public float thisSpacing;
     [HideInInspector] public int isOpen = -1;
     [HideInInspector] public int thisID;
     [Header("TodoList收缩速度")]
@@ -41,11 +41,6 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         customVerticalLayoutGroup = buttonsList.GetComponent<CustomVerticalLayoutGroup>();
         todoListRectTransform = todoList.GetComponent<RectTransform>();
         clickToHandoff();
-    }
-
-    private void Update()
-    {
-        // 你可以在此处平滑控制其他行为
     }
 
     /// <summary>

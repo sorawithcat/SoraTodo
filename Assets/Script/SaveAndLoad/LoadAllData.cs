@@ -1,10 +1,20 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.IO;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class ClassifyButtonManagerData
+{
+    public int siblingIndex;  // 直接用 siblingIndex 替代 id
+    public string title;
+    public string titleColor;
+    public string titleBGColor;
+    public string[] todos;  // Use array instead of List
+}
 
 [System.Serializable]
 public class TodoManagerData
@@ -15,27 +25,16 @@ public class TodoManagerData
     public string titleBGStartColor;
     public string titleBGEndColor;
     public int clearFX;
-    public int timeType;
-    public int alarmType;
-    public float countdownTime;
-    public long dateTime;
-    public float timer;
-    public string customizePath;
     public bool isCountingDown;
     public bool isAlarmPlayed;
     public bool isTodo;
+    public long dateTime;
+    public int timeType;
+    public int alarmType;
+    public float timer;
+    public string customizePath;
     public bool isChangeCustomize;
-}
-
-[System.Serializable]
-public class ClassifyButtonManagerData
-{
-    public string id;
-    public int siblingIndex;
-    public string title;
-    public string titleColor;
-    public string titleBGColor;
-    public string[] todos;  // Use array instead of List
+    public float countdownTime;
 }
 
 public class LoadAllData : MonoBehaviour
@@ -87,7 +86,7 @@ public class LoadAllData : MonoBehaviour
     void CreateClassifyButtons()
     {
         // 按照 siblingIndex 排序 classifyButtonManagerDatas
-        Array.Sort(classifyButtonManagerDatas, (a, b) => int.Parse(a.siblingIndex.ToString()).CompareTo(int.Parse(b.siblingIndex.ToString())));
+        Array.Sort(classifyButtonManagerDatas, (a, b) => a.siblingIndex.CompareTo(b.siblingIndex));
 
         foreach (var classifyButtonData in classifyButtonManagerDatas)
         {
@@ -103,6 +102,9 @@ public class LoadAllData : MonoBehaviour
             // 设置分类按钮的背景颜色
             var buttonBg = classifyButton.GetComponent<Image>();
             buttonBg.color = HexToColor(classifyButtonData.titleBGColor);
+
+            // 设置分类按钮的 ID 为 siblingIndex
+            classifyButton.GetComponent<ClassifyButtonManager>().siblingIndex = classifyButtonData.siblingIndex;
 
             // 添加 TodoManager 的子物体
             foreach (var todoId in classifyButtonData.todos)
@@ -140,12 +142,15 @@ public class LoadAllData : MonoBehaviour
     private void SetTodoData(TodoManagerData todoData, TodoManager todoManager)
     {
         todoManager.todoText.text = todoData.title;
+        todoManager.todoText.color = HexToColor(todoData.titleColor);
         todoManager.startColor = HexToColor(todoData.titleBGStartColor);
         todoManager.endColor = HexToColor(todoData.titleBGEndColor);
         todoManager.clearFX = (ClearFX)todoData.clearFX;
         todoManager.isCountingDown = todoData.isCountingDown;
         todoManager.isAlarmPlayed = todoData.isAlarmPlayed;
         todoManager.isTodo = todoData.isTodo;
+        todoManager.isChangeCustomize = todoData.isChangeCustomize;
+        todoManager.countdownTime = todoData.countdownTime;
         DateTime dateTime = new DateTime(todoData.dateTime);
 
         TimerManager.Instance.UpdateTodoTimerSetting(todoManager,
@@ -178,9 +183,9 @@ public class LoadAllData : MonoBehaviour
     /// <param name="id"></param>
     /// <param name="propertyName"></param>
     /// <param name="newValue"></param>
-    public void UpdateClassifyButton(string id, string propertyName, object newValue)
+    public void UpdateClassifyButton(int siblingIndex, string propertyName, object newValue)
     {
-        var classifyButton = Array.Find(classifyButtonManagerDatas, cb => cb.id == id);
+        var classifyButton = Array.Find(classifyButtonManagerDatas, cb => cb.siblingIndex == siblingIndex);
         if (classifyButton != null)
         {
             var propertyInfo = typeof(ClassifyButtonManagerData).GetProperty(propertyName);
@@ -196,7 +201,7 @@ public class LoadAllData : MonoBehaviour
         }
         else
         {
-            Debug.LogError("id没找到：" + id);
+            Debug.LogError("siblingIndex没找到：" + siblingIndex);
         }
     }
 
@@ -239,6 +244,65 @@ public class LoadAllData : MonoBehaviour
     }
 
     /// <summary>
+    /// 添加待办事项
+    /// </summary>
+    /// <param name="newData"></param>
+    /// <param name="classifyId"></param>
+    public void AddTodoManager(TodoManagerData newData, int classifyId)
+    {
+        // 添加新的 Todo 数据
+        var list = new List<TodoManagerData>(todoManagerDatas);
+        list.Add(newData);
+        todoManagerDatas = list.ToArray();
+
+        // 更新分类按钮的 todos 数组
+        foreach (var classifyButton in classifyButtonManagerDatas)
+        {
+            if (classifyButton.siblingIndex == classifyId)
+            {
+                List<string> updatedTodos = new List<string>(classifyButton.todos);
+                updatedTodos.Add(newData.id);  // 添加新待办事项 ID
+                classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
+                break;
+            }
+        }
+
+        SaveDataToJson(); // 保存到JSON文件
+        ApplyLayout(); // 重新计算并应用布局
+    }
+    /// <summary>
+    /// 删除待办事项
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="classifyId"></param>
+    public void RemoveTodoManager(string id, int classifyId)
+    {
+        // 从 todoManagerDatas 中删除待办事项
+        todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.id != id);
+
+        // 更新指定分类数据，移除包含该待办事项 ID 的分类
+        foreach (var classifyButton in classifyButtonManagerDatas)
+        {
+            if (classifyButton.siblingIndex == classifyId)
+            {
+                List<string> updatedTodos = new List<string>();
+                foreach (var todoId in classifyButton.todos)
+                {
+                    if (todoId != id)
+                    {
+                        updatedTodos.Add(todoId);  // 保留不等于删除 ID 的待办事项
+                    }
+                }
+                classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
+                break;
+            }
+        }
+
+        SaveDataToJson(); // 保存到JSON文件
+        ApplyLayout(); // 重新计算并应用布局
+
+    }
+    /// <summary>
     /// 添加分类按钮
     /// </summary>
     /// <param name="newData"></param>
@@ -255,70 +319,18 @@ public class LoadAllData : MonoBehaviour
     /// <summary>
     /// 删除分类按钮
     /// </summary>
-    /// <param name="id"></param>
-    public void RemoveClassifyButton(string id)
+    /// <param name="siblingIndex"></param>
+    public void RemoveClassifyButton(int siblingIndex)
     {
-        classifyButtonManagerDatas = Array.FindAll(classifyButtonManagerDatas, cb => cb.id != id);
+        classifyButtonManagerDatas = Array.FindAll(classifyButtonManagerDatas, cb => cb.siblingIndex != siblingIndex);
 
-        // 更新所有待办事项的分类数据，移除这个分类 ID
+        // 更新所有待办事项的分类数据，移除这个分类 siblingIndex
         foreach (var todoManager in todoManagerDatas)
         {
             if (!string.IsNullOrEmpty(todoManager.customizePath))
             {
-                todoManager.customizePath = todoManager.customizePath.Replace(id, string.Empty);
+                todoManager.customizePath = todoManager.customizePath.Replace(siblingIndex.ToString(), string.Empty);
             }
-        }
-
-        SaveDataToJson(); // 保存到JSON文件
-        ApplyLayout(); // 重新计算并应用布局
-    }
-    /// <summary>
-    /// 添加待办事项
-    /// </summary>
-    /// <param name="newData"></param>
-    /// <param name="classifyId"></param>
-    public void AddTodoManager(TodoManagerData newData, string classifyId)
-    {
-        // 添加新的 Todo 数据
-        var list = new List<TodoManagerData>(todoManagerDatas);
-        list.Add(newData);
-        todoManagerDatas = list.ToArray();
-
-        // 更新分类按钮的 todos 数组
-        foreach (var classifyButton in classifyButtonManagerDatas)
-        {
-            if (classifyButton.id == classifyId)
-            {
-                List<string> updatedTodos = new List<string>(classifyButton.todos);
-                updatedTodos.Add(newData.id);  // 添加新待办事项 ID
-                classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
-                break;
-            }
-        }
-
-        SaveDataToJson(); // 保存到JSON文件
-        ApplyLayout(); // 重新计算并应用布局
-    }
-    /// <summary>
-    /// 删除待办事项
-    /// </summary>
-    /// <param name="id"></param>
-    public void RemoveTodoManager(string id)
-    {
-        todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.id != id);
-
-        // 更新所有分类数据，移除包含该待办事项 ID 的分类
-        foreach (var classifyButton in classifyButtonManagerDatas)
-        {
-            List<string> updatedTodos = new List<string>();
-            foreach (var todoId in classifyButton.todos)
-            {
-                if (todoId != id)
-                {
-                    updatedTodos.Add(todoId);  // 保留不等于删除 ID 的待办事项
-                }
-            }
-            classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
         }
 
         SaveDataToJson(); // 保存到JSON文件
@@ -326,7 +338,7 @@ public class LoadAllData : MonoBehaviour
     }
 
     // 重新计算并应用布局
-    private void ApplyLayout()
+    public void ApplyLayout()
     {
         // 对分类按钮和待办事项进行布局更新
         classifyButtonContainer.GetComponent<CustomVerticalLayoutGroup>().RecalculateTotalHeight();
@@ -339,6 +351,46 @@ public class LoadAllData : MonoBehaviour
         {
             buttonsData[i].siblingIndex = i;
         }
+    }
+    /// <summary>
+    /// 生成一个随机的唯一 ID，并确保没有重复
+    /// </summary>
+    /// <returns></returns>
+    public string GenerateUniqueId()
+    {
+        string uniqueId = GenerateRandomId();  // 初始生成一个 ID
+
+        // 检测是否存在重复的 ID
+        while (IsTodoIdDuplicate(uniqueId))
+        {
+            // 如果 ID 重复，则重新生成
+            uniqueId = GenerateRandomId();
+        }
+
+        return uniqueId;
+    }
+
+    /// <summary>
+    /// 生成一个随机的 ID（时间戳 + 随机数）
+    private string GenerateRandomId()
+    {
+        // 使用当前时间戳和随机数生成唯一 ID
+        string timestamp = DateTime.Now.Ticks.ToString();  // 获取当前时间戳
+        string randomSuffix = UnityEngine.Random.Range(1000, 9999).ToString();  // 生成随机数字后缀
+
+        // 合并时间戳和随机后缀，确保生成的 ID 唯一
+        return timestamp + randomSuffix;
+    }
+
+    /// <summary>
+    /// 检测指定的 ID 是否已经存在于待办事项数据中
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    private bool IsTodoIdDuplicate(string id)
+    {
+        // 检查 todoManagerDatas 中是否有重复的 id
+        return Array.Exists(todoManagerDatas, td => td.id == id);
     }
 
     // 用于包装数组的类，适配 JsonUtility

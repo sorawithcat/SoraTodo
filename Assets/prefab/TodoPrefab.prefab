@@ -272,7 +272,11 @@ MonoBehaviour:
   countdownTime: 60
   timer: 0
   customizePath: 
+  isCountingDown: 0
+  isAlarmPlayed: 0
   newMaterial: {fileID: 0}
+  isTodo: 0
+  isChangeCustomize: 1
 --- !u!82 &-1479640108696164962
 AudioSource:
   m_ObjectHideFlags: 0

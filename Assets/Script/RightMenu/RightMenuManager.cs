@@ -149,7 +149,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetChildsTitleColor,
                 SetChildsAlarm,
                 SetChildsClearFX,
-                DefaultFun,
+                AddToDo,
                 DefaultFun
 
             }
@@ -351,7 +351,12 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     #endregion
 
     #region classifyButtonText
-
+    public static void AddToDo()
+    {
+        AddTodoManager.Instance.setTransform = currentClickThing;
+        AddTodoManager.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
+    }
 
     #endregion
 

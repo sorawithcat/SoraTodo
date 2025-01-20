@@ -6,6 +6,7 @@ using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SetAlarm : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class SetAlarm : MonoBehaviour
     [HideInInspector] public List<Transform> setTransforms;
 
     private Animator animator;
-    private CanvasGroup canvasGroup;
 
     [Header("定时类型的下拉框")]
     [SerializeField] private TMP_Dropdown timeTypeDropdown;
@@ -47,7 +47,6 @@ public class SetAlarm : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
         alarmTypeDropdown.onValueChanged.AddListener(OnAlarmDropdownValueChanged);
 
@@ -165,11 +164,25 @@ public class SetAlarm : MonoBehaviour
     {
         int selectedTimeType = timeTypeDropdown.value;
         int selectedAlarmType = alarmTypeDropdown.value;
-
-        long timeValue = GetTimeAndConvertToSeconds(timeInputField);
-        List<int> ints = GetTimeAndConvertToArrary(dateInputField);
-        DateTime _dateTime = new DateTime(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5], DateTimeKind.Utc);
-
+        long timeValue;
+        if (timeInputField.IsActive())
+        {
+            timeValue = GetTimeAndConvertToSeconds(timeInputField);
+        }
+        else
+        {
+            timeValue = 0;
+        }
+        DateTime _dateTime;
+        if (dateInputField.IsActive())
+        {
+            List<int> ints = GetTimeAndConvertToArrary(dateInputField);
+            _dateTime = new DateTime(ints[0], ints[1], ints[2], ints[3], ints[4], ints[5], DateTimeKind.Utc);
+        }
+        else
+        {
+            _dateTime = DateTime.Now;
+        }
         foreach (Transform transform in setTransforms)
         {
             TodoManager todoManager = transform.GetComponent<TodoManager>();
@@ -355,7 +368,7 @@ public class SetAlarm : MonoBehaviour
 
         if (string.IsNullOrEmpty(inputText))
         {
-            TipWindowManager.Instance.ShowTip("输入框为空", Color.yellow);
+            TipWindowManager.Instance.ShowTip("输入框为空", Color.black);
             return 0;
         }
 
@@ -368,7 +381,7 @@ public class SetAlarm : MonoBehaviour
 
         if (string.IsNullOrEmpty(inputText))
         {
-            TipWindowManager.Instance.ShowTip("输入框为空", Color.yellow);
+            TipWindowManager.Instance.ShowTip("输入框为空", Color.black);
             return new List<int> { 0, 0, 0, 0, 0, 0 };
         }
 
