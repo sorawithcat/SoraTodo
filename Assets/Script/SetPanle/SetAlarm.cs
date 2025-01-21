@@ -187,6 +187,21 @@ public class SetAlarm : MonoBehaviour
         {
             TodoManager todoManager = transform.GetComponent<TodoManager>();
             TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "timeType", selectedAlarmType);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "alarmType", selectedAlarmType);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "timer", timeValue);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "countdownTime", timeValue);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "dateTime", _dateTime.Ticks);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "customizePath", customizePath);
+            if ((AlarmType)selectedAlarmType != AlarmType.Customize)
+            {
+                LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "customizePath", "");
+
+            }
+        }
+        if ((TimingType)selectedTimeType == TimingType.None && (AlarmType)selectedAlarmType != AlarmType.None)
+        {
+            TipWindowManager.Instance.ShowTip("因为你选择了无定时，所以设置的闹钟类型仅设置，不会生效");
         }
         CloseWindow();
 

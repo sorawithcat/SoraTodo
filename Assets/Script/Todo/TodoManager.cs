@@ -102,7 +102,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool isTodo = false;
     //自定义的路径是否更改
     public bool isChangeCustomize = true;
-
+    public string todoID = "";
 
     void Start()
     {

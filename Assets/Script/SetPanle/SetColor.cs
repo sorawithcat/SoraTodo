@@ -141,24 +141,40 @@ public class SetColor : MonoBehaviour
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponent<Image>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                    if (_toSetColorThing[i].GetComponent<ClassifyButtonManager>() != null)
+                    {
+                        LoadAllData.Instance.UpdateClassifyButton(_toSetColorThing[i].GetComponent<ClassifyButtonManager>().siblingIndex, "titleBGColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
+                    }
                 }
                 break;
             case SetThingType.Text:
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponentInChildren<TextMeshProUGUI>().color = new Color(redValue, greenValue, blueValue, alphaValue);
+                    if (_toSetColorThing[i].GetComponent<TodoManager>() != null)
+                    {
+                        LoadAllData.Instance.UpdateTodoManager(_toSetColorThing[i].GetComponent<TodoManager>().todoID, "titleColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
+
+                    }
+                    else if (_toSetColorThing[i].GetComponent<ClassifyButtonManager>() != null)
+                    {
+                        LoadAllData.Instance.UpdateClassifyButton(_toSetColorThing[i].GetComponent<ClassifyButtonManager>().siblingIndex, "titleColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
+                    }
                 }
                 break;
             case SetThingType.GradientStart:
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientStartColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                    LoadAllData.Instance.UpdateTodoManager(_toSetColorThing[i].GetComponent<TodoManager>().todoID, "titleBGStartColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
                 }
                 break;
             case SetThingType.GradientEnd:
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientEndColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                    LoadAllData.Instance.UpdateTodoManager(_toSetColorThing[i].GetComponent<TodoManager>().todoID, "titleBGEndColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
+
                 }
                 break;
         }
@@ -191,5 +207,10 @@ public class SetColor : MonoBehaviour
         animator.SetBool("IsClose", false);
         TipWindowManager.Instance.ShowTip("(ToT)也许你发现了，纯黑色的物体会变透明，我也不知道怎么解决", closeTime: 3f);
         TipWindowManager.Instance.ShowTip("发现的时候已经来（lan）不（de）及（qu）改了", closeTime: 3f);
+    }
+
+    public string RGBToString(Color color)
+    {
+        return $"#{ColorUtility.ToHtmlStringRGB(color)}";
     }
 }

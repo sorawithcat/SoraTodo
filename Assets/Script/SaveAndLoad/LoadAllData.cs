@@ -5,6 +5,8 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
+using Unity.Collections.LowLevel.Unsafe;
 
 [System.Serializable]
 public class ClassifyButtonManagerData
@@ -19,7 +21,7 @@ public class ClassifyButtonManagerData
 [System.Serializable]
 public class TodoManagerData
 {
-    public string id;
+    public string todoID;
     public string title;
     public string titleColor;
     public string titleBGStartColor;
@@ -98,6 +100,7 @@ public class LoadAllData : MonoBehaviour
             // 设置分类按钮的文本
             var buttonText = classifyButton.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = classifyButtonData.title;
+            buttonText.color = HexToColor(classifyButtonData.titleColor);
 
             // 设置分类按钮的背景颜色
             var buttonBg = classifyButton.GetComponent<Image>();
@@ -109,7 +112,7 @@ public class LoadAllData : MonoBehaviour
             // 添加 TodoManager 的子物体
             foreach (var todoId in classifyButtonData.todos)
             {
-                var todoData = Array.Find(todoManagerDatas, td => td.id == todoId);
+                var todoData = Array.Find(todoManagerDatas, td => td.todoID == todoId);
                 if (todoData != null)
                 {
                     CreateTodoManager(todoData, classifyButton.GetComponent<ClassifyButtonManager>().todoList.transform);
@@ -144,13 +147,16 @@ public class LoadAllData : MonoBehaviour
         todoManager.todoText.text = todoData.title;
         todoManager.todoText.color = HexToColor(todoData.titleColor);
         todoManager.startColor = HexToColor(todoData.titleBGStartColor);
+        todoManager.newMaterial.SetColor("_GradientStartColor", HexToColor(todoData.titleBGStartColor));
         todoManager.endColor = HexToColor(todoData.titleBGEndColor);
+        todoManager.newMaterial.SetColor("_GradientEndColor", HexToColor(todoData.titleBGEndColor));
         todoManager.clearFX = (ClearFX)todoData.clearFX;
         todoManager.isCountingDown = todoData.isCountingDown;
         todoManager.isAlarmPlayed = todoData.isAlarmPlayed;
         todoManager.isTodo = todoData.isTodo;
         todoManager.isChangeCustomize = todoData.isChangeCustomize;
         todoManager.countdownTime = todoData.countdownTime;
+        todoManager.todoID = todoData.todoID;
         DateTime dateTime = new DateTime(todoData.dateTime);
 
         TimerManager.Instance.UpdateTodoTimerSetting(todoManager,
@@ -188,7 +194,7 @@ public class LoadAllData : MonoBehaviour
         var classifyButton = Array.Find(classifyButtonManagerDatas, cb => cb.siblingIndex == siblingIndex);
         if (classifyButton != null)
         {
-            var propertyInfo = typeof(ClassifyButtonManagerData).GetProperty(propertyName);
+            var propertyInfo = typeof(ClassifyButtonManagerData).GetField(propertyName);
             if (propertyInfo != null)
             {
                 propertyInfo.SetValue(classifyButton, newValue);
@@ -196,7 +202,8 @@ public class LoadAllData : MonoBehaviour
             }
             else
             {
-                Debug.LogError("属性没找到: " + propertyName);
+
+                TipWindowManager.Instance.ShowTip("属性没找到: " + propertyName, Color.red);
             }
         }
         else
@@ -213,10 +220,10 @@ public class LoadAllData : MonoBehaviour
     /// <param name="newValue"></param>
     public void UpdateTodoManager(string id, string propertyName, object newValue)
     {
-        var todoManager = Array.Find(todoManagerDatas, td => td.id == id);
+        var todoManager = Array.Find(todoManagerDatas, td => td.todoID == id);
         if (todoManager != null)
         {
-            var propertyInfo = typeof(TodoManagerData).GetProperty(propertyName);
+            var propertyInfo = typeof(TodoManagerData).GetField(propertyName);
             if (propertyInfo != null)
             {
                 propertyInfo.SetValue(todoManager, newValue);
@@ -224,12 +231,12 @@ public class LoadAllData : MonoBehaviour
             }
             else
             {
-                Debug.LogError("属性没找到: " + propertyName);
+                TipWindowManager.Instance.ShowTip("属性没找到: " + propertyName, Color.red);
             }
         }
         else
         {
-            Debug.LogError("id没找到 ：" + id);
+            TipWindowManager.Instance.ShowTip("id没找到 ：" + id, Color.red);
         }
     }
 
@@ -261,7 +268,7 @@ public class LoadAllData : MonoBehaviour
             if (classifyButton.siblingIndex == classifyId)
             {
                 List<string> updatedTodos = new List<string>(classifyButton.todos);
-                updatedTodos.Add(newData.id);  // 添加新待办事项 ID
+                updatedTodos.Add(newData.todoID);  // 添加新待办事项 ID
                 classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
                 break;
             }
@@ -278,7 +285,7 @@ public class LoadAllData : MonoBehaviour
     public void RemoveTodoManager(string id, int classifyId)
     {
         // 从 todoManagerDatas 中删除待办事项
-        todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.id != id);
+        todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.todoID != id);
 
         // 更新指定分类数据，移除包含该待办事项 ID 的分类
         foreach (var classifyButton in classifyButtonManagerDatas)
@@ -390,7 +397,7 @@ public class LoadAllData : MonoBehaviour
     private bool IsTodoIdDuplicate(string id)
     {
         // 检查 todoManagerDatas 中是否有重复的 id
-        return Array.Exists(todoManagerDatas, td => td.id == id);
+        return Array.Exists(todoManagerDatas, td => td.todoID == id);
     }
 
     // 用于包装数组的类，适配 JsonUtility

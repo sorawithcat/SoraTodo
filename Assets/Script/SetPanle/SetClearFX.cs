@@ -61,6 +61,7 @@ public class SetClearFX : MonoBehaviour
             {
                 _todoManager.SetClearFX();
             }
+            LoadAllData.Instance.UpdateTodoManager(_todoManager.todoID, "clearFX", clearTypeDropdown.value);
         }
         CloseWindow();
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AddTodoManager : MonoBehaviour
 {
@@ -217,9 +218,11 @@ public class AddTodoManager : MonoBehaviour
         {
             todoManager.SetClearFX();
         }
+        string todoID = LoadAllData.Instance.GenerateUniqueId();
+        todoManager.todoID = todoID;
         TodoManagerData todoManagerData = new TodoManagerData()
         {
-            id = LoadAllData.Instance.GenerateUniqueId(),
+            todoID = todoID,
             title = title.text,
             titleColor = "Color.Black",
             titleBGStartColor = "#FF6F60",

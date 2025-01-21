@@ -44,6 +44,19 @@ public class SetText : MonoBehaviour
     public void SetTexts()
     {
         setTransform.GetComponentInChildren<TextMeshProUGUI>().text = newTMP.text;
+        if (setTransform.GetComponent<ClassifyButtonManager>() != null)
+        {
+            LoadAllData.Instance.UpdateClassifyButton(setTransform.GetComponent<ClassifyButtonManager>().siblingIndex, "title", newTMP.text);
+        }
+        else if (setTransform.GetComponent<TodoManager>() != null)
+        {
+            LoadAllData.Instance.UpdateTodoManager(setTransform.GetComponent<TodoManager>().todoID, "title", newTMP.text);
+
+        }
+        else
+        {
+            TipWindowManager.Instance.ShowTip("无法更新该属性。");
+        }
         CloseWindow();
     }
     public void CloseWindow()
