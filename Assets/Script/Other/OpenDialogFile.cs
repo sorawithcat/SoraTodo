@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.Networking;
 
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]

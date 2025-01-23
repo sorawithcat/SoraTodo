@@ -1,12 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SetAlarm : MonoBehaviour
 {
@@ -14,7 +10,7 @@ public class SetAlarm : MonoBehaviour
 
     [HideInInspector] public List<Transform> setTransforms;
 
-    private Animator animator;
+    private CanvasGroup canvasGroup;
 
     [Header("定时类型的下拉框")]
     [SerializeField] private TMP_Dropdown timeTypeDropdown;
@@ -46,17 +42,11 @@ public class SetAlarm : MonoBehaviour
     }
     void Start()
     {
-        animator = GetComponent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
         alarmTypeDropdown.onValueChanged.AddListener(OnAlarmDropdownValueChanged);
-
-
-
     }
-    void Update()
-    {
 
-    }
 
     /// <summary>
     /// 设置内容为首个todo的设置，以免重复设置一些不需要更改的项
@@ -187,7 +177,7 @@ public class SetAlarm : MonoBehaviour
         {
             TodoManager todoManager = transform.GetComponent<TodoManager>();
             TimerManager.Instance.UpdateTodoTimerSetting(todoManager, (TimingType)selectedTimeType, (AlarmType)selectedAlarmType, timeValue, _dateTime, customizePath);
-            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "timeType", selectedAlarmType);
+            LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "timeType", selectedTimeType);
             LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "alarmType", selectedAlarmType);
             LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "timer", timeValue);
             LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "countdownTime", timeValue);
@@ -209,13 +199,13 @@ public class SetAlarm : MonoBehaviour
     public void CloseWindow()
     {
         audioSource.Stop();
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
         TipWindowManager.Instance.ShowTip("自定义铃声不建议导入过大的音频资源");
 
     }

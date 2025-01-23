@@ -62,21 +62,18 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Other\TodoWindowManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\SaveManager.cs" />
-    <Compile Include="Assets\Script\SoraAnimator\EasySoraAnimator.cs" />
     <Compile Include="Assets\Script\Other\FileSelector.cs" />
     <Compile Include="Assets\Script\SetPanle\SetColor.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ISaveManger.cs" />
     <Compile Include="Assets\Script\Other\CustomVerticalLayoutGroup.cs" />
     <Compile Include="Assets\Script\Other\OpenDialogFile.cs" />
     <Compile Include="Assets\Script\Todo\TimerManager.cs" />
-    <Compile Include="Assets\Script\SoraAnimator\SoraAnimator.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ITodoData.cs" />
     <Compile Include="Assets\Script\Todo\AllTodoManager.cs" />
-    <Compile Include="Assets\Script\Other\SystemTrayIcon.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
-    <Compile Include="Assets\Script\SoraAnimator\SoraTimeManager.cs" />
     <Compile Include="Assets\Script\SetPanle\SetClearFX.cs" />
+    <Compile Include="Assets\Script\SetPanle\PanleWindowManager.cs" />
     <Compile Include="Assets\Script\SO\SwitchThemesManager.cs" />
     <Compile Include="Assets\Script\Todo\AddTodoManager.cs" />
     <Compile Include="Assets\Script\Other\SliderToIntegerTextUpdater.cs" />

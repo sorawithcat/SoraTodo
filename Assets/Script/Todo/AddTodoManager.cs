@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class AddTodoManager : MonoBehaviour
 {
     public static AddTodoManager Instance;
 
-    private Animator animator;
+    private CanvasGroup canvasGroup;
 
     [HideInInspector] public Transform setTransform;
 
@@ -63,7 +62,7 @@ public class AddTodoManager : MonoBehaviour
     }
     void Start()
     {
-        animator = GetComponent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
         alarmTypeDropdown.onValueChanged.AddListener(OnAlarmDropdownValueChanged);
         clearTypeDropdown.onValueChanged.AddListener(OnclearTypeDropdownValueChanged);
@@ -254,13 +253,13 @@ public class AddTodoManager : MonoBehaviour
     // 关闭窗口的动画
     public void CloseWindow()
     {
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
     }
 
     // 打开窗口的动画
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
     }
 }

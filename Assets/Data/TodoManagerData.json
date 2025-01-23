@@ -2,7 +2,7 @@
     "items": [
         {
             "todoID": "0",
-            "title": "Hello~",
+            "title": "defefef",
             "titleColor": "#000",
             "titleBGStartColor": "#FF6F60",
             "titleBGEndColor": "#FFFF63",
@@ -34,7 +34,7 @@
             "timer": 0.0,
             "customizePath": "C:\\Users\\31537\\Music\\Ludicin - Echoes Of Memoria.ogg",
             "isChangeCustomize": true,
-            "countdownTime": 0.0
+            "countdownTime": 550.0
         },
         {
             "todoID": "2",
@@ -52,25 +52,7 @@
             "timer": 0.0,
             "customizePath": "",
             "isChangeCustomize": true,
-            "countdownTime": 0.0
-        },
-        {
-            "todoID": "6387305200709039214315",
-            "title": "",
-            "titleColor": "Color.Black",
-            "titleBGStartColor": "#FF6F60",
-            "titleBGEndColor": "#8F0010",
-            "clearFX": 0,
-            "isCountingDown": false,
-            "isAlarmPlayed": false,
-            "isTodo": false,
-            "dateTime": 638730520070903921,
-            "timeType": 0,
-            "alarmType": 0,
-            "timer": 0.0,
-            "customizePath": "",
-            "isChangeCustomize": true,
-            "countdownTime": 0.0
+            "countdownTime": 550.0
         }
     ]
 }

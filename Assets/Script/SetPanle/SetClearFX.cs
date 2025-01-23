@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 public class SetClearFX : MonoBehaviour
 {
     public static SetClearFX Instance;
-    private Animator animator;
+    private CanvasGroup canvasGroup;
     [HideInInspector] public List<Transform> setTransforms;
 
     [Header("完成效果的下拉框")]
@@ -30,7 +29,7 @@ public class SetClearFX : MonoBehaviour
     }
     void Start()
     {
-        animator = GetComponent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
         clearTypeDropdown.onValueChanged.AddListener(OnclearTypeDropdownValueChanged);
         todoManager.isTodo = true;
         todoManager.SetClearFX();
@@ -68,12 +67,12 @@ public class SetClearFX : MonoBehaviour
 
     public void CloseWindow()
     {
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
     }
 }

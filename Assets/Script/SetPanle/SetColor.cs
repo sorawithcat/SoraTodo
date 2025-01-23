@@ -35,7 +35,7 @@ public class SetColor : MonoBehaviour
     private float alphaValue = 1f; // 默认完全不透明
 
 
-    private Animator animator;
+    private CanvasGroup canvasGroup;
     [HideInInspector] public List<Transform> setTransforms;
     [HideInInspector] public SetThingType setType;
 
@@ -53,10 +53,9 @@ public class SetColor : MonoBehaviour
     void Start()
     {
         UpdateAllBoxes(); // 初始化设置颜色
-        animator = GetComponentInParent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetColors(redtextDisplay, SetColorType.Red);
@@ -198,13 +197,13 @@ public class SetColor : MonoBehaviour
 
     public void CloseWindow()
     {
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
         TipWindowManager.Instance.ShowTip("(ToT)也许你发现了，纯黑色的物体会变透明，我也不知道怎么解决", closeTime: 3f);
         TipWindowManager.Instance.ShowTip("发现的时候已经来（lan）不（de）及（qu）改了", closeTime: 3f);
     }

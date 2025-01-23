@@ -11,7 +11,7 @@ public class SetText : MonoBehaviour
     [Header("新的文字")]
     [SerializeField] private TMP_InputField newTMP;
 
-    private Animator animator;
+    private CanvasGroup canvasGroup;
 
     private void Awake()
     {
@@ -24,18 +24,12 @@ public class SetText : MonoBehaviour
             Destroy(Instance);
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        canvasGroup = GetComponent<CanvasGroup>();
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void SetOldText(Transform _textTransform)
     {
@@ -61,13 +55,11 @@ public class SetText : MonoBehaviour
     }
     public void CloseWindow()
     {
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
-
     }
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
-
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
     }
 }

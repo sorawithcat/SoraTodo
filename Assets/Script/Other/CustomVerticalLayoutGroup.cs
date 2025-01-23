@@ -188,7 +188,7 @@ public class CustomVerticalLayoutGroup : LayoutGroup
         }
         else
         {
-            Debug.LogWarning("索引超出范围，无法更新间距！");
+            TipWindowManager.Instance.ShowTip("索引超出范围，无法更新间距！数据已保存，重启以恢复正常");
         }
     }
 }

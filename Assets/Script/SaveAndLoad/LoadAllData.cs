@@ -2,11 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-using Unity.Collections.LowLevel.Unsafe;
 
 [System.Serializable]
 public class ClassifyButtonManagerData
@@ -119,7 +117,8 @@ public class LoadAllData : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning($"Todo with ID {todoId} not found.");
+                    //Debug.LogWarning($"Todo with ID {todoId} not found.");
+                    TipWindowManager.Instance.ShowTip($"错误的TodoID： {todoId}", Color.red);
                 }
             }
         }
@@ -208,7 +207,7 @@ public class LoadAllData : MonoBehaviour
         }
         else
         {
-            Debug.LogError("siblingIndex没找到：" + siblingIndex);
+            TipWindowManager.Instance.ShowTip("siblingIndex没找到：" + siblingIndex, Color.red);
         }
     }
 

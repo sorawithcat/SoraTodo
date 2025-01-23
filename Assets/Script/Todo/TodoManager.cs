@@ -124,38 +124,44 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
             else
             {
-                TipWindowManager.Instance.ShowTip("未找到指定的Shader: " + useShader.name, Color.yellow);
+                TipWindowManager.Instance.ShowTip(todoText.text + ":未找到指定的Shader: " + useShader.name, Color.yellow);
             }
         }
         else
         {
-            TipWindowManager.Instance.ShowTip("当前物体上没有找到Renderer组件！", Color.red);
+            TipWindowManager.Instance.ShowTip(todoText.text + ":此物体上没有找到Renderer组件！", Color.red);
         }
     }
-
-    public void SetAlarm()
+    /// <summary>
+    /// 设置闹钟并启动
+    /// </summary>
+    /// <param name="mustTodo">为true时无视条件强制执行</param>
+    public void SetAlarm(bool mustTodo = false)
     {
-        LoadAlarmSound();
+        if (!isTodo || mustTodo)
+        {
+            LoadAlarmSound();
 
-        if (timingType == TimingType.Countdown)
-        {
-            timer = countdownTime; // 设置倒计时的初始时间
-            isCountingDown = true;
-        }
-        else if (timingType == TimingType.Date)
-        {
-            // 计算日期倒计时，假设目标日期是某个特定时间点
-            DateTime targetDate = dateTime;
-            DateTime currentDate = DateTime.Now;
-            TimeSpan timeRemaining = targetDate - currentDate;
-            timer = (float)timeRemaining.TotalSeconds;
-            isCountingDown = true;
-        }
-        else if (timingType == TimingType.None)
-        {
-            // 没有定时任务时，不做任何操作
-            timer = 0f;
-            isCountingDown = false;
+            if (timingType == TimingType.Countdown)
+            {
+                timer = countdownTime; // 设置倒计时的初始时间
+                isCountingDown = true;
+            }
+            else if (timingType == TimingType.Date)
+            {
+                // 计算日期倒计时，假设目标日期是某个特定时间点
+                DateTime targetDate = dateTime;
+                DateTime currentDate = DateTime.Now;
+                TimeSpan timeRemaining = targetDate - currentDate;
+                timer = (float)timeRemaining.TotalSeconds;
+                isCountingDown = true;
+            }
+            else if (timingType == TimingType.None)
+            {
+                // 没有定时任务时，不做任何操作
+                timer = 0f;
+                isCountingDown = false;
+            }
         }
     }
 
@@ -169,7 +175,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (_GradientStartUVNumb >= 2f)
             {
                 isTodo = true;
-
+                EndSetJson();
                 SetClearFX();
             }
             else
@@ -185,6 +191,20 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _GradientStartUVNumb = Mathf.Clamp(_GradientStartUVNumb, 0f, 2f);
             newMaterial.SetVector("_GradientStartUV", new Vector4(_GradientStartUVNumb, 0.5f, 0, 0));
         }
+    }
+
+    private void EndSetJson()
+    {
+        LoadAllData.Instance.UpdateTodoManager(todoID, "timeType", (int)timingType);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "alarmType", (int)alarmType);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "timer", timer);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "countdownTime", countdownTime);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "dateTime", dateTime.Ticks);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "customizePath", customizePath);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isTodo", true);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isCountingDown", isCountingDown);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isAlarmPlayed", isAlarmPlayed);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isChangeCustomize", true);
     }
 
     public void SetClearFX()

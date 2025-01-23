@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -59,7 +58,7 @@ public class Inventory : MonoBehaviour, ISaveManger
     {
         loadedTodds = new SerializableDictionary<string, TodoManager>();
         loadedClassifyButtons = new SerializableDictionary<string, ClassifyButtonManager>();
-       
+
     }
 
     public void SaveData(ref GameData _data)

@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using System.Collections.Generic;
 
-public class ErrorLogger : MonoBehaviour,ISaveManger
+public class ErrorLogger : MonoBehaviour, ISaveManger
 {
     public static ErrorLogger Instance;
     private string logDirectory;
@@ -82,7 +82,7 @@ public class ErrorLogger : MonoBehaviour,ISaveManger
             // 更新该错误的最后发生时间
             lastErrorTimes[errorKey] = DateTime.Now;
 
-            Debug.Log("错误日志已保存至: " + logFilePath);
+            TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, false);
         }
     }
 
@@ -109,13 +109,13 @@ public class ErrorLogger : MonoBehaviour,ISaveManger
                 if (fileDate < dateThreshold)
                 {
                     File.Delete(file);
-                    Debug.Log("删除过期日志: " + file);
+                    TipWindowManager.Instance.ShowTip("删除过期日志: " + file);
                 }
             }
         }
         catch (Exception e)
         {
-            Debug.LogError("清理日志时发生错误: " + e.Message);
+            TipWindowManager.Instance.ShowTip("清理日志时发生错误: " + e.Message, Color.red, true, e.Message, true, true);
         }
     }
 

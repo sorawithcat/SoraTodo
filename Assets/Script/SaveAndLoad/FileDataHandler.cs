@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine;
 public class FileDataHandler
 {
     private string dataDirPath = "";
@@ -39,7 +37,7 @@ public class FileDataHandler
         }
         catch (Exception e)
         {
-            Debug.LogError("在尝试保存数据到文件时出错。" + fullPath + "\n" + e);
+            TipWindowManager.Instance.ShowTip("在尝试保存数据到文件时出错。" + fullPath + "\n" + e, Color.red, true, canCV: true, isForever: true);
 
         }
     }
@@ -70,7 +68,7 @@ public class FileDataHandler
             }
             catch (Exception e)
             {
-                Debug.LogError($"在文件读取时错误{fullPath}\n{e}");
+                TipWindowManager.Instance.ShowTip($"在文件读取时错误{fullPath}\n{e}", Color.red, true, canCV: true, isForever: true);
             }
         }
         return loadData;

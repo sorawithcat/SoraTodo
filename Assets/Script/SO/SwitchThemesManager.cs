@@ -16,15 +16,9 @@ public class SwitchThemesManager : MonoBehaviour
 {
 
     //太阳和月亮 主题 ☼○
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

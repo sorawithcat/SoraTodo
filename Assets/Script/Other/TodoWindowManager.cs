@@ -3,7 +3,7 @@ using UnityEngine;
 public class TodoWindowManager : MonoBehaviour
 {
     public static TodoWindowManager Instance;
-    private Animator animator;
+    private CanvasGroup canvasGroup;
 
     private void Awake()
     {
@@ -18,23 +18,17 @@ public class TodoWindowManager : MonoBehaviour
     }
     void Start()
     {
-        animator = GetComponentInParent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void CloseWindow()
     {
-        animator.SetBool("IsClose", true);
+        PanleWindowManager.Instance.ClosePanle(canvasGroup);
 
     }
     public void OpenWindow()
     {
-        animator.SetBool("IsClose", false);
+        PanleWindowManager.Instance.OpenPanle(canvasGroup);
 
     }
 }

@@ -40,10 +40,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     private List<Action> currentActions = new List<Action>();
     private List<string> currentNames = new List<string>();
 
-
-    private void Start()
-    {
-    }
     private void Awake()
     {
         if (Instance == null)
@@ -213,10 +209,11 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             newButton.GetComponentInParent<RightMenuButtonManager>().actions = _funs;
 
         }
+        Vector2 listCellsize = menuButtonList.GetComponent<GridLayoutGroup>().cellSize;
         //设置base的宽度和高度
-        menuBase.GetComponent<RectTransform>().sizeDelta = new Vector2(maxWidth + offsetX, menuButtonList.GetComponent<GridLayoutGroup>().cellSize.y * numbs);
+        menuBase.GetComponent<RectTransform>().sizeDelta = new Vector2(maxWidth + offsetX, listCellsize.y * numbs);
         //设置按钮宽度
-        menuButtonList.GetComponent<GridLayoutGroup>().cellSize = new Vector2(maxWidth + offsetX, menuButtonList.GetComponent<GridLayoutGroup>().cellSize.y);
+        menuButtonList.GetComponent<GridLayoutGroup>().cellSize = new Vector2(maxWidth + offsetX, listCellsize.y);
 
         ChangeRightMenuPosition();
 
@@ -229,10 +226,11 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     private void ChangeRightMenuPosition()
     {
         Vector2 mousePosition;
+        RectTransform rectTransform = transform.GetComponent<RectTransform>();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(toolTipCanvas.transform as RectTransform, Input.mousePosition, null, out mousePosition);
         mousePosition = new Vector2(mousePosition.x - 200, mousePosition.y - 400);
-        mousePosition.x = Mathf.Clamp(mousePosition.x, -732 + transform.GetComponent<RectTransform>().rect.width, 739 - transform.GetComponent<RectTransform>().rect.width);
-        mousePosition.y = Mathf.Clamp(mousePosition.y, -902 + transform.GetComponent<RectTransform>().rect.height, -367 - transform.GetComponent<RectTransform>().rect.height);
+        mousePosition.x = Mathf.Clamp(mousePosition.x, -732 + rectTransform.rect.width, 739 - rectTransform.rect.width);
+        mousePosition.y = Mathf.Clamp(mousePosition.y, -902 + rectTransform.rect.height, -367 - rectTransform.rect.height);
 
         this.GetComponent<RectTransform>().anchoredPosition = mousePosition;
     }

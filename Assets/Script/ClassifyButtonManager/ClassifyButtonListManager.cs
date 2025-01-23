@@ -5,7 +5,6 @@ public class ClassifyButtonListManager : MonoBehaviour
 {
 
     private List<ClassifyButtonManager> classifyButtonList;
-    // Start is called before the first frame update
     void Start()
     {
         SetAllClassifyButtons();
@@ -32,12 +31,6 @@ public class ClassifyButtonListManager : MonoBehaviour
     {
         classifyButtonList = new List<ClassifyButtonManager>(GetComponentsInChildren<ClassifyButtonManager>());
         return classifyButtonList;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 
