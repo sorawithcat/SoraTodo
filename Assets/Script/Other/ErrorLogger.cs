@@ -1,17 +1,19 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
+using System.Diagnostics;
 
 public class ErrorLogger : MonoBehaviour, ISaveManger
 {
     public static ErrorLogger Instance;
     private string logDirectory;
-    private Dictionary<string, DateTime> lastErrorTimes;
-    private readonly TimeSpan errorRepeatThreshold = TimeSpan.FromMinutes(1); // 如果错误重复发生的间隔超过1分钟，认为是新的错误
+    private SerializableDictionary<string, DateTime> lastErrorTimes;
+    private readonly TimeSpan errorRepeatThreshold = TimeSpan.FromSeconds(30); // 如果错误重复发生的间隔超过30秒，认为是新的错误
     private readonly TimeSpan logRetentionThreshold = TimeSpan.FromDays(7); // 设置日志保留期限，默认7天
 
     private bool autoClearLogs = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -22,14 +24,13 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
         {
             Destroy(Instance);
         }
-        logDirectory = Application.dataPath + "/ErrorLogs";
+        logDirectory = Path.Combine(Application.persistentDataPath, "ErrorLogs");
         if (!Directory.Exists(logDirectory))
         {
             Directory.CreateDirectory(logDirectory);
         }
-
         // 用来记录错误类型和发生的时间
-        lastErrorTimes = new Dictionary<string, DateTime>();
+        lastErrorTimes = new SerializableDictionary<string, DateTime>();
         if (autoClearLogs)
         {
             CleanLogsByRetention();
@@ -46,7 +47,7 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
         Application.logMessageReceived -= HandleLog;
     }
 
-    void HandleLog(string logString, string stackTrace, LogType type)
+    public void HandleLog(string logString, string stackTrace, LogType type)
     {
         if (type == LogType.Error || type == LogType.Exception)
         {
@@ -82,15 +83,12 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
             // 更新该错误的最后发生时间
             lastErrorTimes[errorKey] = DateTime.Now;
 
-            TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, false);
+            TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, false, false);
         }
     }
-
     // 生成一个唯一的错误标识符
     private string GenerateErrorKey(string logString, string stackTrace)
     {
-        // 可以根据错误的日志内容、堆栈信息等生成唯一标识符
-        // 这里使用消息和堆栈的简化形式生成一个字符串作为唯一标识符
         return logString.GetHashCode() + "-" + stackTrace.GetHashCode();
     }
 
@@ -109,9 +107,9 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
                 if (fileDate < dateThreshold)
                 {
                     File.Delete(file);
-                    TipWindowManager.Instance.ShowTip("删除过期日志: " + file);
                 }
             }
+            TipWindowManager.Instance.ShowTip("删除过期日志数: " + logFiles.Length);
         }
         catch (Exception e)
         {

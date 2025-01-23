@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -81,8 +83,30 @@ public class TipWindowManager : MonoBehaviour
     /// <param name="isForever">永远存在？点击关闭：延迟关闭</param>
     /// <param name="closeTime">关闭时间（秒），默认为2f</param>
     /// <param name="changeMessage">是否更改原本提示信息。如果设置了永久存在，则提示用户操作。true时更改信息前缀进行提醒。false则生成提示框提醒，不改变原提示信息</param>
-    public void ShowTip(string message = "这是一个提示框", Color? textColor = null, bool autoCV = false, string cvString = "", bool canCV = false, bool isForever = false, float closeTime = 2f, bool changeMessage = true)
+    /// <param name="addToErrorFile">如果字体为红色，会将信息写入报错文件</param>
+    public void ShowTip(string message = "这是一个提示框", Color? textColor = null, bool autoCV = false, string cvString = "", bool canCV = false, bool isForever = false, float closeTime = 2f, bool changeMessage = true, bool addToErrorFile = true)
     {
+        if (addToErrorFile && textColor == Color.red)
+        {
+            StackTrace stackTrace = new(true);
+
+            // 获取当前调用堆栈的第一个调用函数
+            StackFrame frame = stackTrace.GetFrame(1);
+
+            if (frame != null)
+            {
+                // 获取文件路径
+                string filePath = frame.GetFileName();
+
+                // 获取文件名
+                string scriptName = Path.GetFileNameWithoutExtension(filePath);
+                ErrorLogger.Instance.HandleLog("提示/报错文件：" + scriptName + "\nInfo：\n" + message + "\n以下是该提示/报错提供的建议复制文字：\n" + cvString + "\n以上是该提示/报错提供的建议复制文字：\n", $"\n{frame}", LogType.Error);
+            }
+            else
+            {
+                ErrorLogger.Instance.HandleLog("提示/报错文件：无法获取文件名\nInfo：\n" + message + "\n以下是该提示/报错提供的建议复制文字：\n" + cvString + "\n以上是该提示/报错提供的建议复制文字：\n", $"\n{frame}", LogType.Error);
+            }
+        }
         // 从对象池获取提示窗口对象
         GameObject newTip = GetTipWindow();
         newTip.SetActive(true);

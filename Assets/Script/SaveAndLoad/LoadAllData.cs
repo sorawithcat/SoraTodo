@@ -51,6 +51,10 @@ public class LoadAllData : MonoBehaviour
     private ClassifyButtonManagerData[] classifyButtonManagerDatas;
     private TodoManagerData[] todoManagerDatas;
 
+    private readonly string classifyADD = "Data/ClassifyButtonManagerData.json";
+    private readonly string todoADD = "Data/TodoManagerData.json";
+    private readonly string classifyButtonInitialJson = "{\"items\": [{\"siblingIndex\": 0, \"title\": \"不急着做\", \"titleColor\": \"#000\", \"titleBGColor\": \"#FFFFFF\", \"todos\": [\"0\"]}]}";
+    private readonly string todoManagerInitialJson = "{\"items\": [{\"todoID\": \"0\", \"title\": \"Hello~\", \"titleColor\": \"#000\", \"titleBGStartColor\": \"#FF6F60\", \"titleBGEndColor\": \"#FFFF63\", \"clearFX\": 0, \"isCountingDown\": false, \"isAlarmPlayed\": false, \"isTodo\": false, \"dateTime\": 0, \"timeType\": 0, \"alarmType\": 0, \"timer\": 0.0, \"customizePath\": \"\", \"isChangeCustomize\": true, \"countdownTime\": 60.0}]}";
     private void Awake()
     {
         if (Instance == null)
@@ -61,6 +65,10 @@ public class LoadAllData : MonoBehaviour
         {
             Destroy(Instance);
         }
+
+        // 检查文件并创建初始内容
+        CheckAndCreateFile("Data/ClassifyButtonManagerData.json", classifyButtonInitialJson);
+        CheckAndCreateFile("Data/TodoManagerData.json", todoManagerInitialJson);
     }
 
     void Start()
@@ -68,16 +76,44 @@ public class LoadAllData : MonoBehaviour
         LoadDataFromJson();
     }
 
+    void CheckAndCreateFile(string filePath, string initialContent)
+    {
+        string fullPath = Path.Combine(Application.persistentDataPath, filePath);
+        string directoryPath = Path.GetDirectoryName(fullPath);
+
+        // 如果目录不存在，创建目录
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        // 如果文件不存在，创建文件并写入初始内容
+        if (!File.Exists(fullPath))
+        {
+            File.WriteAllText(fullPath, initialContent);
+        }
+    }
+
     // 从JSON文件加载数据
     void LoadDataFromJson()
     {
-        string classifyButtonJson = File.ReadAllText("Assets/Data/ClassifyButtonManagerData.json");
-        string todoManagerJson = File.ReadAllText("Assets/Data/TodoManagerData.json");
+        string classifyButtonPath = Path.Combine(Application.persistentDataPath, classifyADD);
+        string todoManagerPath = Path.Combine(Application.persistentDataPath, todoADD);
 
-        classifyButtonManagerDatas = JsonUtility.FromJson<Wrapper<ClassifyButtonManagerData>>(classifyButtonJson).items;
-        todoManagerDatas = JsonUtility.FromJson<Wrapper<TodoManagerData>>(todoManagerJson).items;
+        if (File.Exists(classifyButtonPath) && File.Exists(todoManagerPath))
+        {
+            string classifyButtonJson = File.ReadAllText(classifyButtonPath);
+            string todoManagerJson = File.ReadAllText(todoManagerPath);
 
-        CreateClassifyButtons();
+            classifyButtonManagerDatas = JsonUtility.FromJson<Wrapper<ClassifyButtonManagerData>>(classifyButtonJson).items;
+            todoManagerDatas = JsonUtility.FromJson<Wrapper<TodoManagerData>>(todoManagerJson).items;
+
+            CreateClassifyButtons();
+        }
+        else
+        {
+            TipWindowManager.Instance.ShowTip("未能加载JSON文件，请确保文件存在", Color.red);
+        }
     }
 
     /// <summary>
@@ -244,8 +280,11 @@ public class LoadAllData : MonoBehaviour
         string classifyButtonJson = JsonUtility.ToJson(new Wrapper<ClassifyButtonManagerData>(classifyButtonManagerDatas), true);
         string todoManagerJson = JsonUtility.ToJson(new Wrapper<TodoManagerData>(todoManagerDatas), true);
 
-        File.WriteAllText("Assets/Data/ClassifyButtonManagerData.json", classifyButtonJson);
-        File.WriteAllText("Assets/Data/TodoManagerData.json", todoManagerJson);
+        string classifyButtonPath = Path.Combine(Application.persistentDataPath, classifyADD);
+        string todoManagerPath = Path.Combine(Application.persistentDataPath, todoADD);
+
+        File.WriteAllText(classifyButtonPath, classifyButtonJson);
+        File.WriteAllText(todoManagerPath, todoManagerJson);
     }
 
     /// <summary>
