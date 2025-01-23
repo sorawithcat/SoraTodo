@@ -67,12 +67,12 @@ public class SetClearFX : MonoBehaviour
 
     public void CloseWindow()
     {
-        PanleWindowManager.Instance.ClosePanle(canvasGroup);
+        PanleWindowManager.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
     {
-        PanleWindowManager.Instance.OpenPanle(canvasGroup);
+        PanleWindowManager.OpenPanle(canvasGroup);
     }
 }

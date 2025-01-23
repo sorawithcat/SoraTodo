@@ -199,13 +199,13 @@ public class SetAlarm : MonoBehaviour
     public void CloseWindow()
     {
         audioSource.Stop();
-        PanleWindowManager.Instance.ClosePanle(canvasGroup);
+        PanleWindowManager.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
 
     }
     public void OpenWindow()
     {
-        PanleWindowManager.Instance.OpenPanle(canvasGroup);
+        PanleWindowManager.OpenPanle(canvasGroup);
         TipWindowManager.Instance.ShowTip("自定义铃声不建议导入过大的音频资源");
 
     }

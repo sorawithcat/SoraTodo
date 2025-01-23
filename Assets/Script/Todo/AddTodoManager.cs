@@ -253,13 +253,13 @@ public class AddTodoManager : MonoBehaviour
     // 关闭窗口的动画
     public void CloseWindow()
     {
-        PanleWindowManager.Instance.ClosePanle(canvasGroup);
+        PanleWindowManager.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
     }
 
     // 打开窗口的动画
     public void OpenWindow()
     {
-        PanleWindowManager.Instance.OpenPanle(canvasGroup);
+        PanleWindowManager.OpenPanle(canvasGroup);
     }
 }

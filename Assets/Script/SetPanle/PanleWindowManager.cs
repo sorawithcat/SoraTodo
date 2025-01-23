@@ -1,31 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PanleWindowManager : MonoBehaviour
+public class PanleWindowManager
 {
-    public static PanleWindowManager Instance;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(Instance);
-        }
-    }
 
-    public void OpenPanle(CanvasGroup canvasGroup)
+    public static void OpenPanle(CanvasGroup canvasGroup)
     {
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
     }
 
-    public void ClosePanle(CanvasGroup canvasGroup)
+    public static void ClosePanle(CanvasGroup canvasGroup)
     {
         canvasGroup.alpha = 0f;
         canvasGroup.blocksRaycasts = false;
