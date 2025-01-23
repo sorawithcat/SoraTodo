@@ -158,7 +158,7 @@ public static class FolderBrowserHelper
     {
         try
         {
-            OpenFileName openFileName = new OpenFileName();
+            OpenFileName openFileName = new();
             openFileName.structSize = Marshal.SizeOf(openFileName);
             openFileName.filter = filter;
             openFileName.file = new string(new char[256]);
@@ -190,17 +190,19 @@ public static class FolderBrowserHelper
     {
         try
         {
-            OpenDialogDir ofn2 = new OpenDialogDir();
-            ofn2.pszDisplayName = new string(new char[2048]);
-            ofn2.lpszTitle = dialogtitle;
-            ofn2.ulFlags = 0x00000040;
+            OpenDialogDir ofn2 = new()
+            {
+                pszDisplayName = new string(new char[2048]),
+                lpszTitle = dialogtitle,
+                ulFlags = 0x00000040
+            };
             IntPtr pidlPtr = SHBrowseForFolder(ofn2);
 
             char[] charArray = new char[2048];
             Array.Fill(charArray, '\0');
 
             SHGetPathFromIDList(pidlPtr, charArray);
-            string res = new string(charArray);
+            string res = new(charArray);
             return res.Substring(0, res.IndexOf('\0'));
         }
         catch (Exception e)

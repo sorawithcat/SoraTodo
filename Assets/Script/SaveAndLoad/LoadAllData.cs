@@ -156,7 +156,7 @@ public class LoadAllData : MonoBehaviour
         todoManager.isChangeCustomize = todoData.isChangeCustomize;
         todoManager.countdownTime = todoData.countdownTime;
         todoManager.todoID = todoData.todoID;
-        DateTime dateTime = new DateTime(todoData.dateTime);
+        DateTime dateTime = new(todoData.dateTime);
 
         TimerManager.Instance.UpdateTodoTimerSetting(todoManager,
             (TimingType)todoData.timeType,
@@ -174,8 +174,7 @@ public class LoadAllData : MonoBehaviour
     /// <returns></returns>
     Color HexToColor(string hex)
     {
-        Color color;
-        if (ColorUtility.TryParseHtmlString(hex, out color))
+        if (ColorUtility.TryParseHtmlString(hex, out Color color))
         {
             return color;
         }
@@ -257,8 +256,10 @@ public class LoadAllData : MonoBehaviour
     public void AddTodoManager(TodoManagerData newData, int classifyId)
     {
         // 添加新的 Todo 数据
-        var list = new List<TodoManagerData>(todoManagerDatas);
-        list.Add(newData);
+        var list = new List<TodoManagerData>(todoManagerDatas)
+        {
+            newData
+        };
         todoManagerDatas = list.ToArray();
 
         // 更新分类按钮的 todos 数组
@@ -266,8 +267,10 @@ public class LoadAllData : MonoBehaviour
         {
             if (classifyButton.siblingIndex == classifyId)
             {
-                List<string> updatedTodos = new List<string>(classifyButton.todos);
-                updatedTodos.Add(newData.todoID);  // 添加新待办事项 ID
+                List<string> updatedTodos = new(classifyButton.todos)
+                {
+                    newData.todoID  // 添加新待办事项 ID
+                };
                 classifyButton.todos = updatedTodos.ToArray();  // 更新分类中的 todos 数组
                 break;
             }
@@ -291,7 +294,7 @@ public class LoadAllData : MonoBehaviour
         {
             if (classifyButton.siblingIndex == classifyId)
             {
-                List<string> updatedTodos = new List<string>();
+                List<string> updatedTodos = new();
                 foreach (var todoId in classifyButton.todos)
                 {
                     if (todoId != id)
@@ -314,8 +317,10 @@ public class LoadAllData : MonoBehaviour
     /// <param name="newData"></param>
     public void AddClassifyButton(ClassifyButtonManagerData newData)
     {
-        var list = new List<ClassifyButtonManagerData>(classifyButtonManagerDatas);
-        list.Add(newData);
+        var list = new List<ClassifyButtonManagerData>(classifyButtonManagerDatas)
+        {
+            newData
+        };
         classifyButtonManagerDatas = list.ToArray();
         RecalculateSiblingIndexes(classifyButtonManagerDatas);  // 重新计算 siblingIndex
         SaveDataToJson(); // 保存到JSON文件

@@ -3,11 +3,11 @@ using System.IO;
 using UnityEngine;
 public class FileDataHandler
 {
-    private string dataDirPath = "";
-    private string dataFileName = "";
+    private readonly string dataDirPath = "";
+    private readonly string dataFileName = "";
 
-    private bool encryptData = false;
-    private string codeWord = "sorawithcat";
+    private readonly bool encryptData = false;
+    private readonly string codeWord = "sorawithcat";
     public FileDataHandler(string _dataDirPath, string _dataFileName, bool _encryptData)
     {
         dataDirPath = _dataDirPath;
@@ -27,13 +27,9 @@ public class FileDataHandler
                 dataToStroe = EncryptDecrpyt(dataToStroe);
             }
 
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.Write(dataToStroe);
-                }
-            }
+            using FileStream stream = new(fullPath, FileMode.Create);
+            using StreamWriter writer = new(stream);
+            writer.Write(dataToStroe);
         }
         catch (Exception e)
         {
@@ -53,12 +49,10 @@ public class FileDataHandler
             try
             {
                 string dataToLoad = "";
-                using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                using (FileStream stream = new(fullPath, FileMode.Open))
                 {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        dataToLoad = reader.ReadToEnd();
-                    }
+                    using StreamReader reader = new(stream);
+                    dataToLoad = reader.ReadToEnd();
                 }
                 if (encryptData)
                 {

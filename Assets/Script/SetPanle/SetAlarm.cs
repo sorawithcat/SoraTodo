@@ -211,8 +211,6 @@ public class SetAlarm : MonoBehaviour
     }
     public long ConvertDateTimeToSeconds(DateTime _datetime)
     {
-        long totalSeconds = 0;
-
         long year = _datetime.Year;
         long month = _datetime.Month;
         long day = _datetime.Day;
@@ -220,7 +218,7 @@ public class SetAlarm : MonoBehaviour
         long minute = _datetime.Minute;
         long second = _datetime.Second;
 
-        totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
+        long totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
         return totalSeconds;
     }
 
@@ -270,7 +268,7 @@ public class SetAlarm : MonoBehaviour
             }
         }
 
-        List<int> longs = new List<int> { year, month, day, hour, minute, second };
+        List<int> longs = new() { year, month, day, hour, minute, second };
         return longs;
     }
     /// <summary>
@@ -347,7 +345,7 @@ public class SetAlarm : MonoBehaviour
         long seconds = totalSeconds;
 
         // 拼接字符串（没有空格）
-        List<string> timeParts = new List<string>();
+        List<string> timeParts = new();
 
         if (years > 0)
             timeParts.Add(years + "year");

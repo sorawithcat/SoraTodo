@@ -159,13 +159,6 @@ public class AddTodoManager : MonoBehaviour
                 break;
         }
     }
-    ///// <summary>
-    ///// 更新待办索引
-    ///// </summary>
-    //public void UpdateTodoSiblingIndex(TodoManager _todo)
-    //{
-    //    _todo.siblingIndex = _todo.transform.GetSiblingIndex();
-    //}
     /// <summary>
     /// 更新分类索引
     /// </summary>
@@ -183,7 +176,7 @@ public class AddTodoManager : MonoBehaviour
 
         if (setTransform.GetComponent<ClassifyButtonManager>().isOpen == -1)
         {
-            setTransform.GetComponent<ClassifyButtonManager>().clickToHandoff();
+            setTransform.GetComponent<ClassifyButtonManager>().ClickToHandoff();
         }
         GameObject newTodo = Instantiate(todoPrefab, setTransform.GetComponentInChildren<TodoList>().transform);
         newTodo.transform.SetParent(setTransform.GetComponentInChildren<TodoList>().transform, false);
@@ -219,7 +212,7 @@ public class AddTodoManager : MonoBehaviour
         }
         string todoID = LoadAllData.Instance.GenerateUniqueId();
         todoManager.todoID = todoID;
-        TodoManagerData todoManagerData = new TodoManagerData()
+        TodoManagerData todoManagerData = new()
         {
             todoID = todoID,
             title = title.text,

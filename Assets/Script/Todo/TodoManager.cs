@@ -66,10 +66,10 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private Shader useShader;
 
     [Header("渐变的开始颜色")]
-    public Color startColor = new Color(1f, 0.435f, 0.376f, 1f);
+    public Color startColor = new(1f, 0.435f, 0.376f, 1f);
 
     [Header("渐变的结束颜色")]
-    public Color endColor = new Color(143f / 255f, 0f / 255f, 16f / 255f, 1f);
+    public Color endColor = new(143f / 255f, 0f / 255f, 16f / 255f, 1f);
 
     [Header("完成效果")]
     public ClearFX clearFX;
@@ -82,7 +82,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] public float countdownTime = 60;
+    public float countdownTime = 60;
     public DateTime dateTime;
     private AudioClip alarmClip;
     public float timer;
@@ -112,8 +112,10 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // 渐变shader设置
         if (bg.TryGetComponent<Image>(out var image))
         {
-            newMaterial = new Material(useShader);
-            newMaterial.renderQueue = 5000;
+            newMaterial = new Material(useShader)
+            {
+                renderQueue = 5000
+            };
             if (newMaterial.shader != null)
             {
                 newMaterial.SetColor("_GradientStartColor", startColor);
@@ -232,7 +234,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (timer <= 0f && !isAlarmPlayed)
             {
                 //想了很久，结果就是个延迟激活就能解决的问题）
-                Invoke("PlayAlarmSound", 0.1f);
+                Invoke(nameof(PlayAlarmSound), 0.1f);
                 isAlarmPlayed = true;
 
                 timingType = TimingType.None;
@@ -293,7 +295,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         RightMenuManager.Instance.HideRightMenu();
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "todoThing")
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("todoThing"))
         {
             if (eventData.button == 0)
             {
@@ -308,7 +310,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "todoThing")
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("todoThing"))
         {
             if (eventData.button == 0)
             {
@@ -366,8 +368,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public long ConvertDateTimeToSeconds(DateTime _datetime)
     {
-        long totalSeconds = 0;
-
         long year = _datetime.Year;
         long month = _datetime.Month;
         long day = _datetime.Day;
@@ -375,7 +375,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         long minute = _datetime.Minute;
         long second = _datetime.Second;
 
-        totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
+        long totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
         return totalSeconds;
     }
 

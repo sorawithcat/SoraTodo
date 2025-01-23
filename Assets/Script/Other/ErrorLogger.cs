@@ -8,8 +8,8 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
     public static ErrorLogger Instance;
     private string logDirectory;
     private Dictionary<string, DateTime> lastErrorTimes;
-    private TimeSpan errorRepeatThreshold = TimeSpan.FromMinutes(1); // 如果错误重复发生的间隔超过1分钟，认为是新的错误
-    private TimeSpan logRetentionThreshold = TimeSpan.FromDays(7); // 设置日志保留期限，默认7天
+    private readonly TimeSpan errorRepeatThreshold = TimeSpan.FromMinutes(1); // 如果错误重复发生的间隔超过1分钟，认为是新的错误
+    private readonly TimeSpan logRetentionThreshold = TimeSpan.FromDays(7); // 设置日志保留期限，默认7天
 
     private bool autoClearLogs = false;
     void Awake()
@@ -69,7 +69,7 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
             string logFilePath = Path.Combine(logDirectory, date + "_error_log.txt");
 
             // 写入新错误信息
-            using (StreamWriter writer = new StreamWriter(logFilePath, true))
+            using (StreamWriter writer = new(logFilePath, true))
             {
                 writer.WriteLine("Timestamp: " + DateTime.Now.ToString("HH:mm:ss"));
                 writer.WriteLine("Log Type: " + type.ToString());

@@ -35,10 +35,10 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject menuBase;
     [Header("按钮列表")]
     [SerializeField] private GameObject menuButtonList;
-    private float offsetX = 10;
+    private readonly float offsetX = 10;
 
-    private List<Action> currentActions = new List<Action>();
-    private List<string> currentNames = new List<string>();
+    private List<Action> currentActions = new();
+    private List<string> currentNames = new();
 
     private void Awake()
     {
@@ -64,8 +64,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         {
             foreach (Transform grandChild in child)
             {
-                TodoManager todoManager = grandChild.GetComponent<TodoManager>();
-                if (todoManager != null)
+                if (grandChild.TryGetComponent<TodoManager>(out var todoManager))
                 {
                     currentClickChildsThing.Add(todoManager.gameObject.transform);
                 }
@@ -78,7 +77,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         ShowToolTip(currentNames, currentActions);
     }
 
-    private SerializableDictionary<MenuTags, List<string>> menuButtonNames = new SerializableDictionary<MenuTags, List<string>>()
+    private readonly SerializableDictionary<MenuTags, List<string>> menuButtonNames = new()
     {
         {
             MenuTags.None,new List<string>()
@@ -124,7 +123,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         },
     };
 
-    private SerializableDictionary<MenuTags, List<Action>> menuFuns = new SerializableDictionary<MenuTags, List<Action>>()
+    private readonly SerializableDictionary<MenuTags, List<Action>> menuFuns = new()
     {
         {
             MenuTags.None,new List<Action>()
@@ -174,7 +173,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     //无效
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "menuThing")
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("menuThing"))
         {
             //左键-隐藏右键菜单
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -198,7 +197,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         float maxWidth = 100f;//最大宽度，最低为100f
         for (int i = 0; i < numbs; i++)
         {
-            string name = _names[i] != null ? _names[i] : "快去添加菜单名";
+            string name = _names[i] ?? "快去添加菜单名";
             GameObject currentPrefab = Instantiate(rightMenuButtonPrefab, menuButtonList.transform);
             Button newButton = currentPrefab.GetComponentInChildren<Button>();
             newButton.GetComponentInChildren<TextMeshProUGUI>().text = name;
@@ -225,9 +224,8 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void ChangeRightMenuPosition()
     {
-        Vector2 mousePosition;
         RectTransform rectTransform = transform.GetComponent<RectTransform>();
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(toolTipCanvas.transform as RectTransform, Input.mousePosition, null, out mousePosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(toolTipCanvas.transform as RectTransform, Input.mousePosition, null, out Vector2 mousePosition);
         mousePosition = new Vector2(mousePosition.x - 200, mousePosition.y - 400);
         mousePosition.x = Mathf.Clamp(mousePosition.x, -732 + rectTransform.rect.width, 739 - rectTransform.rect.width);
         mousePosition.y = Mathf.Clamp(mousePosition.y, -902 + rectTransform.rect.height, -367 - rectTransform.rect.height);

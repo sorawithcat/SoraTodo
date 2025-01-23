@@ -16,9 +16,6 @@ public class SwitchThemesManager : MonoBehaviour
 {
 
     //太阳和月亮 主题 ☼○
-    void Start()
-    {
 
-    }
 
 }

@@ -30,7 +30,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        Invoke("Init", 0.1f);
+        Invoke(nameof(Init), 0.1f);
     }
 
     private void Init()
@@ -38,13 +38,13 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
         thisSpacing = todoList.GetComponent<RectTransform>().rect.height;
         customVerticalLayoutGroup = buttonsList.GetComponent<CustomVerticalLayoutGroup>();
         todoListRectTransform = todoList.GetComponent<RectTransform>();
-        clickToHandoff();
+        ClickToHandoff();
     }
 
     /// <summary>
     /// 点击后切换展开和收缩
     /// </summary>
-    public void clickToHandoff()
+    public void ClickToHandoff()
     {
         if (!isLerpChange)
         {
@@ -78,7 +78,7 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
                 StartCoroutine(LerpTodoListPosition(0, todoListRectTransform.anchoredPosition.y));
 
                 // 延迟隐藏 todoList
-                Invoke("SetFalseTodoList", changeSpeed);
+                Invoke(nameof(SetFalseTodoList), changeSpeed);
             }
             isOpen *= -1;
         }
@@ -139,12 +139,12 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "classifyButtonText")
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("classifyButtonText"))
         {
             //分类标签左键
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                clickToHandoff();
+                ClickToHandoff();
                 RightMenuManager.Instance.HideRightMenu();
 
             }

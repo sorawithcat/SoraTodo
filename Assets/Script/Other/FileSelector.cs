@@ -86,7 +86,7 @@ public class FileSelector : MonoBehaviour
             try
             {
                 // 获取文件夹和文件
-                DirectoryInfo directoryInfo = new DirectoryInfo(path);
+                DirectoryInfo directoryInfo = new(path);
                 DirectoryInfo[] directories = directoryInfo.GetDirectories();
                 FileInfo[] files = directoryInfo.GetFiles();
 
@@ -275,7 +275,7 @@ public class FileSelector : MonoBehaviour
     // 获取路径建议（例如：输入路径的一部分，提供补全建议）
     List<string> GetPathSuggestions(string input)
     {
-        List<string> suggestions = new List<string>();
+        List<string> suggestions = new();
 
         // 获取所有驱动器
         DriveInfo[] drives = DriveInfo.GetDrives();

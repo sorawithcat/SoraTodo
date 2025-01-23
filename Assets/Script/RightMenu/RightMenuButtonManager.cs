@@ -9,16 +9,10 @@ public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
 {
     [Header("按钮")]
     [SerializeField] private Button button;
-    private TextMeshProUGUI buttonText;
-    private Image buttonImage;
     public int buttonID;
     public List<Action> actions;
     private Action action = null;
-    private void Start()
-    {
-        buttonText = button.GetComponent<TextMeshProUGUI>();
-        buttonImage = button.GetComponent<Image>();
-    }
+
     private void Update()
     {
         if (actions.Count > 0 && action == null)
@@ -34,7 +28,7 @@ public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "menuThing")
+        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("menuThing"))
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {

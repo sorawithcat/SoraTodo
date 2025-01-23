@@ -6,7 +6,7 @@ public class TimerManager : MonoBehaviour
 {
     public static TimerManager Instance;
     [SerializeField] private Transform todoFather;
-    public SerializableDictionary<ClassifyButtonManager, List<TodoManager>> classifyToTodoManagers = new SerializableDictionary<ClassifyButtonManager, List<TodoManager>>();
+    public SerializableDictionary<ClassifyButtonManager, List<TodoManager>> classifyToTodoManagers = new();
     private void Awake()
     {
         if (Instance == null)
@@ -20,7 +20,7 @@ public class TimerManager : MonoBehaviour
     }
     private void Start()
     {
-        Invoke("Init", 0.3f);
+        Invoke(nameof(Init), 0.3f);
     }
     public void Init()
     {
@@ -38,8 +38,7 @@ public class TimerManager : MonoBehaviour
         foreach (Transform child in parent)
         {
             // 查找 ClassifyButtonManager 组件
-            ClassifyButtonManager classifyButtonManager = child.GetComponent<ClassifyButtonManager>();
-            if (classifyButtonManager != null)
+            if (child.TryGetComponent<ClassifyButtonManager>(out var classifyButtonManager))
             {
                 // 如果找到了 ClassifyButtonManager，初始化该分类的 TodoManager 列表
                 if (!classifyToTodoManagers.ContainsKey(classifyButtonManager))
@@ -80,7 +79,7 @@ public class TimerManager : MonoBehaviour
                         ClassifyButtonManager classifyButtonManage = GetKeyForTodoManager(todoManager);
                         if (classifyButtonManage != null && classifyButtonManage.isOpen == -1)
                         {
-                            classifyButtonManage.clickToHandoff();
+                            classifyButtonManage.ClickToHandoff();
                         }
                     }
                 }

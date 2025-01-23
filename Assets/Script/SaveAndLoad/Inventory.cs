@@ -11,16 +11,16 @@ public class Inventory : MonoBehaviour, ISaveManger
 
     [Header("数据库")]
     public List<ThemeColor> themeDataBase;
-    public SerializableDictionary<string, TodoManager> loadedTodds = new SerializableDictionary<string, TodoManager>();
-    public SerializableDictionary<string, ClassifyButtonManager> loadedClassifyButtons = new SerializableDictionary<string, ClassifyButtonManager>();
+    public SerializableDictionary<string, TodoManager> loadedTodds = new();
+    public SerializableDictionary<string, ClassifyButtonManager> loadedClassifyButtons = new();
     /// <summary>
     /// 分类的所属待办guid
     /// </summary>
-    public SerializableDictionary<string, List<string>> classifyButtonSons = new SerializableDictionary<string, List<string>>();
+    public SerializableDictionary<string, List<string>> classifyButtonSons = new();
     /// <summary>
     /// 分类的guid
     /// </summary>
-    public List<string> classifyButtonGuid = new List<string>();
+    public List<string> classifyButtonGuid = new();
 
     private void Awake()
     {
@@ -37,7 +37,6 @@ public class Inventory : MonoBehaviour, ISaveManger
     private void Start()
     {
         FillUpItemDataBase();
-
     }
 
     /// <summary>
@@ -83,11 +82,12 @@ public class Inventory : MonoBehaviour, ISaveManger
         themeDataBase = new List<ThemeColor>(GetThemeDataBase());
     }
 
-
+    private readonly List<ThemeColor> itemDataBase = new();
+    
     // 加载所有主题颜色数据
     public List<ThemeColor> GetThemeDataBase()
     {
-        List<ThemeColor> itemDataBase = new List<ThemeColor>();
+        itemDataBase.Clear();
         ThemeColor[] themeColors = Resources.LoadAll<ThemeColor>("Themes");
 
         foreach (var themeColor in themeColors)

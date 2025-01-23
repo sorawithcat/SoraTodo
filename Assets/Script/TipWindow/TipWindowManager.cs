@@ -12,7 +12,7 @@ public class TipWindowManager : MonoBehaviour
     [SerializeField] private GameObject tipWindowFather;  // 父容器，用于显示提示框
 
     private Color defaultTextColor = Color.black;  // 默认文本颜色
-    private Queue<GameObject> tipWindowPool = new Queue<GameObject>();  // 对象池
+    private readonly Queue<GameObject> tipWindowPool = new();  // 对象池
 
     private void Awake()
     {
@@ -64,8 +64,7 @@ public class TipWindowManager : MonoBehaviour
             textComponent.color = Color.black;
         }
 
-        var button = tipWindow.GetComponent<Button>();
-        if (button != null)
+        if (tipWindow.TryGetComponent<Button>(out var button))
         {
             button.onClick.RemoveAllListeners();
         }
@@ -98,8 +97,10 @@ public class TipWindowManager : MonoBehaviour
 
         if (autoCV)
         {
-            TextEditor te = new TextEditor();
-            te.text = cvString == "" ? message : cvString;
+            TextEditor te = new()
+            {
+                text = cvString == "" ? message : cvString
+            };
             te.SelectAll();
             te.Copy();
             ShowTip("已复制文本：" + te.text);
@@ -166,8 +167,10 @@ public class TipWindowManager : MonoBehaviour
     {
         if (_cvString != "")
         {
-            TextEditor te = new TextEditor();
-            te.text = _cvString;
+            TextEditor te = new()
+            {
+                text = _cvString
+            };
             te.SelectAll();
             te.Copy();
             ShowTip("已复制文本：" + te.text);
