@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour, ISaveManger
     }
 
     private readonly List<ThemeColor> itemDataBase = new();
-    
+
     // 加载所有主题颜色数据
     public List<ThemeColor> GetThemeDataBase()
     {

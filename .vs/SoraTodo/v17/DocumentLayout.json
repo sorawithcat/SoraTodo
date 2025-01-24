@@ -7,26 +7,30 @@
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\mousehover.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\mainpanle\\showthing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\showthing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\classifybuttonmanager\\addclassifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\classifybuttonmanager\\addclassifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\ClassifyButtonManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\TodoManagerData.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\todo\\addtodomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\classifybuttonmanager\\addclassifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\classifybuttonmanager\\addclassifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\classifybuttonmanager\\classifybuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\customverticallayoutgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,7 +41,7 @@
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\rightmenu\\rightmenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\setpanle\\setcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\setpanle\\setcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\setpanle\\setcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -64,8 +68,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShowThing.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\ShowThing.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\ShowThing.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\ShowThing.cs",
+              "RelativeToolTip": "Assets\\Script\\mainpanle\\ShowThing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-24T04:48:15.087Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -74,33 +91,33 @@
               "RelativeDocumentMoniker": "Assets\\Script\\Other\\MouseHover.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\MouseHover.cs",
               "RelativeToolTip": "Assets\\Script\\Other\\MouseHover.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwv1IAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvx0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T04:34:35.047Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "CustomVerticalLayoutGroup.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
               "RelativeToolTip": "Assets\\Script\\Other\\CustomVerticalLayoutGroup.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAQwHkAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAwHkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T03:51:31.412Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "ClassifyButtonManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "RelativeToolTip": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAowDcAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAkwDcAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T04:01:05.924Z",
               "EditorCaption": ""
@@ -113,27 +130,27 @@
               "RelativeDocumentMoniker": "Assets\\Script\\Todo\\AddTodoManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Todo\\AddTodoManager.cs",
               "RelativeToolTip": "Assets\\Script\\Todo\\AddTodoManager.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAQwNcAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T03:24:33.334Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "AddClassifyButtonManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\AddClassifyButtonManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ClassifyButtonManager\\AddClassifyButtonManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\AddClassifyButtonManager.cs",
               "RelativeToolTip": "Assets\\Script\\ClassifyButtonManager\\AddClassifyButtonManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T03:24:16.964Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "SetColor.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\SetColor.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SetPanle\\SetColor.cs",
@@ -146,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PanleWindowManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\PanleWindowManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SetPanle\\PanleWindowManager.cs",
@@ -159,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "RightMenuManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\RightMenu\\RightMenuManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\RightMenu\\RightMenuManager.cs",
@@ -172,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "SaveManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
@@ -185,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "TodoManagerData.json",
               "DocumentMoniker": "C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\TodoManagerData.json",
               "ToolTip": "C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\TodoManagerData.json",
@@ -196,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "ClassifyButtonManagerData.json",
               "DocumentMoniker": "C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\ClassifyButtonManagerData.json",
               "ToolTip": "C:\\Users\\31537\\AppData\\LocalLow\\sorawithcat\\SoraTodo\\Data\\ClassifyButtonManagerData.json",
@@ -207,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "TipWindowManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\TipWindow\\TipWindowManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\TipWindow\\TipWindowManager.cs",
@@ -220,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ErrorLogger.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\ErrorLogger.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Other\\ErrorLogger.cs",
@@ -233,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "LoadAllData.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",

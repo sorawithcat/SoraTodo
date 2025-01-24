@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -41,7 +40,7 @@ public class AddClassifyButtonManager : MonoBehaviour
         classifyButtonManager.buttonsList = classifyButtonFather;
         classifyButtonManager.todoList = newClass.GetComponentInChildren<TodoList>().gameObject;
         List<ClassifyButtonManager> classifyButtons = classifyButtonFather.GetComponentsInChildren<ClassifyButtonManager>().ToList();
-        for(int i = 0;i<classifyButtons.Count;i++)
+        for (int i = 0; i < classifyButtons.Count; i++)
         {
             classifyButtons[i].siblingIndex = i;
             classifyButtons[i].thisID = i;

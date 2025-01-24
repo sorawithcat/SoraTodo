@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using System.IO;
 using System;
+using System.IO;
 using UnityEngine;
-using System.Diagnostics;
 
 public class ErrorLogger : MonoBehaviour, ISaveManger
 {
