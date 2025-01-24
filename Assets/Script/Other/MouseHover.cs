@@ -25,8 +25,16 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (targetImage != null)
         {
             // 初始化时，物体的宽度设为最小值
+            if (this.GetComponent<TextMeshProUGUI>().text == "Main")
+            {
+                currentClickedObject = this;
+                this.isBeingClicked = true;
+                return;
+            }
             targetImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, minWidth);
         }
+
+
     }
 
     void Update()
@@ -72,6 +80,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     // 鼠标点击时，设置当前物体的宽度为最大值，并锁定该状态
     public void OnPointerClick(PointerEventData eventData)
     {
+        ShowThing.Instance.Show(this.gameObject.transform.parent.GetSiblingIndex());
         if (this.GetComponent<TextMeshProUGUI>().text == "Github")
         {
             Application.OpenURL("https://github.com/sorawithcat/SoraTodo");
