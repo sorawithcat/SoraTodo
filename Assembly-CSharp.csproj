@@ -72,6 +72,7 @@
     <Compile Include="Assets\Script\Todo\AllTodoManager.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
+    <Compile Include="Assets\Script\ClassifyButtonManager\AddClassifyButtonManager.cs" />
     <Compile Include="Assets\Script\SetPanle\SetClearFX.cs" />
     <Compile Include="Assets\Script\SetPanle\PanleWindowManager.cs" />
     <Compile Include="Assets\Script\SO\SwitchThemesManager.cs" />

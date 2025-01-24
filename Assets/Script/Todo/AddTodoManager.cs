@@ -11,8 +11,6 @@ public class AddTodoManager : MonoBehaviour
 
     [HideInInspector] public Transform setTransform;
 
-    [Header("分类按钮预制体")]
-    [SerializeField] private GameObject classifyButtonPrefab;
     [Header("分类按钮父节点")]
     [SerializeField] private GameObject classifyButtonFather;
     [Header("Todo预制体")]
@@ -236,11 +234,6 @@ public class AddTodoManager : MonoBehaviour
         LoadAllData.Instance.AddTodoManager(todoManagerData, setTransform.GetComponent<ClassifyButtonManager>().siblingIndex);
         TimerManager.Instance.RegisterTodoManager(todoManager, setTransform.GetComponent<ClassifyButtonManager>());
         CloseWindow();
-    }
-
-    public void AddClassify(Transform _setTransform)
-    {
-        GameObject newClassify = Instantiate(classifyButtonPrefab, classifyButtonFather.transform);
     }
 
     // 关闭窗口的动画

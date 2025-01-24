@@ -121,8 +121,8 @@ public class CustomVerticalLayoutGroup : LayoutGroup
     public void AddChild(RectTransform newChild)
     {
         //newChild.SetParent(transform);
-        rectChildren.Add(newChild); //更新rectChildren列表
-
+        rectChildren.Insert(newChild.gameObject.GetComponent<ClassifyButtonManager>().siblingIndex, newChild); //更新rectChildren列表
+        childSpacings.Insert(newChild.gameObject.GetComponent<ClassifyButtonManager>().siblingIndex, 0);
         // 重新计算布局
         SetLayoutVertical();
     }

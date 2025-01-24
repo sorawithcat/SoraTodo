@@ -99,7 +99,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "统一设置所有子待办的完成效果",
                 "添加新待办",
                 "添加新分类"
-
             }
         },
         {
@@ -130,7 +129,6 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
             {
                 DefaultFun,
                 DefaultFun
-
             }
         },
         {
@@ -145,8 +143,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetChildsAlarm,
                 SetChildsClearFX,
                 AddToDo,
-                DefaultFun
-
+                AddClass
             }
         },
         {
@@ -353,7 +350,12 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
         AddTodoManager.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
-
+    public static void AddClass()
+    {
+        AddClassifyButtonManager.Instance.setTransform = currentClickThing;
+        AddClassifyButtonManager.Instance.OpenWindow();
+        TodoWindowManager.Instance.CloseWindow();
+    }
     #endregion
 
     #region menuThing

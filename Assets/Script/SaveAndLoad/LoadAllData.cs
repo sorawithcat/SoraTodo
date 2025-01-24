@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -356,10 +357,17 @@ public class LoadAllData : MonoBehaviour
     /// <param name="newData"></param>
     public void AddClassifyButton(ClassifyButtonManagerData newData)
     {
-        var list = new List<ClassifyButtonManagerData>(classifyButtonManagerDatas)
+        var list = new List<ClassifyButtonManagerData>(classifyButtonManagerDatas);
+        int insertIndex = newData.siblingIndex;
+        if (insertIndex >= 0 && insertIndex <= list.Count)
         {
-            newData
-        };
+            list.Insert(insertIndex, newData);
+        }
+        else
+        {
+            list.Add(newData);
+        }
+
         classifyButtonManagerDatas = list.ToArray();
         RecalculateSiblingIndexes(classifyButtonManagerDatas);  // 重新计算 siblingIndex
         SaveDataToJson(); // 保存到JSON文件

@@ -27,7 +27,7 @@ public class SetColor : MonoBehaviour
     [SerializeField] private GameObject blueBox;
     [SerializeField] private GameObject alphaBox;
     [SerializeField] private GameObject allBox;
-
+    [SerializeField]private GameObject setColorPanle;
     // 存储各个颜色的数值
     private float redValue = 0f;
     private float greenValue = 0f;
@@ -53,7 +53,7 @@ public class SetColor : MonoBehaviour
     void Start()
     {
         UpdateAllBoxes(); // 初始化设置颜色
-        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup = setColorPanle.GetComponent<CanvasGroup>();
     }
 
     void Update()
