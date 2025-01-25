@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Other\TodoWindowManager.cs" />
+    <Compile Include="Assets\Script\mainpanle\MainPanle.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\SaveManager.cs" />
     <Compile Include="Assets\Script\Other\FileSelector.cs" />
     <Compile Include="Assets\Script\SetPanle\SetColor.cs" />
@@ -70,7 +71,6 @@
     <Compile Include="Assets\Script\Other\OpenDialogFile.cs" />
     <Compile Include="Assets\Script\Todo\TimerManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ITodoData.cs" />
-    <Compile Include="Assets\Script\Todo\AllTodoManager.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\AddClassifyButtonManager.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script\Other\SliderToIntegerTextUpdater.cs" />
     <Compile Include="Assets\Script\Other\MouseHover.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\GameData.cs" />
+    <Compile Include="Assets\Script\mainpanle\alltodo\StepTextColor.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonManager.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\TodoList.cs" />
     <Compile Include="Assets\Script\RightMenu\RightMenuButtonManager.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\Script\windowSetting\WindowTransparent.cs" />
     <Compile Include="Assets\Script\Other\SerializableDictionary.cs" />
     <Compile Include="Assets\Script\SetPanle\SetAlarm.cs" />
+    <Compile Include="Assets\Script\Other\ColorGenerator.cs" />
     <Compile Include="Assets\Script\TipWindow\TipWindowManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\LoadAllData.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonListManager.cs" />

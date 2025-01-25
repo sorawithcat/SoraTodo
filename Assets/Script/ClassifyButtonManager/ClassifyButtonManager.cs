@@ -52,32 +52,21 @@ public class ClassifyButtonManager : MonoBehaviour, IPointerClickHandler
             if (isOpen == -1)
             {
                 todoList.SetActive(true);
-                // 扩展子物体间距
                 while (customVerticalLayoutGroup.childSpacings.Count <= thisID)
                 {
                     customVerticalLayoutGroup.childSpacings.Add(0);
                 }
-
-                // 使用 Lerp 平滑地改变buttonlist的间距
                 StartCoroutine(LerpButtonListSpacing(0, thisSpacing));
-
-                // 使用 Lerp 平滑地改变 RectTransform 的位置
                 StartCoroutine(LerpTodoListPosition(todoListRectTransform.anchoredPosition.y, 0));
             }
             else
             {
-                // 收缩子物体间距
                 while (customVerticalLayoutGroup.childSpacings.Count <= thisID)
                 {
                     customVerticalLayoutGroup.childSpacings.Add(0);
                 }
-                //改变子物体的间距
                 StartCoroutine(LerpButtonListSpacing(thisSpacing, 0));
-
-                //改变todo位置
                 StartCoroutine(LerpTodoListPosition(0, todoListRectTransform.anchoredPosition.y));
-
-                // 延迟隐藏 todoList
                 Invoke(nameof(SetFalseTodoList), changeSpeed);
             }
             isOpen *= -1;

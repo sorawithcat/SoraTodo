@@ -1,24 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum MenuTags
 {
-    [EnumMember(Value = "None")]
     None,
-    [EnumMember(Value = "todoThing")]
     todoThing,
-    [EnumMember(Value = "classifyButtonText")]
     classifyButtonText,
-    [EnumMember(Value = "menuThing")]
-    menuThing
 }
 
-public class RightMenuManager : MonoBehaviour, IPointerClickHandler
+public class RightMenuManager : MonoBehaviour
 {
     public static RightMenuManager Instance;
 
@@ -111,15 +104,7 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 "设置提醒",
                 "设置完成效果"
             }
-        },
-        {
-            MenuTags.menuThing,new List<string>()
-            {
-                "为什么你会想着右键右键菜单",
-                "这是没有任何意义的行为",
-                "我希望你明白这一点"
-            }
-        },
+        }
     };
 
     private readonly SerializableDictionary<MenuTags, List<Action>> menuFuns = new()
@@ -154,31 +139,10 @@ public class RightMenuManager : MonoBehaviour, IPointerClickHandler
                 SetGradientEndColor,
                 SetTitleColor,
                 SetTodoAlarm,
-                SetClearFx,
-
-            }
-        },
-        {
-            MenuTags.menuThing,new List<Action>()
-            {
-                DefaultFun,
-                DefaultFun,
-                DefaultFun
-            }
-        },
-    };
-    //无效
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("menuThing"))
-        {
-            //左键-隐藏右键菜单
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                HideRightMenu();
+                SetClearFx
             }
         }
-    }
+    };
 
     /// <summary>
     /// 弹出菜单并设置

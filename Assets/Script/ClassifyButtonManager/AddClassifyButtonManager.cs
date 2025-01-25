@@ -66,7 +66,6 @@ public class AddClassifyButtonManager : MonoBehaviour
         TodoWindowManager.Instance.OpenWindow();
     }
 
-    // 打开窗口的动画
     public void OpenWindow()
     {
         PanleWindowManager.OpenPanle(canvasGroup);

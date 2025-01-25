@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
+public class RightMenuButtonManager : MonoBehaviour
 {
     [Header("按钮")]
     [SerializeField] private Button button;
@@ -23,21 +22,6 @@ public class RightMenuButtonManager : MonoBehaviour, IPointerClickHandler
                 RightMenuManager.Instance.HideRightMenu();
                 action();
             });
-        }
-    }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.pointerCurrentRaycast.gameObject.CompareTag("menuThing"))
-        {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                RightMenuManager.Instance.HideRightMenu();
-            }
-            //右键-右键菜单（？）
-            else if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                RightMenuManager.Instance.GetMenuInfo(MenuTags.menuThing, transform);
-            }
         }
     }
 }
