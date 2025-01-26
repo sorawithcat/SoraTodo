@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -116,21 +117,35 @@ public class StepTextColor : MonoBehaviour
 
 
     private readonly int stepNeedNumb = 100;
-    private int currentNumb;
+    private int currentNumb = 0;
     private int currentStep = 0;
 
     private void Start()
     {
-        if (int.TryParse(textComponent.text, out currentNumb))
-        {
-            SetTextAndColor(currentNumb);
-        }
-        else
-        {
-            TipWindowManager.Instance.ShowTip("未能正确转换字体组件数字");
-        }
+        StartCoroutine(SmoothTransition(0, currentNumb, 1f));
     }
 
+    /// <summary>
+    /// 初始化渐变
+    /// </summary>
+    /// <param name="startValue"></param>
+    /// <param name="endValue"></param>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    IEnumerator SmoothTransition(float startValue, float endValue, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            float currentValue = Mathf.Lerp(startValue, endValue, elapsedTime / duration);
+
+            SetTextAndColor((int)currentValue);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        SetTextAndColor((int)endValue);
+    }
     private int GetCurrentStep()
     {
         return Mathf.FloorToInt(currentNumb / stepNeedNumb);
