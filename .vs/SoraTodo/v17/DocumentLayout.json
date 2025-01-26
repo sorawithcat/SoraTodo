@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\gamedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\other\\colorgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\other\\colorgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\colorgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\mainpanle\\alltodo\\steptextcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\mainpanle\\alltodo\\steptextcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\alltodo\\steptextcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\rightmenu\\rightmenumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\rightmenu\\rightmenubuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\rightmenu\\rightmenubuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\rightmenu\\rightmenubuttonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -80,7 +80,7 @@
               "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\GameData.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\GameData.cs",
               "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\GameData.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvxEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-25T07:34:49.519Z",
               "EditorCaption": ""
@@ -108,8 +108,7 @@
               "RelativeToolTip": "Assets\\Script\\Other\\ColorGenerator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T07:20:18.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-25T07:20:18.739Z"
             },
             {
               "$type": "Document",
@@ -121,8 +120,7 @@
               "RelativeToolTip": "Assets\\Script\\mainpanle\\alltodo\\StepTextColor.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAUwDsAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T05:26:57.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-25T05:26:57.834Z"
             },
             {
               "$type": "Document",
@@ -134,8 +132,7 @@
               "RelativeToolTip": "Assets\\Script\\mainpanle\\MainPanle.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAADwvxcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T02:57:52.304Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-25T02:57:52.304Z"
             },
             {
               "$type": "Document",
@@ -147,8 +144,7 @@
               "RelativeToolTip": "Assets\\Script\\mainpanle\\ShowThing.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAwAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T04:48:15.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T04:48:15.087Z"
             },
             {
               "$type": "Document",
@@ -160,8 +156,7 @@
               "RelativeToolTip": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonManager.cs",
               "ViewState": "AgIAAHQAAAAAAAAAAAAIwIQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T04:01:05.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T04:01:05.924Z"
             },
             {
               "$type": "Document",
@@ -173,8 +168,7 @@
               "RelativeToolTip": "Assets\\Script\\Todo\\AddTodoManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T03:24:33.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T03:24:33.334Z"
             },
             {
               "$type": "Document",
@@ -186,8 +180,7 @@
               "RelativeToolTip": "Assets\\Script\\ClassifyButtonManager\\AddClassifyButtonManager.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAQwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T03:24:16.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T03:24:16.964Z"
             },
             {
               "$type": "Document",
@@ -199,8 +192,7 @@
               "RelativeToolTip": "Assets\\Script\\SetPanle\\SetColor.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAzwDcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T03:05:03.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T03:05:03.581Z"
             },
             {
               "$type": "Document",
@@ -212,8 +204,7 @@
               "RelativeToolTip": "Assets\\Script\\SetPanle\\PanleWindowManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T03:04:34.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T03:04:34.43Z"
             },
             {
               "$type": "Document",
@@ -238,8 +229,7 @@
               "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAYwCUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T11:08:33.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T11:08:33.497Z"
             },
             {
               "$type": "Document",
@@ -251,8 +241,7 @@
               "RelativeToolTip": "Assets\\Script\\TipWindow\\TipWindowManager.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAYwGYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T10:15:47.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T10:15:47.84Z"
             },
             {
               "$type": "Document",
@@ -264,8 +253,7 @@
               "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
               "ViewState": "AgIAAGABAAAAAAAAAAAowGUBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T08:28:25.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T08:28:25.857Z"
             }
           ]
         }

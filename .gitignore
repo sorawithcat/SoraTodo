@@ -6,3 +6,10 @@ Builds/
 Logs/
 UserSettings/
 *.vsidx
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+
