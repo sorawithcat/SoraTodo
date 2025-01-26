@@ -1178,6 +1178,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="XCharts.Runtime.csproj">
+      <Project>{E60609D2-1206-F3B3-EE19-10A8E8702C16}</Project>
+      <Name>XCharts.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="XCharts.Examples.csproj">
+      <Project>{2A09937E-EE51-FE5D-01DF-43956C963701}</Project>
+      <Name>XCharts.Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="XCharts.Editor.csproj">
+      <Project>{B9F3B0D6-3392-D70F-448A-2E8ED522E06B}</Project>
+      <Name>XCharts.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
