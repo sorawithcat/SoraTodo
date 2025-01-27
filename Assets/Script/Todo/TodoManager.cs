@@ -203,10 +203,19 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         LoadAllData.Instance.UpdateTodoManager(todoID, "countdownTime", countdownTime);
         LoadAllData.Instance.UpdateTodoManager(todoID, "dateTime", dateTime.Ticks);
         LoadAllData.Instance.UpdateTodoManager(todoID, "customizePath", customizePath);
-        LoadAllData.Instance.UpdateTodoManager(todoID, "isTodo", true);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isTodo", isTodo);
         LoadAllData.Instance.UpdateTodoManager(todoID, "isCountingDown", isCountingDown);
         LoadAllData.Instance.UpdateTodoManager(todoID, "isAlarmPlayed", isAlarmPlayed);
-        LoadAllData.Instance.UpdateTodoManager(todoID, "isChangeCustomize", true);
+        LoadAllData.Instance.UpdateTodoManager(todoID, "isChangeCustomize", isChangeCustomize);
+    }
+
+    public void SaveAllInJson()
+    {
+        EndSetJson();
+        LoadAllData.Instance.UpdateTodoManager(todoID, "titleBGStartColor", SetColor.Instance.RGBToString(startColor));
+        LoadAllData.Instance.UpdateTodoManager(todoID, "titleBGEndColor", SetColor.Instance.RGBToString(endColor));
+        LoadAllData.Instance.UpdateTodoManager(todoID, "titleColor", SetColor.Instance.RGBToString(todoText.color));
+
     }
 
     public void SetClearFX()

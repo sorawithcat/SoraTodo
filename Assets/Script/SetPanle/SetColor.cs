@@ -165,6 +165,8 @@ public class SetColor : MonoBehaviour
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientStartColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                    _toSetColorThing[i].GetComponent<TodoManager>().startColor = new Color(redValue, greenValue, blueValue, alphaValue);
+
                     LoadAllData.Instance.UpdateTodoManager(_toSetColorThing[i].GetComponent<TodoManager>().todoID, "titleBGStartColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
                 }
                 break;
@@ -172,6 +174,7 @@ public class SetColor : MonoBehaviour
                 for (int i = 0; i < _toSetColorThing.Count; i++)
                 {
                     _toSetColorThing[i].GetComponent<TodoManager>().newMaterial.SetColor("_GradientEndColor", new Color(redValue, greenValue, blueValue, alphaValue));
+                    _toSetColorThing[i].GetComponent<TodoManager>().endColor = new Color(redValue, greenValue, blueValue, alphaValue);
                     LoadAllData.Instance.UpdateTodoManager(_toSetColorThing[i].GetComponent<TodoManager>().todoID, "titleBGEndColor", RGBToString(new Color(redValue, greenValue, blueValue, alphaValue)));
 
                 }

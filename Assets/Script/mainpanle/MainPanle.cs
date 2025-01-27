@@ -4,6 +4,7 @@ public class MainPanle : MonoBehaviour
 {
     public static MainPanle Instance;
     private CanvasGroup canvasGroup;
+
     private void Awake()
     {
         if (Instance == null)

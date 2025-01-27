@@ -233,6 +233,7 @@ public class AddTodoManager : MonoBehaviour
 
         LoadAllData.Instance.AddTodoManager(todoManagerData, setTransform.GetComponent<ClassifyButtonManager>().siblingIndex);
         TimerManager.Instance.RegisterTodoManager(todoManager, setTransform.GetComponent<ClassifyButtonManager>());
+        NearTodoManager.Instance.UpdateThings();
         CloseWindow();
     }
 

@@ -55,6 +55,7 @@ public class LoadAllData : MonoBehaviour
     private readonly string todoADD = "Data/TodoManagerData.json";
     private readonly string classifyButtonInitialJson = "{\"items\": [{\"siblingIndex\": 0, \"title\": \"不急着做\", \"titleColor\": \"#000\", \"titleBGColor\": \"#FFFFFF\", \"todos\": [\"0\"]}]}";
     private readonly string todoManagerInitialJson = "{\"items\": [{\"todoID\": \"0\", \"title\": \"Hello~\", \"titleColor\": \"#000\", \"titleBGStartColor\": \"#FF6F60\", \"titleBGEndColor\": \"#FFFF63\", \"clearFX\": 0, \"isCountingDown\": false, \"isAlarmPlayed\": false, \"isTodo\": false, \"dateTime\": 0, \"timeType\": 0, \"alarmType\": 0, \"timer\": 0.0, \"customizePath\": \"\", \"isChangeCustomize\": true, \"countdownTime\": 60.0}]}";
+
     private void Awake()
     {
         if (Instance == null)
@@ -95,7 +96,7 @@ public class LoadAllData : MonoBehaviour
     }
 
     // 从JSON文件加载数据
-    void LoadDataFromJson()
+    public void LoadDataFromJson()
     {
         string classifyButtonPath = Path.Combine(Application.persistentDataPath, classifyADD);
         string todoManagerPath = Path.Combine(Application.persistentDataPath, todoADD);
@@ -123,7 +124,6 @@ public class LoadAllData : MonoBehaviour
     {
         // 按照 siblingIndex 排序 classifyButtonManagerDatas
         Array.Sort(classifyButtonManagerDatas, (a, b) => a.siblingIndex.CompareTo(b.siblingIndex));
-
         foreach (var classifyButtonData in classifyButtonManagerDatas)
         {
             // 创建分类按钮的预制件
@@ -153,15 +153,15 @@ public class LoadAllData : MonoBehaviour
                 }
                 else
                 {
-                    //Debug.LogWarning($"Todo with ID {todoId} not found.");
                     TipWindowManager.Instance.ShowTip($"错误的TodoID： {todoId}", Color.red);
                 }
             }
         }
-
         // 完成所有UI元素创建后，重新计算并应用布局
         ApplyLayout();
     }
+
+
 
     void CreateTodoManager(TodoManagerData todoData, Transform parent)
     {
@@ -177,6 +177,7 @@ public class LoadAllData : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SetTodoData(todoData, todoManager);
     }
+
     private void SetTodoData(TodoManagerData todoData, TodoManager todoManager)
     {
         todoManager.todoText.text = todoData.title;
@@ -193,7 +194,6 @@ public class LoadAllData : MonoBehaviour
         todoManager.countdownTime = todoData.countdownTime;
         todoManager.todoID = todoData.todoID;
         DateTime dateTime = new(todoData.dateTime);
-
         TimerManager.Instance.UpdateTodoTimerSetting(todoManager,
             (TimingType)todoData.timeType,
             (AlarmType)todoData.alarmType,
@@ -202,6 +202,7 @@ public class LoadAllData : MonoBehaviour
             todoData.customizePath
         );
     }
+
 
     /// <summary>
     /// 将十六进制颜色值转换为 Unity Color

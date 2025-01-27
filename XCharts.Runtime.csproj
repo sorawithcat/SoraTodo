@@ -133,8 +133,8 @@
     <Compile Include="Assets\XCharts\Runtime\Component\Child\Padding.cs" />
     <Compile Include="Assets\XCharts\Runtime\Component\Child\ItemStyle.cs" />
     <Compile Include="Assets\XCharts\Runtime\Coord\Polar\PolarHelper.cs" />
-    <Compile Include="Assets\XCharts\Runtime\XUGL\UGLExample.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\Attributes\ListForSerieAttribute.cs" />
+    <Compile Include="Assets\XCharts\Runtime\XUGL\UGLExample.cs" />
     <Compile Include="Assets\XCharts\Runtime\Theme\ComponentTheme.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\Attributes\SerieDataComponentAttribute.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\Attributes\RequireChartComponentAttribute.cs" />
@@ -181,8 +181,8 @@
     <Compile Include="Assets\XCharts\Runtime\Serie\Candlestick\CandlestickHandler.cs" />
     <Compile Include="Assets\XCharts\Runtime\Serie\Line\LineHelper.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\Misc\ISimplifiedSerie.cs" />
-    <Compile Include="Assets\XCharts\Runtime\Internal\Basic\BaseSerie.cs" />
     <Compile Include="Assets\XCharts\Runtime\Chart\HeatmapChart.cs" />
+    <Compile Include="Assets\XCharts\Runtime\Internal\Basic\BaseSerie.cs" />
     <Compile Include="Assets\XCharts\Runtime\Component\Child\MarqueeStyle.cs" />
     <Compile Include="Assets\XCharts\Runtime\Coord\Parallel\ParallelCoordHandler.cs" />
     <Compile Include="Assets\XCharts\Runtime\Coord\Calendar\CalendarCoord.cs" />
@@ -213,8 +213,8 @@
     <Compile Include="Assets\XCharts\Runtime\Component\Axis\ParallelAxis\ParallelAxisHander.cs" />
     <Compile Include="Assets\XCharts\Runtime\Chart\CandlestickChart.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\Attributes\ComponentHandlerAttribute.cs" />
-    <Compile Include="Assets\XCharts\Runtime\Serie\Pie\PieHandler.cs" />
     <Compile Include="Assets\XCharts\Runtime\Component\Axis\AxisHandler.cs" />
+    <Compile Include="Assets\XCharts\Runtime\Serie\Pie\PieHandler.cs" />
     <Compile Include="Assets\XCharts\Runtime\Component\Radar\RadarCoordContext.cs" />
     <Compile Include="Assets\XCharts\Runtime\Internal\XCResourcesImporter.cs" />
     <Compile Include="Assets\XCharts\Runtime\Component\Debug\DebugInfo.cs" />
