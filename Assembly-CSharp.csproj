@@ -94,11 +94,13 @@
     <Compile Include="Assets\Script\Other\SerializableDictionary.cs" />
     <Compile Include="Assets\Script\SetPanle\SetAlarm.cs" />
     <Compile Include="Assets\Script\Other\ColorGenerator.cs" />
+    <Compile Include="Assets\Script\mainpanle\memorandu\MemorandumManager.cs" />
     <Compile Include="Assets\Script\TipWindow\TipWindowManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\LoadAllData.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonListManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\FileDataHandler.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\Inventory.cs" />
+    <Compile Include="Assets\Script\mainpanle\MainLineChartManager.cs" />
     <Compile Include="Assets\Script\Other\DraggableObject.cs" />
     <Compile Include="Assets\Script\Todo\TodoManager.cs" />
   </ItemGroup>
