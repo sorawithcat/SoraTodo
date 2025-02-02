@@ -24,7 +24,7 @@ public class ShowThing : MonoBehaviour
         showThings[currentShow].SetActive(false);
         currentShow = index;
         showThings[currentShow].SetActive(true);
-        if(currentShow == 0)
+        if (currentShow == 0)
         {
             showThings[currentShow].GetComponentInChildren<MainLineChartManager>().chart.AnimationReset();
             showThings[currentShow].GetComponentInChildren<MainLineChartManager>().chart.AnimationFadeIn();
