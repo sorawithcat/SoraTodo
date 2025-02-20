@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Other\OpenDialogFile.cs" />
     <Compile Include="Assets\Script\Todo\TimerManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ITodoData.cs" />
+    <Compile Include="Assets\Script\mainpanle\othershow\HelperManager.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\AddClassifyButtonManager.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Script\SetPanle\SetText.cs" />
     <Compile Include="Assets\Script\windowSetting\WindowTransparent.cs" />
     <Compile Include="Assets\Script\Other\SerializableDictionary.cs" />
+    <Compile Include="Assets\Script\mainpanle\othershow\ScrollingText.cs" />
     <Compile Include="Assets\Script\SetPanle\SetAlarm.cs" />
     <Compile Include="Assets\Script\Other\ColorGenerator.cs" />
     <Compile Include="Assets\Script\mainpanle\memorandu\MemorandumManager.cs" />
