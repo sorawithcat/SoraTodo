@@ -23739,8 +23739,8 @@ MonoBehaviour:
   speedOffsete: 60
   yOffset1: 90
   yOffset2: -80
-  creatTime: 0.5
-  creatTimeOffset: 0.1
+  creatTime: 2
+  creatTimeOffset: 0.5
 --- !u!1 &1105627145
 GameObject:
   m_ObjectHideFlags: 0
@@ -27842,7 +27842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1269063786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46817,7 +46817,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1687433294}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.061368007
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
