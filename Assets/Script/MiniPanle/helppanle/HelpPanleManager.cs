@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPanle : MonoBehaviour
+public class HelpPanleManager : MonoBehaviour
 {
-    public static MainPanle Instance;
+    public static HelpPanleManager Instance;
     private CanvasGroup canvasGroup;
 
     private void Awake()
@@ -21,7 +23,6 @@ public class MainPanle : MonoBehaviour
     public void CloseWindow()
     {
         PanleWindowManager.ClosePanle(canvasGroup);
-        TodoWindowManager.Instance.OpenWindow();
         MiniPanleManager.Instance.OpenWindow();
     }
 

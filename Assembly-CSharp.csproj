@@ -61,9 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Other\TodoWindowManager.cs" />
+    <Compile Include="Assets\Script\MiniPanle\MiniPanleManager.cs" />
     <Compile Include="Assets\Script\mainpanle\MainPanle.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\SaveManager.cs" />
     <Compile Include="Assets\Script\Other\FileSelector.cs" />
+    <Compile Include="Assets\Script\MiniPanle\helppanle\HelpPanleManager.cs" />
     <Compile Include="Assets\Script\SetPanle\SetColor.cs" />
     <Compile Include="Assets\Script\mainpanle\ShowThing.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ISaveManger.cs" />

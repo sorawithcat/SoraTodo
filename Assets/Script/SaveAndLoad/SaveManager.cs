@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager instance;
+    public static SaveManager Instance;
 
     [SerializeField] private string fileName;
     [SerializeField] private bool encryptData;
@@ -22,13 +22,13 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(Instance.gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -38,10 +38,12 @@ public class SaveManager : MonoBehaviour
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         LoadGame();
     }
+
     public void NewGame()
     {
         gameData = new GameData();
     }
+
     public void LoadGame()
     {
         gameData = dataHandler.Load();
@@ -70,18 +72,20 @@ public class SaveManager : MonoBehaviour
         SaveGame();
 
         Application.Quit();
-
     }
+
     private void OnApplicationQuit()
     {
         SaveGame();
     }
+
     private List<ISaveManger> FindAllSaveMangers()
     {
         IEnumerable<ISaveManger> saveMangers = FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveManger>();
 
         return new List<ISaveManger>(saveMangers);
     }
+
     public bool HasSavedData()
     {
         if (dataHandler.Load() != null)
