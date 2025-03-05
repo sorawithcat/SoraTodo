@@ -11,20 +11,25 @@ public class HelperManager : MonoBehaviour
     [SerializeField] private float yOffset2 = -80f;
     [SerializeField] private float creatTime = 0.5f;
     [SerializeField] private float creatTimeOffset = 0.1f;
+
+    //这里是需要显示的名字，不用json了，之后直接写在这里
     private List<string> helperList = new() { "sorawithcat" };
+
     private List<string> showedhelperList = new();
 
     private float currentTime = 0f;
     private float currentCreatTime = 1f;
     private float currentSpeed = 200f;
     private float currentYOffset = 0f;
-    string showText;
-    GameObject newHelper;
-    ScrollingText scrollingTextcs;
+    private string showText;
+    private GameObject newHelper;
+    private ScrollingText scrollingTextcs;
+
     private void Start()
     {
         currentCreatTime = float.MinValue;
     }
+
     private void Update()
     {
         currentTime += Time.deltaTime;
@@ -55,6 +60,4 @@ public class HelperManager : MonoBehaviour
             return;
         }
     }
-
-
 }
