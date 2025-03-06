@@ -3,11 +3,35 @@
   "WorkspaceRootPath": "D:\\GitHUB\\SoraTodo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\mainpanle\\mainlinechartmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\mainlinechartmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\mainpanle\\alltodo\\steptextcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\alltodo\\steptextcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\saveandload\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\minipanle\\minipanlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\minipanle\\minipanlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\saveandload\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\setpanle\\panlewindowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\setpanle\\panlewindowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\minipanle\\helppanle\\helppanlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\minipanle\\helppanle\\helppanlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\other\\errorlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\errorlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\saveandload\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,10 +55,6 @@
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\showthing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\mainpanle\\mainlinechartmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainpanle\\mainlinechartmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B9F3B0D6-3392-D70F-448A-2E8ED522E06B}|XCharts.Editor.csproj|D:\\GitHUB\\SoraTodo\\assets\\xcharts\\editor\\windows\\praseexternaldataeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9F3B0D6-3392-D70F-448A-2E8ED522E06B}|XCharts.Editor.csproj|solutionrelative:assets\\xcharts\\editor\\windows\\praseexternaldataeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,19 +74,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SaveManager.cs",
-              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
-              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
-              "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAYwAQAAAANAAAAAAAAAA==",
+              "Title": "StepTextColor.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\alltodo\\StepTextColor.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\alltodo\\StepTextColor.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\alltodo\\StepTextColor.cs",
+              "RelativeToolTip": "Assets\\Script\\mainpanle\\alltodo\\StepTextColor.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAD4v4YAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T05:41:24.067Z",
+              "WhenOpened": "2025-03-05T06:40:33.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\Inventory.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\Inventory.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\Inventory.cs",
+              "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\Inventory.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T06:38:37.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PanleWindowManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\PanleWindowManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SetPanle\\PanleWindowManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SetPanle\\PanleWindowManager.cs",
+              "RelativeToolTip": "Assets\\Script\\SetPanle\\PanleWindowManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T06:27:41.279Z",
               "EditorCaption": ""
             },
             {
@@ -75,20 +121,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "ErrorLogger.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\ErrorLogger.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Other\\ErrorLogger.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\ErrorLogger.cs",
+              "RelativeToolTip": "Assets\\Script\\Other\\ErrorLogger.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAYwF4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T06:12:04.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HelpPanleManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\MiniPanle\\helppanle\\HelpPanleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\MiniPanle\\helppanle\\HelpPanleManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\MiniPanle\\helppanle\\HelpPanleManager.cs",
+              "RelativeToolTip": "Assets\\Script\\MiniPanle\\helppanle\\HelpPanleManager.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T05:47:30.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MiniPanleManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\MiniPanle\\MiniPanleManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\MiniPanle\\MiniPanleManager.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\MiniPanle\\MiniPanleManager.cs",
               "RelativeToolTip": "Assets\\Script\\MiniPanle\\MiniPanleManager.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAwCUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwCYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-05T05:26:18.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "MainLineChartManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\MainLineChartManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\MainLineChartManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\MainLineChartManager.cs",
+              "RelativeToolTip": "Assets\\Script\\mainpanle\\MainLineChartManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T05:37:14.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ScrollingText.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\othershow\\ScrollingText.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\othershow\\ScrollingText.cs",
@@ -101,7 +186,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
+              "Title": "SaveManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAYwAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T05:41:24.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ClassifyButtonListManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\ClassifyButtonManager\\ClassifyButtonListManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ClassifyButtonManager\\ClassifyButtonListManager.cs",
@@ -114,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "MainPanle.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\MainPanle.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\MainPanle.cs",
@@ -127,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "ShowThing.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\ShowThing.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\ShowThing.cs",
@@ -140,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "PraseExternalDataEditor.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\XCharts\\Editor\\Windows\\PraseExternalDataEditor.cs",
               "RelativeDocumentMoniker": "Assets\\XCharts\\Editor\\Windows\\PraseExternalDataEditor.cs",
@@ -148,25 +246,11 @@
               "RelativeToolTip": "Assets\\XCharts\\Editor\\Windows\\PraseExternalDataEditor.cs",
               "ViewState": "AgIAAKYAAAAAAAAAAAAAALgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T06:03:31.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-28T06:03:31.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainLineChartManager.cs",
-              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\MainLineChartManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\MainLineChartManager.cs",
-              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\MainLineChartManager.cs",
-              "RelativeToolTip": "Assets\\Script\\mainpanle\\MainLineChartManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T05:37:14.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "DraggableObject.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\DraggableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Other\\DraggableObject.cs",
@@ -179,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "MemorandumManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\memorandu\\MemorandumManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\memorandu\\MemorandumManager.cs",
@@ -192,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "NearTodoManager.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\mainpanle\\nearTodo\\NearTodoManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\mainpanle\\nearTodo\\NearTodoManager.cs",
