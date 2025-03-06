@@ -191,6 +191,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 isTodo = true;
                 StepTextColor.Instance.SetTextAndColor(StepTextColor.Instance.currentNumb + 1);
+                MainLineChartManager.Instance.Append();
                 EndSetJson();
                 SetClearFX();
             }
@@ -233,6 +234,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void SetClearFX()
     {
+        newMaterial.SetVector("_GradientStartUV", new Vector4(2f, 0.5f, 0, 0));
         switch (clearFX)
         {
             case ClearFX.StrikethroughAndFontAreGrayedOut:

@@ -1,15 +1,26 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using XCharts.Runtime;
 
-public class MainLineChartManager : MonoBehaviour
+public class MainLineChartManager : MonoBehaviour, ISaveManger
 {
+    public static MainLineChartManager Instance;
     public LineChart chart;
+
+    private List<double> nearClearTodoNumbs = new();
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
-        //Todo:之后记得改成从save里获取
-        SetChartData(new List<double>() { });
+        SetChartData(nearClearTodoNumbs);
     }
 
     /// <summary>
@@ -31,5 +42,35 @@ public class MainLineChartManager : MonoBehaviour
         }
 
         chart.RefreshChart();
+    }
+
+    public void LoadData(GameData _data)
+    {
+        nearClearTodoNumbs = _data.nearClearTodoNumbs;
+        if (DateTime.Now.Date != new DateTime(_data.lastLeaveTime).Date)
+        {
+            MoveData();
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.nearClearTodoNumbs = nearClearTodoNumbs;
+    }
+
+    [ContextMenu("MoveData")]
+    private void MoveData()
+    {
+        for (int i = 0; i < nearClearTodoNumbs.Count - 1; i++)
+        {
+            nearClearTodoNumbs[i] = nearClearTodoNumbs[i + 1];
+        }
+        nearClearTodoNumbs[nearClearTodoNumbs.Count - 1] = 0;
+    }
+
+    public void Append()
+    {
+        nearClearTodoNumbs[nearClearTodoNumbs.Count - 1]++;
+        SetChartData(nearClearTodoNumbs);
     }
 }

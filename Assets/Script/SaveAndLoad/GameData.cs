@@ -29,6 +29,13 @@ public class GameData
     /// </summary>
     public int currentClearTodo;
 
+    /// <summary>
+    /// 最近7天清除的待办数
+    /// </summary>
+    public List<double> nearClearTodoNumbs;
+
+    public string memorandum;
+
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
@@ -36,5 +43,7 @@ public class GameData
         themeColors = new List<ThemeColor>();
         autoClearLogs = false;
         currentClearTodo = 0;
+        nearClearTodoNumbs = new List<double>() { 0, 0, 0, 0, 0, 0, 0 };
+        memorandum = "";
     }
 }

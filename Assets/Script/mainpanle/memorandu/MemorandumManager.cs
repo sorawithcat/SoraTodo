@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MemorandumManager : MonoBehaviour
+public class MemorandumManager : MonoBehaviour, ISaveManger
 {
     public TextMeshProUGUI displayText;
     public TMP_InputField inputField;
@@ -53,5 +53,16 @@ public class MemorandumManager : MonoBehaviour
             }
             toggleButton.GetComponentInChildren<TMP_Text>().text = "编辑";
         }
+    }
+
+    public void LoadData(GameData _data)
+    {
+        inputField.text = _data.memorandum;
+        displayText.text = _data.memorandum;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.memorandum = inputField.text;
     }
 }
