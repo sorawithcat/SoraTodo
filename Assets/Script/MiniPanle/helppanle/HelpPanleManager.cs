@@ -24,6 +24,7 @@ public class HelpPanleManager : MonoBehaviour
     {
         PanleWindowManager.ClosePanle(canvasGroup);
         MiniPanleManager.Instance.OpenWindow();
+        TodoWindowManager.Instance.OpenWindow();
     }
 
     public void OpenWindow()

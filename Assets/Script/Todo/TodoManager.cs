@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 /// <summary>
 /// 完成效果
 /// </summary>
@@ -12,6 +13,7 @@ public enum ClearFX
     /// </summary>
     /// 删除线和字体变灰
     StrikethroughAndFontAreGrayedOut,
+
     /// <summary>
     /// 删除自身
     /// </summary>
@@ -27,10 +29,12 @@ public enum TimingType
     /// 无定时
     /// </summary>
     None,
+
     /// <summary>
     /// 倒计时
     /// </summary>
     Countdown,
+
     /// <summary>
     /// 日期
     /// </summary>
@@ -46,20 +50,24 @@ public enum AlarmType
     /// 无
     /// </summary>
     None,
+
     /// <summary>
     /// 预设1
     /// </summary>
     Alarm1,
+
     /// <summary>
     /// 自定义
     /// </summary>
     Customize
 }
+
 [System.Serializable]
 public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [Header("待办的字体组件")]
     public TextMeshProUGUI todoText;
+
     public Image bg;
 
     [Header("渐变的shader")]
@@ -82,6 +90,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
+
     public float countdownTime = 60;
     public DateTime dateTime;
     private AudioClip alarmClip;
@@ -92,21 +101,24 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     // 定时器状态
     public bool isCountingDown = false;
+
     public bool isAlarmPlayed = false;
 
     // 是否在按住
     private bool isPointer = false;
+
     [HideInInspector] public Material newMaterial;
 
     // 是否完成
     public bool isTodo = false;
+
     //自定义的路径是否更改
     public bool isChangeCustomize = true;
+
     public string todoID = "";
 
-    void Start()
+    private void Start()
     {
-
         SetAlarm();
 
         // 渐变shader设置
@@ -134,6 +146,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             TipWindowManager.Instance.ShowTip(todoText.text + ":此物体上没有找到Renderer组件！", Color.red);
         }
     }
+
     /// <summary>
     /// 设置闹钟并启动
     /// </summary>
@@ -177,6 +190,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (_GradientStartUVNumb >= 2f)
             {
                 isTodo = true;
+                StepTextColor.Instance.SetTextAndColor(StepTextColor.Instance.currentNumb + 1);
                 EndSetJson();
                 SetClearFX();
             }
@@ -215,7 +229,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         LoadAllData.Instance.UpdateTodoManager(todoID, "titleBGStartColor", SetColor.Instance.RGBToString(startColor));
         LoadAllData.Instance.UpdateTodoManager(todoID, "titleBGEndColor", SetColor.Instance.RGBToString(endColor));
         LoadAllData.Instance.UpdateTodoManager(todoID, "titleColor", SetColor.Instance.RGBToString(todoText.color));
-
     }
 
     public void SetClearFX()
@@ -226,6 +239,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 todoText.color = Color.gray;
                 todoText.text = $"<s>{todoText.text}</s>";
                 break;
+
             case ClearFX.DestroyThis:
                 TimerManager.Instance.UnregisterTodoManager(this);
                 Destroy(this.gameObject);
@@ -235,7 +249,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public bool UpdateTimer()
     {
-
         if (isCountingDown && timingType != TimingType.None)
         {
             timer -= Time.deltaTime;
@@ -253,7 +266,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         return true;
     }
-
 
     private void LoadAlarmSound()
     {
@@ -278,6 +290,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     audioSource.clip = alarmClip;
                 }
                 break;
+
             case AlarmType.Customize:
                 if (isChangeCustomize)
                 {
@@ -285,8 +298,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 }
                 break;
         }
-
-
     }
 
     public void PlayAlarmSound()
@@ -327,6 +338,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
     }
+
     /// <summary>
     /// 用于外部更新定时器设置
     /// </summary>
@@ -357,7 +369,6 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         dateTime = _newDate.Value;
         if (newTimingType == TimingType.Countdown)
         {
-
             timer = newTime;
         }
         else if (newTimingType == TimingType.Date)
@@ -375,6 +386,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isCountingDown = (newTimingType == TimingType.Countdown || newTimingType == TimingType.Date);
         isAlarmPlayed = false;
     }
+
     public long ConvertDateTimeToSeconds(DateTime _datetime)
     {
         long year = _datetime.Year;
@@ -387,5 +399,4 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         long totalSeconds = year * 365 * 24 * 60 * 60 + month * 30 * 24 * 60 * 60 + day * 24 * 60 * 60 + hour * 3600 + minute * 60 + second;
         return totalSeconds;
     }
-
 }

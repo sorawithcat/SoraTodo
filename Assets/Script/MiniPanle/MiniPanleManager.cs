@@ -41,6 +41,7 @@ public class MiniPanleManager : MonoBehaviour
         HelpPanleManager.Instance.OpenWindow();
         CloseWindow();
         MainPanle.Instance.CloseWindow();
+        TodoWindowManager.Instance.CloseWindow();
     }
 
     public void Exit()

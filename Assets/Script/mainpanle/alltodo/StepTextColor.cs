@@ -12,11 +12,13 @@ public enum TextBGType
     white = 1
 }
 
-public class StepTextColor : MonoBehaviour
+public class StepTextColor : MonoBehaviour, ISaveManger
 {
+    public static StepTextColor Instance;
     [SerializeField] private TextMeshProUGUI textComponent;
 
     [SerializeField] private TextBGType textBGType = TextBGType.white;
+
     private static readonly List<Color> gradientColorsWhiteBackground = new()
     {
     new Color(0f / 255, 0f / 255, 0f / 255), // 黑色
@@ -62,6 +64,7 @@ public class StepTextColor : MonoBehaviour
     new Color(218f / 255, 165f / 255, 32f / 255), // 金色
     new Color(0f / 255, 0f / 255, 128f / 255), // 海军蓝
 };
+
     private static readonly List<Color> gradientColorsBlackBackground = new()
     {
     new Color(255f / 255, 0f / 255, 0), // 红色
@@ -115,10 +118,17 @@ public class StepTextColor : MonoBehaviour
     gradientColorsWhiteBackground
 };
 
-
     private readonly int stepNeedNumb = 100;
-    private int currentNumb = 0;
+    public int currentNumb;
     private int currentStep = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -132,7 +142,7 @@ public class StepTextColor : MonoBehaviour
     /// <param name="endValue"></param>
     /// <param name="duration"></param>
     /// <returns></returns>
-    IEnumerator SmoothTransition(float startValue, float endValue, float duration)
+    private IEnumerator SmoothTransition(float startValue, float endValue, float duration)
     {
         float elapsedTime = 0f;
 
@@ -146,6 +156,7 @@ public class StepTextColor : MonoBehaviour
         }
         SetTextAndColor((int)endValue);
     }
+
     private int GetCurrentStep()
     {
         return Mathf.FloorToInt(currentNumb / stepNeedNumb);
@@ -203,5 +214,15 @@ public class StepTextColor : MonoBehaviour
             }
             textComponent.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
         }
+    }
+
+    public void LoadData(GameData _data)
+    {
+        currentNumb = _data.currentClearTodo;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.currentClearTodo = currentNumb;
     }
 }
