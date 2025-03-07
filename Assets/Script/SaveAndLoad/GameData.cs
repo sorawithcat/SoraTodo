@@ -44,6 +44,11 @@ public class GameData
     /// </summary>
     public SerializableDictionary<string, bool> settingToggleButtonsIsOn;
 
+    /// <summary>
+    /// 默认展示小面板
+    /// </summary>
+    public bool showMiniPanle;
+
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
@@ -54,5 +59,6 @@ public class GameData
         nearClearTodoNumbs = new List<double>() { 0, 0, 0, 0, 0, 0, 0 };
         memorandum = "";
         settingToggleButtonsIsOn = new SerializableDictionary<string, bool>();
+        showMiniPanle = false;
     }
 }

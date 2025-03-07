@@ -70,11 +70,11 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
             // 写入新错误信息
             using (StreamWriter writer = new(logFilePath, true))
             {
-                writer.WriteLine("Timestamp: " + DateTime.Now.ToString("HH:mm:ss"));
-                writer.WriteLine("Log Type: " + type.ToString());
-                writer.WriteLine("Message: " + logString);
-                writer.WriteLine("Stack Trace: " + stackTrace);
-                writer.WriteLine("Error Occurred: First time or after threshold");
+                writer.WriteLine("出错时间: " + DateTime.Now.ToString("HH:mm:ss"));
+                writer.WriteLine("类型: " + type.ToString());
+                writer.WriteLine("信息: " + logString);
+                writer.WriteLine("堆栈跟踪: " + stackTrace);
+                writer.WriteLine("发生错误：首次或超过阈值");
                 writer.WriteLine("-----------------------------");
             }
 

@@ -49,12 +49,12 @@ public class SettingManager : MonoBehaviour, ISaveManger
 
     private static void ShowMinniAuto()
     {
-        Debug.Log("showMiniAuto");
+        LoadAllData.Instance.showMini = Instance.settingToggleButtons.Find(x => x.ID == "showMiniAuto").IsOn;
     }
 
     private static void AutoOpen()
     {
-        Debug.Log("AutoOpen");
+        AutoLauncher.SetStartup(Instance.settingToggleButtons.Find(x => x.ID == "autoOpen").IsOn);
     }
 
     public void LoadData(GameData _data)

@@ -6,6 +6,7 @@ public class ShowThing : MonoBehaviour
     public static ShowThing Instance;
     [SerializeField] private List<GameObject> showThings = new();
     private int currentShow = 0;
+
     private void Awake()
     {
         if (Instance == null)

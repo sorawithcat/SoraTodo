@@ -37,7 +37,7 @@ public class TodoManagerData
     public float countdownTime;
 }
 
-public class LoadAllData : MonoBehaviour
+public class LoadAllData : MonoBehaviour, ISaveManger
 {
     public static LoadAllData Instance;
 
@@ -57,6 +57,8 @@ public class LoadAllData : MonoBehaviour
     private readonly string classifyButtonInitialJson = "{\"items\": [{\"siblingIndex\": 0, \"title\": \"不急着做\", \"titleColor\": \"#000\", \"titleBGColor\": \"#FFFFFF\", \"todos\": [\"0\"]}]}";
     private readonly string todoManagerInitialJson = "{\"items\": [{\"todoID\": \"0\", \"title\": \"Hello~\", \"titleColor\": \"#000\", \"titleBGStartColor\": \"#FF6F60\", \"titleBGEndColor\": \"#FFFF63\", \"clearFX\": 0, \"isCountingDown\": false, \"isAlarmPlayed\": false, \"isTodo\": false, \"dateTime\": 0, \"timeType\": 0, \"alarmType\": 0, \"timer\": 0.0, \"customizePath\": \"\", \"isChangeCustomize\": true, \"countdownTime\": 60.0}]}";
 
+    public bool showMini;
+
     private void Awake()
     {
         if (Instance == null)
@@ -71,11 +73,25 @@ public class LoadAllData : MonoBehaviour
         // 检查文件并创建初始内容
         CheckAndCreateFile("Data/ClassifyButtonManagerData.json", classifyButtonInitialJson);
         CheckAndCreateFile("Data/TodoManagerData.json", todoManagerInitialJson);
+        if (showMini)
+        {
+            MainPanle.Instance.CloseWindow();
+        }
     }
 
     private void Start()
     {
         LoadDataFromJson();
+    }
+
+    public void LoadData(GameData _data)
+    {
+        showMini = _data.showMiniPanle;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.showMiniPanle = showMini;
     }
 
     private void CheckAndCreateFile(string filePath, string initialContent)
