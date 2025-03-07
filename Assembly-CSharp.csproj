@@ -105,6 +105,7 @@
     <Compile Include="Assets\Script\Other\ToggleButton.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\FileDataHandler.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\Inventory.cs" />
+    <Compile Include="Assets\Script\setting\SettingManager.cs" />
     <Compile Include="Assets\Script\mainpanle\MainLineChartManager.cs" />
     <Compile Include="Assets\Script\Other\DraggableObject.cs" />
     <Compile Include="Assets\Script\Todo\TodoManager.cs" />

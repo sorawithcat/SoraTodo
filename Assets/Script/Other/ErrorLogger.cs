@@ -10,9 +10,9 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
     private readonly TimeSpan errorRepeatThreshold = TimeSpan.FromSeconds(30); // 如果错误重复发生的间隔超过30秒，认为是新的错误
     private readonly TimeSpan logRetentionThreshold = TimeSpan.FromDays(7); // 设置日志保留期限，默认7天
 
-    private bool autoClearLogs = false;
+    public bool autoClearLogs = false;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -35,12 +35,12 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
         }
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         Application.logMessageReceived += HandleLog;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         Application.logMessageReceived -= HandleLog;
     }
@@ -84,6 +84,7 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
             TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, false, false);
         }
     }
+
     // 生成一个唯一的错误标识符
     private string GenerateErrorKey(string logString, string stackTrace)
     {

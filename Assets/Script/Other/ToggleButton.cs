@@ -36,9 +36,18 @@ public class ToggleButton : MonoBehaviour
             if (_isOn != value)
             {
                 _isOn = value;
-                StartTransition();
+                // 只有当物体在层级中实际激活时才执行动画
+                if (gameObject.activeInHierarchy)
+                {
+                    StartTransition();
+                }
             }
         }
+    }
+
+    private void OnValidate()
+    {
+        gameObject.name = ID + "-ToggleButton";
     }
 
     private void Awake()
@@ -68,7 +77,11 @@ public class ToggleButton : MonoBehaviour
     }
 
     // 外部调用的切换方法
-    public void Toggle() => IsOn = !IsOn;
+    public void Toggle()
+    {
+        IsOn = !IsOn;
+        SettingManager.Instance.settingToggleButtonsActions[ID]();
+    }
 
     // 启动过渡协程
     private void StartTransition()

@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 3262163565849698892}
   - component: {fileID: 8983851552233736218}
   m_Layer: 5
-  m_Name: ToggleButton
+  m_Name: -ToggleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offColor: {r: 0.22, g: 0.22, b: 0.22, a: 1}
   onColor: {r: 0.78, g: 0.2, b: 0.2, a: 1}
+  ID: 
   transitionDuration: 0.3
   spacingProportion: 0.05
   _isOn: 0

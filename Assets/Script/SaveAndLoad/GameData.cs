@@ -34,7 +34,15 @@ public class GameData
     /// </summary>
     public List<double> nearClearTodoNumbs;
 
+    /// <summary>
+    /// 备忘录
+    /// </summary>
     public string memorandum;
+
+    /// <summary>
+    /// 设置界面的开关按钮是否打开
+    /// </summary>
+    public SerializableDictionary<string, bool> settingToggleButtonsIsOn;
 
     public GameData()
     {
@@ -45,5 +53,6 @@ public class GameData
         currentClearTodo = 0;
         nearClearTodoNumbs = new List<double>() { 0, 0, 0, 0, 0, 0, 0 };
         memorandum = "";
+        settingToggleButtonsIsOn = new SerializableDictionary<string, bool>();
     }
 }
