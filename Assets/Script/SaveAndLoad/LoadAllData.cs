@@ -73,10 +73,6 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         // 检查文件并创建初始内容
         CheckAndCreateFile("Data/ClassifyButtonManagerData.json", classifyButtonInitialJson);
         CheckAndCreateFile("Data/TodoManagerData.json", todoManagerInitialJson);
-        if (showMini)
-        {
-            MainPanle.Instance.CloseWindow();
-        }
     }
 
     private void Start()
@@ -176,6 +172,15 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         }
         // 完成所有UI元素创建后，重新计算并应用布局
         ApplyLayout();
+        Invoke(nameof(ShowMiniPanle), 0.1f);
+    }
+
+    private void ShowMiniPanle()
+    {
+        if (showMini)
+        {
+            MainPanle.Instance.CloseWindow();
+        }
     }
 
     private void CreateTodoManager(TodoManagerData todoData, Transform parent)

@@ -30,7 +30,7 @@ namespace XCharts.Editor
             if (MakeComponentFoldout(prop, "", true))
             {
                 ++EditorGUI.indentLevel;
-                var type = (MarkAreaType) (prop.FindPropertyRelative("m_Type")).enumValueIndex;
+                var type = (MarkAreaType)(prop.FindPropertyRelative("m_Type")).enumValueIndex;
                 PropertyField(prop, "m_Type");
                 PropertyField(prop, "m_Name");
                 switch (type)

@@ -24,7 +24,7 @@ namespace XCharts.Runtime
             }
             Color color;
             ColorUtility.TryParseHtmlString(hexColorStr, out color);
-            s_ColorCached[hexColorStr] = (Color32) color;
+            s_ColorCached[hexColorStr] = (Color32)color;
             return s_ColorCached[hexColorStr];
         }
     }

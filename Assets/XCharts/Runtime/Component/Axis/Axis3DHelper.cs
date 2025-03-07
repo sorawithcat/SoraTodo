@@ -113,7 +113,7 @@ namespace XCharts.Runtime
                 {
                     if (axis.splitLine.NeedShow(i, size))
                     {
-                        if (relativedAxis == null || !relativedAxis.axisLine.show 
+                        if (relativedAxis == null || !relativedAxis.axisLine.show
                             || (Vector3.Distance(current, relativedAxis.context.start) > 0.5f && Vector3.Distance(current, relativedAxis.context.end) > 0.5f))
                         {
                             ChartDrawer.DrawLineStyle(vh,

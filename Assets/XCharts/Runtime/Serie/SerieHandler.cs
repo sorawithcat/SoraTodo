@@ -497,7 +497,8 @@ namespace XCharts.Runtime
                 {
                     serieData.SetLabelActive(false);
                     continue;
-                };
+                }
+                ;
                 var currLabel = SerieHelper.GetSerieLabel(serie, serieData);
                 var isIgnore = serie.IsIgnoreIndex(serieData.index, defaultDimension);
                 if (serie.show &&

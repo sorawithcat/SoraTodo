@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace XCharts.Runtime
@@ -61,7 +59,7 @@ namespace XCharts.Runtime
         public static T GetAttribute<T>(this Type type, bool check = true) where T : Attribute
         {
             if (type.IsDefined(typeof(T), false))
-                return (T) type.GetCustomAttributes(typeof(T), false) [0];
+                return (T)type.GetCustomAttributes(typeof(T), false)[0];
             else
             {
                 if (check)
@@ -72,7 +70,7 @@ namespace XCharts.Runtime
         public static T GetAttribute<T>(this MemberInfo type, bool check = true) where T : Attribute
         {
             if (type.IsDefined(typeof(T), false))
-                return (T) type.GetCustomAttributes(typeof(T), false) [0];
+                return (T)type.GetCustomAttributes(typeof(T), false)[0];
             else
             {
                 if (check)
@@ -81,7 +79,7 @@ namespace XCharts.Runtime
             }
         }
 
-        
+
 
     }
 }

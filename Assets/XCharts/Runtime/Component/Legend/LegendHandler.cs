@@ -92,8 +92,8 @@ namespace XCharts.Runtime
                 {
                     if (!SeriesHelper.IsLegalLegendName(datas[i])) continue;
                     string legendName = datas[i];
-                    var serieIndex =  isAnySerieColorByData ? 0 : i;
-                    var dataIndex =  isAnySerieColorByData ? i : 0;
+                    var serieIndex = isAnySerieColorByData ? 0 : i;
+                    var dataIndex = isAnySerieColorByData ? i : 0;
                     var legendContent = GetFormatterContent(legend, dataIndex, datas[i], serieIndex);
                     if (legend.textLimit.enable)
                         legendContent = legend.textLimit.GetLimitContent(legendContent);

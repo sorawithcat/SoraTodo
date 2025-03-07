@@ -134,7 +134,7 @@ namespace XCharts.Editor
 
             if (!m_EditorTypes.TryGetValue(settingsType, out editorType))
                 editorType = typeof(SerieBaseEditor);
-            var editor = (SerieBaseEditor) Activator.CreateInstance(editorType);
+            var editor = (SerieBaseEditor)Activator.CreateInstance(editorType);
             editor.Init(chart, serie, property, m_BaseEditor);
             editor.menus.Clear();
             editor.menus.Add(new HeaderMenuInfo("Clone", () =>

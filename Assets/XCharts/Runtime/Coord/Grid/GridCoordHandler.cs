@@ -12,7 +12,7 @@ namespace XCharts.Runtime
         {
             var grid = component;
             grid.painter = chart.painter;
-            grid.refreshComponent = delegate()
+            grid.refreshComponent = delegate ()
             {
                 grid.UpdateRuntimeData(chart);
                 chart.OnCoordinateChanged();

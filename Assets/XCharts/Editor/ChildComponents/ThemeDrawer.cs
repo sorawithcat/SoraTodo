@@ -45,12 +45,12 @@ namespace XCharts.Editor
                 PropertyField(prop, "m_SharedTheme");
                 PropertyField(prop, "m_TransparentBackground");
                 PropertyField(prop, "m_EnableCustomTheme");
-                using(new EditorGUI.DisabledScope(!prop.FindPropertyRelative("m_EnableCustomTheme").boolValue))
-                    {
-                        PropertyField(prop, "m_CustomBackgroundColor");
-                        PropertyField(prop, "m_CustomColorPalette");
-                    }
-                    --EditorGUI.indentLevel;
+                using (new EditorGUI.DisabledScope(!prop.FindPropertyRelative("m_EnableCustomTheme").boolValue))
+                {
+                    PropertyField(prop, "m_CustomBackgroundColor");
+                    PropertyField(prop, "m_CustomColorPalette");
+                }
+                --EditorGUI.indentLevel;
             }
         }
 
@@ -70,7 +70,7 @@ namespace XCharts.Editor
         private string m_ChartName;
         static void Init()
         {
-            window = (ExportThemeWindow) EditorWindow.GetWindow(typeof(ExportThemeWindow), false, "Export Theme", true);
+            window = (ExportThemeWindow)EditorWindow.GetWindow(typeof(ExportThemeWindow), false, "Export Theme", true);
             window.minSize = new Vector2(600, 50);
             window.maxSize = new Vector2(600, 50);
             window.Show();

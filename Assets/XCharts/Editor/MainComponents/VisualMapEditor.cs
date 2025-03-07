@@ -10,7 +10,7 @@ namespace XCharts.Editor
         public override void OnInspectorGUI()
         {
             ++EditorGUI.indentLevel;
-            var type = (VisualMap.Type) baseProperty.FindPropertyRelative("m_Type").enumValueIndex;
+            var type = (VisualMap.Type)baseProperty.FindPropertyRelative("m_Type").enumValueIndex;
             var isPiece = type == VisualMap.Type.Piecewise;
             PropertyField("m_Type");
             PropertyField("m_SerieIndex");

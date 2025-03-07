@@ -261,7 +261,7 @@ namespace XCharts.Runtime
         /// <param name="sp"></param>
         /// <param name="ep"></param>
         /// <returns></returns>
-        [Since("v3.10.0")] 
+        [Since("v3.10.0")]
         public bool NotAnyIntersect(Vector3 sp, Vector3 ep)
         {
             if (sp.x < context.x && ep.x < context.x)

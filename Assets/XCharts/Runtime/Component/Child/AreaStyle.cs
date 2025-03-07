@@ -111,7 +111,7 @@ namespace XCharts.Runtime
                 return m_Color;
 
             var color = m_Color;
-            color.a = (byte) (color.a * m_Opacity);
+            color.a = (byte)(color.a * m_Opacity);
             return color;
         }
 
@@ -124,7 +124,7 @@ namespace XCharts.Runtime
             else
             {
                 var color = themeColor;
-                color.a = (byte) (color.a * opacity);
+                color.a = (byte)(color.a * opacity);
                 return color;
             }
         }

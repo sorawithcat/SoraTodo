@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 namespace XCharts.Runtime
 {
     public static class DateTimeUtil
     {
 #if UNITY_2018_3_OR_NEWER
-        private static readonly DateTime k_LocalDateTime1970 = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1), TimeZoneInfo.Local);     
+        private static readonly DateTime k_LocalDateTime1970 = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
 #else
         private static readonly DateTime k_LocalDateTime1970 = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
 #endif
@@ -37,9 +36,9 @@ namespace XCharts.Runtime
 
         public static bool IsDateOrTimeRegex(string regex, ref bool date, ref string formatter)
         {
-            if(IsDateOrTimeRegex(regex))
+            if (IsDateOrTimeRegex(regex))
             {
-                if(regex == "date" || regex == "time")
+                if (regex == "date" || regex == "time")
                 {
                     date = regex == "date";
                     formatter = "";

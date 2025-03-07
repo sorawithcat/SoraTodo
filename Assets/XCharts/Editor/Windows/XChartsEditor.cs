@@ -296,7 +296,7 @@ namespace XCharts.Editor
 
         public static void CheckAsmdefInputSystemReference(bool enable)
         {
-            if(enable)
+            if (enable)
             {
                 InsertSpecifyReferenceIntoAssembly(Platform.Editor, ASMDEF_I_S);
                 InsertSpecifyReferenceIntoAssembly(Platform.Runtime, ASMDEF_I_S);

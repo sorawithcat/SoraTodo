@@ -19,12 +19,12 @@ namespace XCharts.Runtime
         {
             background = new ImageStyle()
             {
-            color = new Color32(32, 32, 32, 170)
+                color = new Color32(32, 32, 32, 170)
             },
             textStyle = new TextStyle()
             {
-            fontSize = 18,
-            color = Color.white
+                fontSize = 18,
+                color = Color.white
             }
         };
 

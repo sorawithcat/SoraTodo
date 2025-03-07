@@ -14,7 +14,7 @@ namespace XCharts.Runtime
             var comment = component;
             comment.OnChanged();
             comment.painter = null;
-            comment.refreshComponent = delegate()
+            comment.refreshComponent = delegate ()
             {
                 var objName = ChartCached.GetComponentObjectName(comment);
                 var commentObj = ChartHelper.AddObject(objName,

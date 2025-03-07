@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace XCharts.Runtime
 {
@@ -19,7 +19,7 @@ namespace XCharts.Runtime
             UpdateAxisMinMaxValue(component.index, component);
             if (!chart.isTriggerOnClick)
             {
-               UpdatePointerValue(component);
+                UpdatePointerValue(component);
             }
         }
 
@@ -72,7 +72,7 @@ namespace XCharts.Runtime
             var theme = chart.theme;
             var xAxisIndex = xAxis.index;
             xAxis.painter = chart.painter;
-            xAxis.refreshComponent = delegate()
+            xAxis.refreshComponent = delegate ()
             {
                 var grid = chart.GetChartComponent<GridCoord>(xAxis.gridIndex);
                 if (grid != null)

@@ -38,7 +38,7 @@ namespace XCharts.Runtime
             var min = gridXY;
             var max = gridXY + (isY ? grid.context.width : grid.context.height);
             var start = 0f;
-            switch(serie.areaStyle.origin)
+            switch (serie.areaStyle.origin)
             {
                 case AreaStyle.AreaOrigin.Start:
                     start = min;

@@ -14,7 +14,7 @@ namespace XCharts.Runtime
         {
             var title = component;
             title.painter = null;
-            title.refreshComponent = delegate()
+            title.refreshComponent = delegate ()
             {
                 title.OnChanged();
                 var anchorMin = title.location.runtimeAnchorMin;

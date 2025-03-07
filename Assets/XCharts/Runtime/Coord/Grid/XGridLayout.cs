@@ -130,7 +130,7 @@ namespace XCharts.Runtime
             var column = index % m_Column;
 
             x = context.x + column * (context.eachWidth + spacing.x);
-            if(m_Inverse)
+            if (m_Inverse)
                 y = context.y + row * (context.eachHeight + spacing.y);
             else
                 y = context.y + context.height - (row + 1) * context.eachHeight - row * spacing.y;

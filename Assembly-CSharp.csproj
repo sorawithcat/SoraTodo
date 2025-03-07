@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\Todo\TimerManager.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ITodoData.cs" />
     <Compile Include="Assets\Script\mainpanle\othershow\HelperManager.cs" />
+    <Compile Include="Assets\Script\Other\SkipUnityLogo.cs" />
     <Compile Include="Assets\Script\SO\ThemeColor.cs" />
     <Compile Include="Assets\Script\Other\MatchHeightWithTMP.cs" />
     <Compile Include="Assets\Script\ClassifyButtonManager\AddClassifyButtonManager.cs" />

@@ -72,12 +72,12 @@ namespace XCharts.Runtime
                 {
                     s_NumberToStr[value][formatter] = value.ToString();
                 }
-                else if (DateTimeUtil.IsDateOrTimeRegex(formatter,ref isDateFormatter, ref newFormatter))
+                else if (DateTimeUtil.IsDateOrTimeRegex(formatter, ref isDateFormatter, ref newFormatter))
                 {
-                    if(isDateFormatter)
+                    if (isDateFormatter)
                         s_NumberToStr[value][formatter] = NumberToDateStr(value, newFormatter);
                     else
-                        s_NumberToStr[value][formatter] = NumberToTimeStr(value, newFormatter);                    
+                        s_NumberToStr[value][formatter] = NumberToTimeStr(value, newFormatter);
                 }
                 else if (formatter.StartsWith(NUMERIC_FORMATTER_D) ||
                     formatter.StartsWith(NUMERIC_FORMATTER_d) ||
@@ -118,7 +118,7 @@ namespace XCharts.Runtime
         {
             try
             {
-            var ts = NumberToTimeSpan(timestamp);
+                var ts = NumberToTimeSpan(timestamp);
 #if UNITY_2018_3_OR_NEWER
                 return ts.ToString(formatter, ci);
 #else
@@ -129,7 +129,7 @@ namespace XCharts.Runtime
             {
                 XLog.LogError("Not support TimeSpan format: " + formatter);
                 return timestamp.ToString();
-            }                    
+            }
         }
 
         public static DateTime NumberToDateTime(double timestamp)
@@ -143,7 +143,7 @@ namespace XCharts.Runtime
 
         public static TimeSpan NumberToTimeSpan(double timestamp)
         {
-            if(!s_NumberToTimeSpanDict.ContainsKey(timestamp))
+            if (!s_NumberToTimeSpanDict.ContainsKey(timestamp))
             {
                 s_NumberToTimeSpanDict[timestamp] = TimeSpan.FromSeconds(timestamp);
             }

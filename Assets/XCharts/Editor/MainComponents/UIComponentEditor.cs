@@ -28,7 +28,7 @@ namespace XCharts.Editor
         protected virtual void OnEnable()
         {
             m_Properties.Clear();
-            m_UIComponent = (UIComponent) target;
+            m_UIComponent = (UIComponent)target;
         }
 
         public override void OnInspectorGUI()

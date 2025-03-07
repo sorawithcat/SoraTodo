@@ -11,7 +11,7 @@ namespace XCharts.Runtime
             if (string.IsNullOrEmpty(serieLabel.formatter))
             {
                 var content = ChartCached.NumberToStr(data.runtimeValue, numericFormatter);
-                return serieLabel.formatterFunction == null? content:
+                return serieLabel.formatterFunction == null ? content :
                     serieLabel.formatterFunction(data.index, data.runtimeValue, null, content);
             }
             else
@@ -19,7 +19,7 @@ namespace XCharts.Runtime
                 var content = serieLabel.formatter;
                 FormatterHelper.ReplaceSerieLabelContent(ref content, numericFormatter, serie.dataCount, data.runtimeValue,
                     0, serie.serieName, data.name, data.name, Color.clear, null);
-                return serieLabel.formatterFunction == null? content:
+                return serieLabel.formatterFunction == null ? content :
                     serieLabel.formatterFunction(data.index, data.runtimeValue, null, content);
             }
         }

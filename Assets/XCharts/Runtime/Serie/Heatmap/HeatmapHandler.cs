@@ -236,7 +236,7 @@ namespace XCharts.Runtime
                 var xValue = serieData.GetData(0);
                 var yValue = serieData.GetData(1);
                 var i = AxisHelper.GetAxisValueSplitIndex(xAxis, xValue, true, xCount);
-                var j = AxisHelper.GetAxisValueSplitIndex(yAxis, yValue,true, yCount);
+                var j = AxisHelper.GetAxisValueSplitIndex(yAxis, yValue, true, yCount);
 
                 if (serie.IsIgnoreValue(serieData, dimension))
                 {
@@ -368,7 +368,7 @@ namespace XCharts.Runtime
                 var xValue = serieData.GetData(0);
                 var yValue = serieData.GetData(1);
                 var i = AxisHelper.GetAxisValueSplitIndex(xAxis, xValue, true, xCount);
-                var j = AxisHelper.GetAxisValueSplitIndex(yAxis, yValue,true, yCount);
+                var j = AxisHelper.GetAxisValueSplitIndex(yAxis, yValue, true, yCount);
                 var key = GetGridKey(i, j);
                 var count = 0;
 

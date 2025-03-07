@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XUGL;
@@ -55,7 +54,7 @@ namespace XCharts.Runtime
             {
                 var count = Mathf.Min(axisCount, serieData.data.Count);
                 var lp = Vector3.zero;
-                var colorIndex = serie.colorByData?serieData.index : serie.context.colorIndex;
+                var colorIndex = serie.colorByData ? serieData.index : serie.context.colorIndex;
                 var lineColor = SerieHelper.GetLineColor(serie, serieData, chart.theme, colorIndex);
                 serieData.context.dataPoints.Clear();
                 for (int i = 0; i < count; i++)

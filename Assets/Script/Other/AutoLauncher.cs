@@ -1,6 +1,6 @@
+using IWshRuntimeLibrary;
 using System;
 using System.IO;
-using IWshRuntimeLibrary;
 
 public class AutoLauncher
 {

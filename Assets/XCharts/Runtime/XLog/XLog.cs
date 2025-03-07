@@ -214,7 +214,7 @@ namespace XCharts.Runtime
                     if (errorList.Count < MAX_ERROR_LOG)
                     {
                         errorList.Add(logString);
-                       // errorList.Add(stackTrace + "\n");
+                        // errorList.Add(stackTrace + "\n");
                     }
                 }
                 else if (type == LogType.Exception)

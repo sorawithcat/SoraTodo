@@ -174,13 +174,13 @@ namespace XCharts.Runtime
                 return new Settings()
                 {
                     m_ReversePainter = false,
-                        m_MaxPainter = XCSettings.maxPainter,
-                        m_LineSmoothStyle = XCSettings.lineSmoothStyle,
-                        m_LineSmoothness = XCSettings.lineSmoothness,
-                        m_LineSegmentDistance = XCSettings.lineSegmentDistance,
-                        m_CicleSmoothness = XCSettings.cicleSmoothness,
-                        m_LegendIconLineWidth = 2,
-                        m_LegendIconCornerRadius = new float[] { 0.25f, 0.25f, 0.25f, 0.25f }
+                    m_MaxPainter = XCSettings.maxPainter,
+                    m_LineSmoothStyle = XCSettings.lineSmoothStyle,
+                    m_LineSmoothness = XCSettings.lineSmoothness,
+                    m_LineSegmentDistance = XCSettings.lineSegmentDistance,
+                    m_CicleSmoothness = XCSettings.cicleSmoothness,
+                    m_LegendIconLineWidth = 2,
+                    m_LegendIconCornerRadius = new float[] { 0.25f, 0.25f, 0.25f, 0.25f }
                 };
             }
         }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XUGL;
@@ -37,7 +36,7 @@ namespace XCharts.Runtime
         {
             float txtHig = 20;
             radar.painter = chart.GetPainter(radar.index);
-            radar.refreshComponent = delegate()
+            radar.refreshComponent = delegate ()
             {
                 radar.UpdateRadarCenter(chart);
                 var radarObject = ChartHelper.AddObject("Radar" + radar.index, chart.transform, chart.chartMinAnchor,

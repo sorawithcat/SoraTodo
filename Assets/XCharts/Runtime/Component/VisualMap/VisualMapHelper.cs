@@ -77,7 +77,7 @@ namespace XCharts.Runtime
                     float startX = grid.context.x + axis.context.scaleWidth / 2;
                     value = (min + (pos.x - startX) / (grid.context.width - axis.context.scaleWidth) * (max - min));
                     if (visualMap.IsPiecewise())
-                        value = (int) value;
+                        value = (int)value;
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace XCharts.Runtime
                     float startY = grid.context.y + relativedAxis.context.scaleWidth / 2;
                     value = (min + (pos.y - startY) / (grid.context.height - relativedAxis.context.scaleWidth) * (max - min));
                     if (visualMap.IsPiecewise())
-                        value = (int) value;
+                        value = (int)value;
                 }
                 else
                 {
@@ -123,7 +123,7 @@ namespace XCharts.Runtime
             var grid = chart.GetChartComponent<GridCoord>(axis.gridIndex);
             var value = min + (pos.x - grid.context.x) / grid.context.width * (max - min);
             var rate = (value - min) / (max - min);
-            var color = itemStyle.GetGradientColor((float) rate, defaultColor);
+            var color = itemStyle.GetGradientColor((float)rate, defaultColor);
 
             if (ChartHelper.IsClearColor(color))
                 return defaultColor;
@@ -138,7 +138,7 @@ namespace XCharts.Runtime
             var max = axis.context.maxValue;
             var value = min + (pos.x - grid.context.x) / grid.context.width * (max - min);
             var rate = (value - min) / (max - min);
-            var color = lineStyle.GetGradientColor((float) rate, defaultColor);
+            var color = lineStyle.GetGradientColor((float)rate, defaultColor);
 
             if (ChartHelper.IsClearColor(color))
                 return defaultColor;

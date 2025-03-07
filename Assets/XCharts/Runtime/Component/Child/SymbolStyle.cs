@@ -213,7 +213,7 @@ namespace XCharts.Runtime
         {
             get { return m_EmptyColor; }
             set { if (PropertyUtil.SetStruct(ref m_EmptyColor, value)) SetAllDirty(); }
-        } 
+        }
         public Vector3 offset3 { get { return new Vector3(m_Offset.x, m_Offset.y, 0); } }
         private List<float> m_AnimationSize = new List<float>() { 0, 5, 10 };
         /// <summary>

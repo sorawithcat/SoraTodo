@@ -50,7 +50,7 @@ namespace XCharts.Runtime
             var theme = chart.theme;
             var yAxisIndex = yAxis.index;
             yAxis.painter = chart.painter;
-            yAxis.refreshComponent = delegate()
+            yAxis.refreshComponent = delegate ()
             {
                 var grid = chart.GetChartComponent<GridCoord>(yAxis.gridIndex);
                 if (grid != null)

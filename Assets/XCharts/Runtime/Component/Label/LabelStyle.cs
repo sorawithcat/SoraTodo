@@ -472,9 +472,9 @@ namespace XCharts.Runtime
             {
                 try
                 {
-                    if(DateTimeUtil.IsDateOrTimeRegex(numericFormatter, ref isDateFormatter, ref newFormatter))
+                    if (DateTimeUtil.IsDateOrTimeRegex(numericFormatter, ref isDateFormatter, ref newFormatter))
                     {
-                        if(isDateFormatter)
+                        if (isDateFormatter)
                             dateString = ChartCached.NumberToDateStr(timestamp, newFormatter);
                         else
                             dateString = ChartCached.NumberToTimeStr(timestamp, newFormatter);

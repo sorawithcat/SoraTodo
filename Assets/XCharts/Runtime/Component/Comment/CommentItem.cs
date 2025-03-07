@@ -15,7 +15,7 @@ namespace XCharts.Runtime
         [SerializeField] private Rect m_MarkRect;
         [SerializeField] private CommentMarkStyle m_MarkStyle = new CommentMarkStyle() { show = false };
         [SerializeField] private LabelStyle m_LabelStyle = new LabelStyle() { show = false };
-        [SerializeField] [Since("v3.5.0")]private Location m_Location = new Location() { align = Location.Align.TopLeft, top = 0.125f };
+        [SerializeField][Since("v3.5.0")] private Location m_Location = new Location() { align = Location.Align.TopLeft, top = 0.125f };
 
 
         /// <summary>

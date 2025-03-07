@@ -42,12 +42,12 @@ namespace XCharts.Runtime
 
         public static bool IsVertsDirty(ChildComponent component)
         {
-            return component == null?false : component.vertsDirty;
+            return component == null ? false : component.vertsDirty;
         }
 
         public static bool IsComponentDirty(ChildComponent component)
         {
-            return component == null?false : component.componentDirty;
+            return component == null ? false : component.componentDirty;
         }
 
         public virtual void SetVerticesDirty()

@@ -132,11 +132,11 @@ namespace XCharts.Editor
             {
                 case SerializedPropertyType.Float:
                     if (prop.floatValue < min)
-                        prop.floatValue = (float) min;
+                        prop.floatValue = (float)min;
                     break;
                 case SerializedPropertyType.Integer:
                     if (prop.intValue < min)
-                        prop.intValue = (int) min;
+                        prop.intValue = (int)min;
                     break;
             }
 
@@ -148,11 +148,11 @@ namespace XCharts.Editor
             {
                 case SerializedPropertyType.Float:
                     if (prop.floatValue > max)
-                        prop.floatValue = (float) max;
+                        prop.floatValue = (float)max;
                     break;
                 case SerializedPropertyType.Integer:
                     if (prop.intValue > max)
-                        prop.intValue = (int) max;
+                        prop.intValue = (int)max;
                     break;
             }
         }

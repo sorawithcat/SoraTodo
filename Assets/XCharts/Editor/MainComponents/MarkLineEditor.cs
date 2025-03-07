@@ -28,7 +28,7 @@ namespace XCharts.Editor
             if (MakeComponentFoldout(prop, "", true))
             {
                 ++EditorGUI.indentLevel;
-                var type = (MarkLineType) (prop.FindPropertyRelative("m_Type")).enumValueIndex;
+                var type = (MarkLineType)(prop.FindPropertyRelative("m_Type")).enumValueIndex;
                 var group = prop.FindPropertyRelative("m_Group").intValue;
                 PropertyField(prop, "m_Type");
                 PropertyField(prop, "m_Name");

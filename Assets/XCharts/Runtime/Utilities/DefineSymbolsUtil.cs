@@ -18,7 +18,7 @@ namespace XCharts.Runtime
             var flag = false;
             var num = 0;
 #if UNITY_2022_1_OR_NEWER
-            foreach (var buildTargetGroup in (BuildTargetGroup[]) Enum.GetValues(typeof(BuildTargetGroup)))
+            foreach (var buildTargetGroup in (BuildTargetGroup[])Enum.GetValues(typeof(BuildTargetGroup)))
             {
                 if (IsValidBuildTargetGroup(buildTargetGroup))
                 {
@@ -58,7 +58,7 @@ namespace XCharts.Runtime
             var flag = false;
             var num = 0;
 #if UNITY_2022_1_OR_NEWER
-            foreach (var buildTargetGroup in (BuildTargetGroup[]) Enum.GetValues(typeof(BuildTargetGroup)))
+            foreach (var buildTargetGroup in (BuildTargetGroup[])Enum.GetValues(typeof(BuildTargetGroup)))
             {
                 if (IsValidBuildTargetGroup(buildTargetGroup))
                 {
@@ -115,8 +115,8 @@ namespace XCharts.Runtime
             var method1 = type.GetMethod("GetTargetStringFromBuildTargetGroup", BindingFlags.Static | BindingFlags.NonPublic);
             var method2 = typeof(PlayerSettings).GetMethod("GetPlatformName", BindingFlags.Static | BindingFlags.NonPublic);
             if (method1 == null || method2 == null) return true;
-            var str1 = (string) method1.Invoke(null, new object[] { group });
-            var str2 = (string) method2.Invoke(null, new object[] { group });
+            var str1 = (string)method1.Invoke(null, new object[] { group });
+            var str2 = (string)method2.Invoke(null, new object[] { group });
             if (string.IsNullOrEmpty(str1))
             {
                 return !string.IsNullOrEmpty(str2);
