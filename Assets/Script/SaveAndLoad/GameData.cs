@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class GameData
@@ -54,6 +55,31 @@ public class GameData
     /// </summary>
     public bool isOpaque;
 
+    /// <summary>
+    /// 是否置顶
+    /// </summary>
+    public bool isUp;
+
+    /// <summary>
+    /// todo的初始位置
+    /// </summary>
+    public Vector3 todoPosition;
+
+    /// <summary>
+    /// todo的目前位置
+    /// </summary>
+    public Vector3 currentTodoPosition;
+
+    /// <summary>
+    /// mini是否为改变todo位置模式
+    /// </summary>
+    public bool miniIsDrag;
+
+    /// <summary>
+    /// 自动关闭mini遥控模式
+    /// </summary>
+    public bool autoClose;
+
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
@@ -66,5 +92,10 @@ public class GameData
         settingToggleButtonsIsOn = new SerializableDictionary<string, bool>();
         showMiniPanle = false;
         isOpaque = true;
+        todoPosition = new Vector3(1250f, 640f, 0);
+        currentTodoPosition = new Vector3(1250f, 640f, 0);
+        isUp = true;
+        miniIsDrag = false;
+        autoClose = true;
     }
 }

@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class MiniPanleManager : MonoBehaviour
+public class MiniPanleManager : MonoBehaviour, ISaveManger
 {
     public static MiniPanleManager Instance;
     private CanvasGroup canvasGroup;
+
+    public bool miniIsDrag = false;
+    public bool autoClose = true;
 
     private void Awake()
     {
@@ -45,5 +48,19 @@ public class MiniPanleManager : MonoBehaviour
     public void Exit()
     {
         SaveManager.Instance.ExitGame();
+    }
+
+    public void LoadData(GameData _data)
+    {
+        autoClose = _data.autoClose;
+        miniIsDrag = _data.miniIsDrag;
+        GetComponent<DraggableObject>().notThis = miniIsDrag;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.autoClose = autoClose;
+        _data.miniIsDrag = miniIsDrag;
+        if (autoClose) _data.miniIsDrag = false;
     }
 }

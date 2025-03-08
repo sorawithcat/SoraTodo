@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class TodoWindowManager : MonoBehaviour
+public class TodoWindowManager : MonoBehaviour, ISaveManger
 {
     public static TodoWindowManager Instance;
     private CanvasGroup canvasGroup;
+
+    private Vector3 todoPosition;
 
     private void Awake()
     {
@@ -32,5 +34,21 @@ public class TodoWindowManager : MonoBehaviour
     {
         PanleWindowManager.OpenPanle(canvasGroup);
         WindowTransparent.Instance.SetWindowTransparency(true);
+    }
+
+    public void ResetPosition()
+    {
+        GetComponent<RectTransform>().position = todoPosition;
+    }
+
+    public void LoadData(GameData _data)
+    {
+        GetComponent<RectTransform>().position = _data.currentTodoPosition;
+        todoPosition = _data.todoPosition;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.currentTodoPosition = GetComponent<RectTransform>().position;
     }
 }

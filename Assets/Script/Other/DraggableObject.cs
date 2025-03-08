@@ -6,54 +6,98 @@ public class DraggableObject : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private Vector3 storedPosition;
     private bool isDragging = false;
     private Vector3 lastMousePosition;
-
     private RectTransform rectTransform;
+    private Vector3 originalPosition; // 自身初始位置
+
+    public bool notThis;
+
+    [ConditionalHide(nameof(notThis)), Header("被拖动的物体")]
+    public GameObject draggableObject;
+
+    [ConditionalHide(nameof(notThis)), Header("是否为摇杆")]
+    public bool isRocker;
+
+    private RectTransform targetRectTransform;
 
     private void OnEnable()
     {
         rectTransform = GetComponent<RectTransform>();
-        storedPosition = rectTransform.position;
-    }
+        originalPosition = rectTransform.position; // 始终记录自身初始位置
+        storedPosition = originalPosition;
 
-    public Vector3 GetStoredPosition()
-    {
-        return storedPosition;
-    }
-
-    public void SetStoredPosition(Vector3 newPosition)
-    {
-        storedPosition = newPosition;
-        rectTransform.position = newPosition;
+        // 初始化目标对象
+        if (notThis && draggableObject != null)
+        {
+            targetRectTransform = draggableObject.GetComponent<RectTransform>();
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // 记录鼠标按下时的初始位置
         isDragging = true;
         lastMousePosition = Input.mousePosition;
+
+        // 更新目标引用（支持运行时修改）
+        if (notThis && draggableObject != null)
+        {
+            targetRectTransform = draggableObject.GetComponent<RectTransform>();
+        }
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        if (!isDragging) return;
+
+        Vector3 currentMousePosition = Input.mousePosition;
+        Vector3 mouseDelta = currentMousePosition - lastMousePosition;
+
+        try
+        {
+            if (notThis)
+            {
+                // 同步移动自身和目标对象
+                if (targetRectTransform != null)
+                {
+                    // 移动目标对象
+                    targetRectTransform.position += mouseDelta;
+                    // 同时移动自身
+                    rectTransform.position += mouseDelta;
+                    storedPosition = rectTransform.position;
+                }
+            }
+            else
+            {
+                // 只移动自身
+                rectTransform.position += mouseDelta;
+                storedPosition = rectTransform.position;
+            }
+        }
+        finally
+        {
+            lastMousePosition = currentMousePosition;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
+        if (!isRocker || !notThis)
+        {
+            originalPosition = rectTransform.position;
+        }
+        // 摇杆模式仅复位自身位置
+        if (isRocker && notThis)
+        {
+            rectTransform.position = originalPosition;
+            storedPosition = originalPosition;
+        }
     }
 
-    public void OnPointerMove(PointerEventData eventData)
+    public Vector3 GetStoredPosition() => storedPosition;
+
+    public void SetStoredPosition(Vector3 newPosition)
     {
-        if (isDragging)
-        {
-            // 获取当前鼠标位置
-            Vector3 currentMousePosition = Input.mousePosition;
-
-            // 计算鼠标的移动差值
-            Vector3 mouseDelta = currentMousePosition - lastMousePosition;
-
-            // 更新物体的位置（基于鼠标移动的差值）
-            rectTransform.position += new Vector3(mouseDelta.x, mouseDelta.y, 0);
-            storedPosition = rectTransform.position;
-
-            // 更新最后一个鼠标位置
-            lastMousePosition = currentMousePosition;
-        }
+        storedPosition = newPosition;
+        rectTransform.position = newPosition;
     }
 }

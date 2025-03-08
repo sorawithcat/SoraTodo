@@ -29,7 +29,10 @@ public class SettingManager : MonoBehaviour, ISaveManger
             { "showMiniAuto",ShowMinniAuto},
             { "autoOpen",AutoOpen },
             { "toggleUpDown",ToggleUpDown},
-            {"windowOpaque",WindowDontOpaque }
+            {"windowOpaque",WindowDontOpaque },
+            {"miniPanleDraggableTodo",MiniPanleDraggableTodo},
+            {"autoCloseMiniPanleDraggableTodo",AutoCloseMiniPanleDraggableTodo},
+            {"reTodoPos" ,ReTodoPos}
         };
     }
 
@@ -60,6 +63,7 @@ public class SettingManager : MonoBehaviour, ISaveManger
 
     private static void ToggleUpDown()
     {
+        WindowTransparent.Instance.isUp = Instance.settingToggleButtons.Find(x => x.ID == "toggleUpDown").IsOn;
         WindowTransparent.Instance.ToggleUpDown(Instance.settingToggleButtons.Find(x => x.ID == "toggleUpDown").IsOn);
     }
 
@@ -68,6 +72,22 @@ public class SettingManager : MonoBehaviour, ISaveManger
         WindowTransparent.Instance.isOpaque = Instance.settingToggleButtons.Find(x => x.ID == "windowOpaque").IsOn;
         //如果切换，则设置不透明，不切换则透明
         WindowTransparent.Instance.SetWindowTransparencyMust(!WindowTransparent.Instance.isOpaque);
+    }
+
+    private static void MiniPanleDraggableTodo()
+    {
+        MiniPanleManager.Instance.miniIsDrag = Instance.settingToggleButtons.Find(x => x.ID == "miniPanleDraggableTodo").IsOn;
+        MiniPanleManager.Instance.gameObject.GetComponent<DraggableObject>().notThis = Instance.settingToggleButtons.Find(x => x.ID == "miniPanleDraggableTodo").IsOn;
+    }
+
+    private static void AutoCloseMiniPanleDraggableTodo()
+    {
+        MiniPanleManager.Instance.autoClose = Instance.settingToggleButtons.Find(x => x.ID == "autoCloseMiniPanleDraggableTodo").IsOn;
+    }
+
+    private static void ReTodoPos()
+    {
+        TodoWindowManager.Instance.ResetPosition();
     }
 
     public void LoadData(GameData _data)
@@ -88,6 +108,8 @@ public class SettingManager : MonoBehaviour, ISaveManger
         {
             settingToggleButtons[i].IsOn = settingToggleButtonsIsOn[settingToggleButtons[i].ID];
         }
+        if (_data.autoClose)
+            Instance.settingToggleButtons.Find(x => x.ID == "miniPanleDraggableTodo").IsOn = false;
     }
 
     public void SaveData(ref GameData _data)

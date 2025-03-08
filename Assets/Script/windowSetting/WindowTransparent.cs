@@ -50,6 +50,7 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
     private IntPtr hWnd;  // 活动窗口的句柄
 
     public bool isOpaque = true;//是否启用切换透明
+    public bool isUp = true;//是否启用切换透明
 
     private void Awake()
     {
@@ -85,7 +86,7 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
         SetWindowTransparency(isOpaque);
 
         // 设置窗口位置为始终置顶
-        ToggleUpDown(true);
+        ToggleUpDown(isUp);
 #endif
 
         // 允许应用在后台运行
@@ -143,10 +144,12 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
     public void LoadData(GameData _data)
     {
         isOpaque = _data.isOpaque;
+        isUp = _data.isUp;
     }
 
     public void SaveData(ref GameData _data)
     {
         _data.isOpaque = isOpaque;
+        _data.isUp = isUp;
     }
 }
