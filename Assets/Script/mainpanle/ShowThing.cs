@@ -29,6 +29,7 @@ public class ShowThing : MonoBehaviour
         {
             showThings[currentShow].GetComponentInChildren<MainLineChartManager>().chart.AnimationReset();
             showThings[currentShow].GetComponentInChildren<MainLineChartManager>().chart.AnimationFadeIn();
+            NearTodoManager.Instance.UpdateThings();
         }
     }
 }

@@ -28,5 +28,6 @@ public class MainPanle : MonoBehaviour
     public void OpenWindow()
     {
         PanleWindowManager.OpenPanle(canvasGroup);
+        NearTodoManager.Instance.UpdateThings();
     }
 }

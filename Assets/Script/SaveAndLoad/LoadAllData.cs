@@ -59,6 +59,7 @@ public class LoadAllData : MonoBehaviour, ISaveManger
     private readonly string todoManagerInitialJson = "{\"items\": [{\"todoID\": \"0\", \"title\": \"Hello~\", \"titleColor\": \"#000\", \"titleBGStartColor\": \"#FF6F60\", \"titleBGEndColor\": \"#FFFF63\", \"clearFX\": 0, \"isCountingDown\": false, \"isAlarmPlayed\": false, \"isTodo\": false, \"dateTime\": 0, \"timeType\": 0, \"alarmType\": 0, \"timer\": 0.0, \"customizePath\": \"\", \"isChangeCustomize\": true, \"countdownTime\": 60.0}]}";
 
     public bool showMini;
+    private long lastleaveTime;
 
     private void Awake()
     {
@@ -84,11 +85,13 @@ public class LoadAllData : MonoBehaviour, ISaveManger
     public void LoadData(GameData _data)
     {
         showMini = _data.showMiniPanle;
+        lastleaveTime = _data.lastLeaveTime;
     }
 
     public void SaveData(ref GameData _data)
     {
         _data.showMiniPanle = showMini;
+        _data.lastLeaveTime = DateTime.UtcNow.Ticks;
     }
 
     private void CheckAndCreateFile(string filePath, string initialContent)
@@ -218,7 +221,7 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         TimerManager.Instance.UpdateTodoTimerSetting(todoManager,
             (TimingType)todoData.timeType,
             (AlarmType)todoData.alarmType,
-            todoData.timer,
+            todoData.timer - (Mathf.Abs(DateTime.Now.Ticks - lastleaveTime) / 10000000f),
             dateTime,
             todoData.customizePath
         );

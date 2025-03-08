@@ -9,7 +9,7 @@ public class DraggableObject : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     private RectTransform rectTransform;
 
-    void OnEnable()
+    private void OnEnable()
     {
         rectTransform = GetComponent<RectTransform>();
         storedPosition = rectTransform.position;
@@ -31,13 +31,11 @@ public class DraggableObject : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         // 记录鼠标按下时的初始位置
         isDragging = true;
         lastMousePosition = Input.mousePosition;
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
-
     }
 
     public void OnPointerMove(PointerEventData eventData)

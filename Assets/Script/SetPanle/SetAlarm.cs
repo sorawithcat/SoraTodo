@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SetAlarm : MonoBehaviour
@@ -14,21 +15,29 @@ public class SetAlarm : MonoBehaviour
 
     [Header("定时类型的下拉框")]
     [SerializeField] private TMP_Dropdown timeTypeDropdown;
+
     [Header("倒计时输入框")]
     [SerializeField] private TMP_InputField timeInputField;
+
     [Header("日期输入框")]
     [SerializeField] private TMP_InputField dateInputField;
+
     [Header("闹钟类型的下拉框")]
     [SerializeField] private TMP_Dropdown alarmTypeDropdown;
+
     [Header("自定义框")]
     [SerializeField] private GameObject customizeGO;
+
     [Header("音效试听")]
     [SerializeField] private GameObject audioSourceButton;
+
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
+
     private AudioClip alarmClip;
 
     private string customizePath;
+
     private void Awake()
     {
         if (Instance == null)
@@ -40,13 +49,13 @@ public class SetAlarm : MonoBehaviour
             Destroy(Instance);
         }
     }
-    void Start()
+
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
         alarmTypeDropdown.onValueChanged.AddListener(OnAlarmDropdownValueChanged);
     }
-
 
     /// <summary>
     /// 设置内容为首个todo的设置，以免重复设置一些不需要更改的项
@@ -60,7 +69,6 @@ public class SetAlarm : MonoBehaviour
         if (todomanager.timingType != TimingType.Date)
         {
             dateInputField.text = ConvertSecondsToTimeString(ConvertDateTimeToSeconds(DateTime.Now));
-
         }
         else
         {
@@ -82,11 +90,7 @@ public class SetAlarm : MonoBehaviour
         }
     }
 
-
-
-
-
-    void OnTimeDropdownValueChanged(int index)
+    private void OnTimeDropdownValueChanged(int index)
     {
         switch ((TimingType)index)
         {
@@ -94,6 +98,7 @@ public class SetAlarm : MonoBehaviour
                 timeInputField.gameObject.SetActive(false);
                 dateInputField.gameObject.SetActive(false);
                 break;
+
             case TimingType.Countdown:
                 timeInputField.gameObject.SetActive(true);
                 dateInputField.gameObject.SetActive(false); break;
@@ -104,7 +109,7 @@ public class SetAlarm : MonoBehaviour
         }
     }
 
-    void OnAlarmDropdownValueChanged(int index)
+    private void OnAlarmDropdownValueChanged(int index)
     {
         audioSource.Stop();
 
@@ -116,10 +121,12 @@ public class SetAlarm : MonoBehaviour
                 audioSourceButton.SetActive(false);
                 customizeGO.SetActive(false);
                 break;
+
             case AlarmType.Customize:
                 audioSourceButton.SetActive(true);
                 customizeGO.SetActive(true);
                 break;
+
             case AlarmType.Alarm1:
                 soundPath += "Alarm1";
                 alarmClip = Resources.Load<AudioClip>(soundPath);
@@ -130,7 +137,6 @@ public class SetAlarm : MonoBehaviour
                 else
                 {
                     audioSource.clip = alarmClip;
-
                 }
                 audioSourceButton.SetActive(true);
 
@@ -150,6 +156,7 @@ public class SetAlarm : MonoBehaviour
             ;
         }, FolderBrowserHelper.AUDIOFILTER);
     }
+
     public void SetAlarms()
     {
         int selectedTimeType = timeTypeDropdown.value;
@@ -186,7 +193,6 @@ public class SetAlarm : MonoBehaviour
             if ((AlarmType)selectedAlarmType != AlarmType.Customize)
             {
                 LoadAllData.Instance.UpdateTodoManager(todoManager.todoID, "customizePath", "");
-
             }
         }
         if ((TimingType)selectedTimeType == TimingType.None && (AlarmType)selectedAlarmType != AlarmType.None)
@@ -194,21 +200,21 @@ public class SetAlarm : MonoBehaviour
             TipWindowManager.Instance.ShowTip("因为你选择了无定时，所以设置的闹钟类型仅设置，不会生效");
         }
         CloseWindow();
-
     }
+
     public void CloseWindow()
     {
         audioSource.Stop();
         PanleWindowManager.ClosePanle(canvasGroup);
         TodoWindowManager.Instance.OpenWindow();
-
     }
+
     public void OpenWindow()
     {
         PanleWindowManager.OpenPanle(canvasGroup);
         TipWindowManager.Instance.ShowTip("自定义铃声不建议导入过大的音频资源");
-
     }
+
     public long ConvertDateTimeToSeconds(DateTime _datetime)
     {
         long year = _datetime.Year;
@@ -222,7 +228,6 @@ public class SetAlarm : MonoBehaviour
         return totalSeconds;
     }
 
-
     public List<int> ConvertTimeToArray(string input)
     {
         int year = 0;
@@ -231,7 +236,14 @@ public class SetAlarm : MonoBehaviour
         int hour = 0;
         int minute = 0;
         int second = 0;
-
+        //处理纯数字输入
+        if (Regex.IsMatch(input, @"^\d+$"))
+        {
+            second = int.Parse(input);
+            TipWindowManager.Instance.ShowTip($"已自动转换为{DateTime.Now.AddSeconds(second)}");
+            DateTime dateTime = DateTime.Now.AddSeconds(second);
+            return new List<int> { dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second };
+        }
         string pattern = @"(\d+)(year|mon|day|hour|min|sec)";
         MatchCollection matches = Regex.Matches(input, pattern);
 
@@ -247,21 +259,27 @@ public class SetAlarm : MonoBehaviour
                 case "year":
                     year = number;
                     break;
+
                 case "mon":
                     month = number;
                     break;
+
                 case "day":
                     day = number;
                     break;
+
                 case "hour":
                     hour = number;
                     break;
+
                 case "min":
                     minute = number;
                     break;
+
                 case "sec":
                     second = number;
                     break;
+
                 default:
                     TipWindowManager.Instance.ShowTip("未知的单位 " + unit, Color.red);
                     break;
@@ -271,6 +289,7 @@ public class SetAlarm : MonoBehaviour
         List<int> longs = new() { year, month, day, hour, minute, second };
         return longs;
     }
+
     /// <summary>
     /// 字符串转秒
     /// </summary>
@@ -280,6 +299,13 @@ public class SetAlarm : MonoBehaviour
     {
         long totalSeconds = 0;
 
+        //处理纯数字输入（默认为秒）
+        if (Regex.IsMatch(input, @"^\d+$"))
+        {
+            totalSeconds = int.Parse(input);
+            TipWindowManager.Instance.ShowTip($"已自动转换为{totalSeconds}秒");
+            return totalSeconds;
+        }
         string pattern = @"(\d+)(year|mon|day|hour|min|sec)";
         MatchCollection matches = Regex.Matches(input, pattern);
 
@@ -296,21 +322,27 @@ public class SetAlarm : MonoBehaviour
                 case "year":
                     totalSeconds += number * 365 * 24 * 60 * 60;
                     break;
+
                 case "mon":
                     totalSeconds += number * 30 * 24 * 60 * 60;
                     break;
+
                 case "day":
                     totalSeconds += number * 24 * 60 * 60;
                     break;
+
                 case "hour":
                     totalSeconds += number * 60 * 60;
                     break;
+
                 case "min":
                     totalSeconds += number * 60;
                     break;
+
                 case "sec":
                     totalSeconds += number;
                     break;
+
                 default:
                     TipWindowManager.Instance.ShowTip("未知的单位 " + unit, Color.red);
                     break;
@@ -319,6 +351,7 @@ public class SetAlarm : MonoBehaviour
 
         return totalSeconds;
     }
+
     /// <summary>
     /// 秒转字符串
     /// </summary>
