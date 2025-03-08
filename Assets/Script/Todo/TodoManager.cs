@@ -192,8 +192,11 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 isTodo = true;
                 StepTextColor.Instance.SetTextAndColor(StepTextColor.Instance.currentNumb + 1);
                 MainLineChartManager.Instance.Append();
-                EndSetJson();
                 SetClearFX();
+                if (clearFX != ClearFX.DestroyThis)
+                {
+                    EndSetJson();
+                }
             }
             else
             {
@@ -232,7 +235,7 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         LoadAllData.Instance.UpdateTodoManager(todoID, "titleColor", SetColor.Instance.RGBToString(todoText.color));
     }
 
-    public void SetClearFX()
+    public void SetClearFX(bool isShow = false)
     {
         if (newMaterial != null)
             newMaterial.SetVector("_GradientStartUV", new Vector4(2f, 0.5f, 0, 0));
@@ -245,6 +248,10 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             case ClearFX.DestroyThis:
                 TimerManager.Instance.UnregisterTodoManager(this);
+                if (!isShow)
+                {
+                    LoadAllData.Instance.RemoveTodoManager(todoID, transform.parent.parent.GetSiblingIndex());
+                }
                 Destroy(this.gameObject);
                 break;
         }

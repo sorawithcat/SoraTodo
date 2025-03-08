@@ -13,35 +13,43 @@ public class AddTodoManager : MonoBehaviour
 
     [Header("分类按钮父节点")]
     [SerializeField] private GameObject classifyButtonFather;
+
     [Header("Todo预制体")]
     [SerializeField] private GameObject todoPrefab;
 
     [Header("定时类型的下拉框")]
     [SerializeField] private TMP_Dropdown timeTypeDropdown;
+
     [Header("闹钟类型的下拉框")]
     [SerializeField] private TMP_Dropdown alarmTypeDropdown;
+
     [Header("音效试听")]
     [SerializeField] private GameObject audioSourceButton;
+
     [Header("日期输入框")]
     [SerializeField] private TMP_InputField dateInputField;
+
     [Header("倒计时输入框")]
     [SerializeField] private TMP_InputField timeInputField;
+
     [Header("自定义框")]
     [SerializeField] private GameObject customizeGO;
 
     [Header("标题")]
     [SerializeField] private TMP_InputField title;
 
-
     [Header("完成效果的下拉框")]
     [SerializeField] private TMP_Dropdown clearTypeDropdown;
+
     [Header("演示用todo")]
     [SerializeField] private TodoManager todoManager;
+
     [Header("演示用todo父节点")]
     [SerializeField] private GameObject todoManagerFather;
 
     [Header("音效设置")]
     [SerializeField] private AudioSource audioSource;
+
     private AudioClip alarmClip;
     private string customizePath;
 
@@ -55,10 +63,9 @@ public class AddTodoManager : MonoBehaviour
         {
             Destroy(Instance);
         }
-
-
     }
-    void Start()
+
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         timeTypeDropdown.onValueChanged.AddListener(OnTimeDropdownValueChanged);
@@ -73,16 +80,17 @@ public class AddTodoManager : MonoBehaviour
         if (todoManager != null)
         {
             todoManager.clearFX = (ClearFX)index;
-            todoManager.SetClearFX();
+            todoManager.SetClearFX(true);
         }
         else
         {
             GameObject newTodo = Instantiate(todoPrefab, todoManagerFather.transform);
             todoManager = newTodo.GetComponent<TodoManager>();
             todoManager.isTodo = true;
-            todoManager.SetClearFX();
+            todoManager.SetClearFX(true);
         }
     }
+
     public void PlayAlarmSound()
     {
         if (alarmClip != null && audioSource != null)
@@ -94,7 +102,8 @@ public class AddTodoManager : MonoBehaviour
             TipWindowManager.Instance.ShowTip("铃声或AudioSource为空，无法播放铃声！", Color.red);
         }
     }
-    void OnTimeDropdownValueChanged(int index)
+
+    private void OnTimeDropdownValueChanged(int index)
     {
         switch ((TimingType)index)
         {
@@ -102,6 +111,7 @@ public class AddTodoManager : MonoBehaviour
                 timeInputField.gameObject.SetActive(false);
                 dateInputField.gameObject.SetActive(false);
                 break;
+
             case TimingType.Countdown:
                 timeInputField.gameObject.SetActive(true);
                 dateInputField.gameObject.SetActive(false); break;
@@ -123,7 +133,8 @@ public class AddTodoManager : MonoBehaviour
             ;
         }, FolderBrowserHelper.AUDIOFILTER);
     }
-    void OnAlarmDropdownValueChanged(int index)
+
+    private void OnAlarmDropdownValueChanged(int index)
     {
         audioSource.Stop();
 
@@ -135,10 +146,12 @@ public class AddTodoManager : MonoBehaviour
                 audioSourceButton.SetActive(false);
                 customizeGO.SetActive(false);
                 break;
+
             case AlarmType.Customize:
                 audioSourceButton.SetActive(true);
                 customizeGO.SetActive(true);
                 break;
+
             case AlarmType.Alarm1:
                 soundPath += "Alarm1";
                 alarmClip = Resources.Load<AudioClip>(soundPath);
@@ -149,7 +162,6 @@ public class AddTodoManager : MonoBehaviour
                 else
                 {
                     audioSource.clip = alarmClip;
-
                 }
                 audioSourceButton.SetActive(true);
 
@@ -157,6 +169,7 @@ public class AddTodoManager : MonoBehaviour
                 break;
         }
     }
+
     /// <summary>
     /// 更新分类索引
     /// </summary>
@@ -164,6 +177,7 @@ public class AddTodoManager : MonoBehaviour
     {
         _classifyButton.siblingIndex = _classifyButton.transform.GetSiblingIndex();
     }
+
     /// <summary>
     /// 添加待办
     /// </summary>

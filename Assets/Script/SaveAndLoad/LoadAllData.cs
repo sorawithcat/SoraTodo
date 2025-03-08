@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -234,7 +235,7 @@ public class LoadAllData : MonoBehaviour, ISaveManger
     /// <returns></returns>
     private Color HexToColor(string hex)
     {
-        if (ColorUtility.TryParseHtmlString(hex, out Color color))
+        if (UnityEngine.ColorUtility.TryParseHtmlString(hex, out Color color))
         {
             return color;
         }
@@ -372,6 +373,8 @@ public class LoadAllData : MonoBehaviour, ISaveManger
 
         SaveDataToJson(); // 保存到JSON文件
         ApplyLayout(); // 重新计算并应用布局
+        classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisSpacing -= todoManagerPrefab.GetComponent<RectTransform>().rect.height;
+        classifyButtonContainer.GetComponent<CustomVerticalLayoutGroup>().UpdateChildSpacingAtIndex(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisID, classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisSpacing);
     }
 
     /// <summary>
