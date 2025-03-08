@@ -70,8 +70,9 @@ public class SettingManager : MonoBehaviour, ISaveManger
     private static void WindowDontOpaque()
     {
         WindowTransparent.Instance.isOpaque = Instance.settingToggleButtons.Find(x => x.ID == "windowOpaque").IsOn;
-        //如果切换，则设置不透明，不切换则透明
-        WindowTransparent.Instance.SetWindowTransparencyMust(!WindowTransparent.Instance.isOpaque);
+        //Todo:如果切换，则设置不透明，不切换则透明
+        //WindowTransparent.Instance.SetWindowTransparencyMust(WindowTransparent.Instance.isOpaque);
+        TipWindowManager.Instance.ShowTip("这个功能暂时不可用", Color.gray);
     }
 
     private static void MiniPanleDraggableTodo()
@@ -108,8 +109,6 @@ public class SettingManager : MonoBehaviour, ISaveManger
         {
             settingToggleButtons[i].IsOn = settingToggleButtonsIsOn[settingToggleButtons[i].ID];
         }
-        if (_data.autoClose)
-            Instance.settingToggleButtons.Find(x => x.ID == "miniPanleDraggableTodo").IsOn = false;
     }
 
     public void SaveData(ref GameData _data)
@@ -117,6 +116,10 @@ public class SettingManager : MonoBehaviour, ISaveManger
         for (int i = 0; i < settingToggleButtons.Count; i++)
         {
             settingToggleButtonsIsOn[settingToggleButtons[i].ID] = settingToggleButtons[i].IsOn;
+        }
+        if (_data.autoClose)
+        {
+            settingToggleButtonsIsOn["miniPanleDraggableTodo"] = false;
         }
         _data.settingToggleButtonsIsOn = settingToggleButtonsIsOn;
     }

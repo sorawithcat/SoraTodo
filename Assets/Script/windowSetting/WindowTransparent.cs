@@ -46,11 +46,15 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
     private const uint WS_EX_TRANSPARENT = 0x00000020;  // 透明窗口的扩展样式
     private static readonly IntPtr HWND_TOPMOST = new(-1);  // 窗口插入位置（始终置顶）
     private static readonly IntPtr HWND_NOTOPMOST = new(-2);//非置顶
+    private const uint LWA_ALPHA = 0x00000002;
+
     private const uint LWA_COLORKEY = 0x00000001;  // 设置颜色键的标志（用于透明度）
     private IntPtr hWnd;  // 活动窗口的句柄
 
     public bool isOpaque = true;//是否启用切换透明
     public bool isUp = true;//是否启用切换透明
+
+    public Camera camera;
 
     private void Awake()
     {
@@ -66,9 +70,6 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
 
     private void Start()
     {
-        // 显示一个消息框（仅用于演示目的）
-        // MessageBox(new IntPtr(0), "Hello world", "Hello Dialog", 0);
-
 #if !UNITY_EDITOR
         // 获取活动窗口的句柄
         hWnd = GetActiveWindow();
@@ -83,7 +84,8 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
         SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_LAYERED);
 
         // 设置窗口颜色键（用于透明度）
-        SetWindowTransparency(isOpaque);
+        //SetWindowTransparency(isOpaque);
+        SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
 
         // 设置窗口位置为始终置顶
         ToggleUpDown(isUp);
@@ -118,11 +120,18 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
             if (opaque)
             {
                 SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
+                camera.backgroundColor = new Color(0, 0, 0, 0f);
             }
             else
             {
-                SetLayeredWindowAttributes(hWnd, 0, 255, LWA_COLORKEY);
+                SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+                camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
             }
+        }
+        else
+        {
+            SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+            camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
         }
     }
 
@@ -134,10 +143,12 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
         if (opaque)
         {
             SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
+            camera.backgroundColor = new Color(0, 0, 0, 0f);
         }
         else
         {
-            SetLayeredWindowAttributes(hWnd, 0, 255, LWA_COLORKEY);
+            SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+            camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
         }
     }
 

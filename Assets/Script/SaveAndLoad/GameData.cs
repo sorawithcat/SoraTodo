@@ -92,8 +92,8 @@ public class GameData
         settingToggleButtonsIsOn = new SerializableDictionary<string, bool>();
         showMiniPanle = false;
         isOpaque = true;
-        todoPosition = new Vector3(1250f, 640f, 0);
-        currentTodoPosition = new Vector3(1250f, 640f, 0);
+        todoPosition = Vector3.zero;
+        currentTodoPosition = Vector3.zero;
         isUp = true;
         miniIsDrag = false;
         autoClose = true;

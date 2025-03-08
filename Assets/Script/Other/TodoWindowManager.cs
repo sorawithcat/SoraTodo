@@ -27,13 +27,13 @@ public class TodoWindowManager : MonoBehaviour, ISaveManger
     public void CloseWindow()
     {
         PanleWindowManager.ClosePanle(canvasGroup);
-        WindowTransparent.Instance.SetWindowTransparency(false);
+        //WindowTransparent.Instance.SetWindowTransparency(false);
     }
 
     public void OpenWindow()
     {
         PanleWindowManager.OpenPanle(canvasGroup);
-        WindowTransparent.Instance.SetWindowTransparency(true);
+        //WindowTransparent.Instance.SetWindowTransparency(true);
     }
 
     public void ResetPosition()
@@ -43,6 +43,14 @@ public class TodoWindowManager : MonoBehaviour, ISaveManger
 
     public void LoadData(GameData _data)
     {
+        if (_data.currentTodoPosition == Vector3.zero)
+        {
+            _data.currentTodoPosition = GetComponent<RectTransform>().position;
+        }
+        if (_data.todoPosition == Vector3.zero)
+        {
+            _data.todoPosition = GetComponent<RectTransform>().position;
+        }
         GetComponent<RectTransform>().position = _data.currentTodoPosition;
         todoPosition = _data.todoPosition;
     }
