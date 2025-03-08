@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +24,12 @@ public class ToggleButton : MonoBehaviour
     private Image _toggleImage;
     private Coroutine _transitionCoroutine;
 
-    // 计算出的目标位置
+    [SerializeField] private bool isSwitch;
+
+    [ConditionalHide(nameof(isSwitch))]
+    [Range(0f, 100f)]
+    public float delayTime = 1f;
+
     private Vector2 _leftPosition;
 
     private Vector2 _rightPosition;
@@ -81,6 +87,15 @@ public class ToggleButton : MonoBehaviour
     {
         IsOn = !IsOn;
         SettingManager.Instance.settingToggleButtonsActions[ID]();
+        if (isSwitch)
+        {
+            Invoke(nameof(DelayToggle), delayTime);
+        }
+    }
+
+    public void DelayToggle()
+    {
+        IsOn = !IsOn;
     }
 
     // 启动过渡协程

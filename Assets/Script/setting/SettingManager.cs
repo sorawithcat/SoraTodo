@@ -27,7 +27,9 @@ public class SettingManager : MonoBehaviour, ISaveManger
             { "openErrorLogFile",OpenErrorLogFile},
             { "clearErrorLogs",ClearErrorLogs},
             { "showMiniAuto",ShowMinniAuto},
-            { "autoOpen",AutoOpen }
+            { "autoOpen",AutoOpen },
+            { "toggleUpDown",ToggleUpDown},
+            {"windowOpaque",WindowDontOpaque }
         };
     }
 
@@ -39,7 +41,6 @@ public class SettingManager : MonoBehaviour, ISaveManger
             Directory.CreateDirectory(logDirectory);
         }
         System.Diagnostics.Process.Start(logDirectory);
-        Instance.settingToggleButtons.Find(x => x.ID == "openErrorLogFile").IsOn = false;
     }
 
     private static void ClearErrorLogs()
@@ -55,6 +56,18 @@ public class SettingManager : MonoBehaviour, ISaveManger
     private static void AutoOpen()
     {
         AutoLauncher.SetStartup(Instance.settingToggleButtons.Find(x => x.ID == "autoOpen").IsOn);
+    }
+
+    private static void ToggleUpDown()
+    {
+        WindowTransparent.Instance.ToggleUpDown(Instance.settingToggleButtons.Find(x => x.ID == "toggleUpDown").IsOn);
+    }
+
+    private static void WindowDontOpaque()
+    {
+        WindowTransparent.Instance.isOpaque = Instance.settingToggleButtons.Find(x => x.ID == "windowOpaque").IsOn;
+        //如果切换，则设置不透明，不切换则透明
+        WindowTransparent.Instance.SetWindowTransparencyMust(!WindowTransparent.Instance.isOpaque);
     }
 
     public void LoadData(GameData _data)

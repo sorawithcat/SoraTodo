@@ -16,7 +16,8 @@ public class TodoWindowManager : MonoBehaviour
             Destroy(Instance);
         }
     }
-    void Start()
+
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
@@ -24,11 +25,12 @@ public class TodoWindowManager : MonoBehaviour
     public void CloseWindow()
     {
         PanleWindowManager.ClosePanle(canvasGroup);
-
+        WindowTransparent.Instance.SetWindowTransparency(false);
     }
+
     public void OpenWindow()
     {
         PanleWindowManager.OpenPanle(canvasGroup);
-
+        WindowTransparent.Instance.SetWindowTransparency(true);
     }
 }

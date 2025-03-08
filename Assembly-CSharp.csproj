@@ -106,6 +106,7 @@
     <Compile Include="Assets\Script\ClassifyButtonManager\ClassifyButtonListManager.cs" />
     <Compile Include="Assets\Script\Other\ToggleButton.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\FileDataHandler.cs" />
+    <Compile Include="Assets\Script\Other\ConditionalHideAttribute.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\Inventory.cs" />
     <Compile Include="Assets\Script\setting\SettingManager.cs" />
     <Compile Include="Assets\Script\mainpanle\MainLineChartManager.cs" />
@@ -476,12 +477,12 @@
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Interop.IWshRuntimeLibrary">
       <HintPath>Assets\Script\Other\Interop.IWshRuntimeLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

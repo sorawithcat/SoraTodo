@@ -49,6 +49,11 @@ public class GameData
     /// </summary>
     public bool showMiniPanle;
 
+    /// <summary>
+    /// 窗口背景是否透明
+    /// </summary>
+    public bool isOpaque;
+
     public GameData()
     {
         lastLeaveTime = DateTime.UtcNow.Ticks;
@@ -60,5 +65,6 @@ public class GameData
         memorandum = "";
         settingToggleButtonsIsOn = new SerializableDictionary<string, bool>();
         showMiniPanle = false;
+        isOpaque = true;
     }
 }

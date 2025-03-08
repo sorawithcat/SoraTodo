@@ -208,6 +208,8 @@ MonoBehaviour:
   spacingProportion: 0.05
   _isOn: 0
   _toggleRect: {fileID: 3196809670523724726}
+  isSwitch: 0
+  delayTime: 1
 --- !u!114 &8983851552233736218
 MonoBehaviour:
   m_ObjectHideFlags: 0
