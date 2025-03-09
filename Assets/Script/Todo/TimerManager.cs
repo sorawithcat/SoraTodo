@@ -136,7 +136,7 @@ public class TimerManager : MonoBehaviour
         {
             if (classifyButtonManager == classify)
             {
-                classifyToTodoManagers.Remove(classify);
+                classifyToTodoManagers.RemoveByKey(classify);
             }
         }
     }

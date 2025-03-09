@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public enum MenuTags
     None,
     todoThing,
     classifyButtonText,
+    other
 }
 
 public class RightMenuManager : MonoBehaviour
@@ -56,7 +58,7 @@ public class RightMenuManager : MonoBehaviour
     /// 获取信息并设置按钮
     /// </summary>
     /// <param name="_menuTag"></param>
-    public void GetMenuInfo(MenuTags _menuTag, Transform _currentClickThing)
+    public void GetMenuInfo(MenuTags _menuTag, Transform _currentClickThing, List<string> _strings = null, List<Action> _actions = null)
     {
         currentClickThing = _currentClickThing;
         currentClickChildsThing = new List<Transform>();
@@ -72,8 +74,16 @@ public class RightMenuManager : MonoBehaviour
         }
         currentActions = new List<Action>();
         currentNames = new List<string>();
-        currentActions = menuFuns[_menuTag];
-        currentNames = menuButtonNames[_menuTag];
+        if (_menuTag != MenuTags.other && _strings == null && _actions == null)
+        {
+            currentActions = menuFuns[_menuTag];
+            currentNames = menuButtonNames[_menuTag];
+        }
+        else
+        {
+            currentActions = _actions;
+            currentNames = _strings;
+        }
         ShowToolTip(currentNames, currentActions);
     }
 
@@ -112,7 +122,8 @@ public class RightMenuManager : MonoBehaviour
                 "修改字体颜色",
                 "设置提醒",
                 "设置完成效果",
-                "删除此待办"
+                "删除此待办",
+                "移动此待办"
             }
         }
     };
@@ -152,7 +163,8 @@ public class RightMenuManager : MonoBehaviour
                 SetTitleColor,
                 SetTodoAlarm,
                 SetClearFx,
-                RemoveTodo
+                RemoveTodo,
+                MoveTodoManager
             }
         }
     };
@@ -332,6 +344,30 @@ public class RightMenuManager : MonoBehaviour
         TimerManager.Instance.UnregisterTodoManager(currentClickThing.GetComponent<TodoManager>());
         LoadAllData.Instance.RemoveTodoManager(currentClickThing.GetComponent<TodoManager>().todoID, currentClickThing.GetComponent<TodoManager>().transform.parent.parent.GetSiblingIndex());
         Destroy(currentClickThing.gameObject);
+    }
+
+    private static List<string> strings = new();
+    private static List<Action> actions = new();
+
+    public static void MoveTodoManager()
+    {
+        strings.Clear();
+        actions.Clear();
+        strings.Add("取消");
+        actions.Add(() => { Instance.HideRightMenu(); });
+        int i = 0;
+        foreach (var classify in TimerManager.Instance.classifyToTodoManagers.Keys)
+        {
+            int currentIndex = i;
+            strings.Add(classify.GetComponentInChildren<TextMeshProUGUI>().text);
+            actions.Add(() =>
+            {
+                LoadAllData.Instance.MoveTodoManager(currentClickThing.GetComponent<TodoManager>(), currentIndex, currentClickThing.GetComponent<TodoManager>().transform.parent.parent.GetSiblingIndex());
+            });
+            i++;
+        }
+
+        RightMenuManager.Instance.GetMenuInfo(MenuTags.other, currentClickThing, strings, actions);
     }
 
     #endregion todoThing

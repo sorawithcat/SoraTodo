@@ -69,6 +69,7 @@
     <Compile Include="Assets\Script\MiniPanle\helppanle\HelpPanleManager.cs" />
     <Compile Include="Assets\Script\SetPanle\SetColor.cs" />
     <Compile Include="Assets\Script\mainpanle\ShowThing.cs" />
+    <Compile Include="Assets\Script\Helper.cs" />
     <Compile Include="Assets\Script\SaveAndLoad\ISaveManger.cs" />
     <Compile Include="Assets\Script\Other\CustomVerticalLayoutGroup.cs" />
     <Compile Include="Assets\Script\Other\OpenDialogFile.cs" />

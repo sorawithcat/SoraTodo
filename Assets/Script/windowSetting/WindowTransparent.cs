@@ -54,7 +54,7 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
     public bool isOpaque = true;//是否启用切换透明
     public bool isUp = true;//是否启用切换透明
 
-    public Camera camera;
+    public Camera mainCamera;
 
     private void Awake()
     {
@@ -120,18 +120,18 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
             if (opaque)
             {
                 SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
-                camera.backgroundColor = new Color(0, 0, 0, 0f);
+                mainCamera.backgroundColor = new Color(0, 0, 0, 0f);
             }
             else
             {
                 SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
-                camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
+                mainCamera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
             }
         }
         else
         {
             SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
-            camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
+            mainCamera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
         }
     }
 
@@ -143,12 +143,12 @@ public class WindowTransparent : MonoBehaviour, ISaveManger
         if (opaque)
         {
             SetLayeredWindowAttributes(hWnd, 0, 0, LWA_COLORKEY);
-            camera.backgroundColor = new Color(0, 0, 0, 0f);
+            mainCamera.backgroundColor = new Color(0, 0, 0, 0f);
         }
         else
         {
             SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
-            camera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
+            mainCamera.backgroundColor = new Color(0, 0, 1 / 255, 1f);
         }
     }
 

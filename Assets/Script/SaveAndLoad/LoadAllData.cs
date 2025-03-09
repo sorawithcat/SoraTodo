@@ -352,11 +352,13 @@ public class LoadAllData : MonoBehaviour, ISaveManger
     /// </summary>
     /// <param name="id"></param>
     /// <param name="classifyId"></param>
-    public void RemoveTodoManager(string id, int classifyId)
+    public void RemoveTodoManager(string id, int classifyId, bool isChangePos = false)
     {
         // 从 todoManagerDatas 中删除待办事项
-        todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.todoID != id);
-
+        if (!isChangePos)
+        {
+            todoManagerDatas = Array.FindAll(todoManagerDatas, td => td.todoID != id);
+        }
         // 更新指定分类数据，移除包含该待办事项 ID 的分类
         foreach (var classifyButton in classifyButtonManagerDatas)
         {
@@ -378,6 +380,35 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         ApplyLayout(); // 重新计算并应用布局
         classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisSpacing -= todoManagerPrefab.GetComponent<RectTransform>().rect.height;
         classifyButtonContainer.GetComponent<CustomVerticalLayoutGroup>().UpdateChildSpacingAtIndex(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisID, classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[classifyId].thisSpacing);
+    }
+
+    /// <summary>
+    /// 移动待办事项
+    /// </summary>
+    public void MoveTodoManager(TodoManager todoManager, int newSiblingIndex, int oldSiblingIndex)
+    {
+        if (classifyButtonManagerDatas.Length <= 1 || newSiblingIndex == oldSiblingIndex)
+        {
+            return;
+        }
+        var classifyToRemove = classifyButtonManagerDatas.FirstOrDefault(cb => cb.siblingIndex == newSiblingIndex);
+        if (classifyToRemove != null)
+        {
+            var todoData = todoManagerDatas.FirstOrDefault(td => td.todoID == todoManager.todoID);
+            // 从原分类移除并添加到目标分类
+            AddTodoManager(todoData, newSiblingIndex, true);
+            RemoveTodoManager(todoManager.todoID, oldSiblingIndex, true);
+            todoManager.transform.SetParent(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].todoList.transform);
+        }
+        SaveDataToJson(); // 保存到JSON文件
+        ApplyLayout(); // 重新计算并应用布局
+        classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].thisSpacing += (todoManagerPrefab.GetComponent<RectTransform>().rect.height);
+        classifyButtonContainer.GetComponent<CustomVerticalLayoutGroup>().UpdateChildSpacingAtIndex(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].thisID, classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].thisSpacing);
+        classifyButtonContainer.GetComponent<CustomVerticalLayoutGroup>().UpdateChildSpacingAtIndex(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[oldSiblingIndex].thisID, classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[oldSiblingIndex].thisSpacing);
+        if (classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].isOpen != 1)
+        {
+            classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[newSiblingIndex].ClickToHandoff();
+        }
     }
 
     /// <summary>
@@ -444,6 +475,7 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         }
         // 删除分类
         classifyButtonManagerDatas = Array.FindAll(classifyButtonManagerDatas, cb => cb.siblingIndex != siblingIndex);
+        TimerManager.Instance.classifyToTodoManagers.RemoveByKey(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[siblingIndex]);
         Destroy(classifyButtonContainer.GetComponentsInChildren<ClassifyButtonManager>()[siblingIndex].gameObject);
         RecalculateSiblingIndexes(classifyButtonManagerDatas);  // 重新计算 siblingIndex
         SaveDataToJson(); // 保存到JSON文件
