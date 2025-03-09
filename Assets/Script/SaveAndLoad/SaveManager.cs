@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class SaveManager : MonoBehaviour
 
     private List<ISaveManger> saveMangers;
     private FileDataHandler dataHandler;
+
+    [HideInInspector] public bool dontSave = false;
 
     [ContextMenu("删除保存文件")]
     public void DeleteSavedData()
@@ -76,7 +79,10 @@ public class SaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        if (!dontSave)
+        {
+            SaveGame();
+        }
     }
 
     private List<ISaveManger> FindAllSaveMangers()
@@ -93,5 +99,57 @@ public class SaveManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ReStart()
+    {
+        //延迟5秒启动
+
+        string[] strs = new string[]
+         {
+            "@echo off",
+            "echo wscript.sleep 5000 > sleep.vbs",
+            "start /wait sleep.vbs",
+            "start /d \"{0}\" {1}",
+            "del /f /s /q sleep.vbs",
+            "exit"
+         };
+        string path = Application.dataPath + "/../SoraTodo";
+
+        List<string> prefabs = new List<string>();
+        prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../SoraTodo", "*.exe", SearchOption.AllDirectories));
+        if (prefabs.Count == 0)
+        {
+            path = Application.dataPath + "/../";
+            prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../", "*.exe", SearchOption.AllDirectories));
+        }
+        foreach (string keyx in prefabs)
+        {
+            string _path = Application.dataPath;
+            _path = _path.Remove(_path.LastIndexOf("/")) + "/";
+            Debug.LogError(_path);
+            string _name = Path.GetFileName(keyx);
+            strs[3] = string.Format(strs[3], _path, _name);
+            Application.OpenURL(path);
+        }
+
+        string batPath = Application.dataPath + "/../restart.bat";
+        if (File.Exists(batPath))
+        {
+            File.Delete(batPath);
+        }
+        using (FileStream fileStream = File.OpenWrite(batPath))
+        {
+            using (StreamWriter writer = new StreamWriter(fileStream, System.Text.Encoding.GetEncoding("UTF-8")))
+            {
+                foreach (string s in strs)
+                {
+                    writer.WriteLine(s);
+                }
+                writer.Close();
+            }
+        }
+        Application.Quit();
+        Application.OpenURL(batPath);
     }
 }

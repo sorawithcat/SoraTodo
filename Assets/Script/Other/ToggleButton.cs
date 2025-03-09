@@ -29,6 +29,12 @@ public class ToggleButton : MonoBehaviour
     [Range(0f, 100f)]
     public float delayTime = 1f;
 
+    public bool IsDangerous = false;
+
+    [ConditionalHide(nameof(IsDangerous)), Range(0f, 100f)]
+    public int DangerousCount = 0;
+
+    private int currentDangerousCount = 0;
     private Vector2 _leftPosition;
 
     private Vector2 _rightPosition;
@@ -67,6 +73,10 @@ public class ToggleButton : MonoBehaviour
         // 强制初始化位置
         _toggleRect.anchoredPosition = _isOn ? _rightPosition : _leftPosition;
         _toggleImage.color = _isOn ? onColor : offColor;
+        if (IsDangerous)
+        {
+            currentDangerousCount = DangerousCount;
+        }
     }
 
     // 根据父物体尺寸计算开关位置
@@ -84,6 +94,13 @@ public class ToggleButton : MonoBehaviour
     // 外部调用的切换方法
     public void Toggle()
     {
+        if (IsDangerous && currentDangerousCount > 0)
+        {
+            currentDangerousCount--;
+            TipWindowManager.Instance.ShowTip($"这是一个危险操作，还剩{currentDangerousCount}次警告!", Color.red, addToErrorFile: false);
+            return;
+        }
+        currentDangerousCount = DangerousCount;
         IsOn = !IsOn;
         SettingManager.Instance.settingToggleButtonsActions[ID]();
         if (isSwitch)

@@ -32,7 +32,9 @@ public class SettingManager : MonoBehaviour, ISaveManger
             {"windowOpaque",WindowDontOpaque },
             {"miniPanleDraggableTodo",MiniPanleDraggableTodo},
             {"autoCloseMiniPanleDraggableTodo",AutoCloseMiniPanleDraggableTodo},
-            {"reTodoPos" ,ReTodoPos}
+            {"reTodoPos" ,ReTodoPos},
+            {"clearTodoData",ClearTodoData },
+            {"clearSaveData",ClearSaveData }
         };
     }
 
@@ -89,6 +91,26 @@ public class SettingManager : MonoBehaviour, ISaveManger
     private static void ReTodoPos()
     {
         TodoWindowManager.Instance.ResetPosition();
+    }
+
+    private static void ClearTodoData()
+    {
+        LoadAllData.Instance.DeleteTodoData();
+        for (int i = 0; i < LoadAllData.Instance.classifyButtonContainer.childCount; i++)
+        {
+            Destroy(LoadAllData.Instance.classifyButtonContainer.GetChild(i).gameObject);
+        }
+        LoadAllData.Instance.LoadDataFromJson();
+    }
+
+    private static void ClearSaveData()
+    {
+        SaveManager.Instance.DeleteSavedData();
+        SaveManager.Instance.dontSave = true;
+        TipWindowManager.Instance.ShowTip("已清除所有保存数据，将在5秒后重启", Color.red, addToErrorFile: false);
+#if !UNITY_EDITOR
+        SaveManager.Instance.ReStart();
+#endif
     }
 
     public void LoadData(GameData _data)

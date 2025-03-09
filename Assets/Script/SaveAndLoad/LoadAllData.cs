@@ -82,6 +82,11 @@ public class LoadAllData : MonoBehaviour, ISaveManger
         LoadDataFromJson();
     }
 
+    public void DeleteTodoData()
+    {
+        new FileDataHandler(Application.persistentDataPath, "Data", false).Delete();
+    }
+
     public void LoadData(GameData _data)
     {
         showMini = _data.showMiniPanle;

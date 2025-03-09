@@ -210,6 +210,8 @@ MonoBehaviour:
   _toggleRect: {fileID: 3196809670523724726}
   isSwitch: 0
   delayTime: 1
+  IsDangerous: 0
+  DangerousCount: 0
 --- !u!114 &8983851552233736218
 MonoBehaviour:
   m_ObjectHideFlags: 0
