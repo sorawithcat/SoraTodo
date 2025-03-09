@@ -266,9 +266,11 @@ public class TodoManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (timer <= 0f && !isAlarmPlayed)
             {
                 //想了很久，结果就是个延迟激活就能解决的问题）
-                Invoke(nameof(PlayAlarmSound), 0.1f);
-                isAlarmPlayed = true;
-
+                if (alarmType != AlarmType.None)
+                {
+                    Invoke(nameof(PlayAlarmSound), 0.1f);
+                    isAlarmPlayed = true;
+                }
                 timingType = TimingType.None;
                 return false;
             }
