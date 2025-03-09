@@ -31,6 +31,10 @@ public class SerializableDictionary<Tkey, Tvalue> : Dictionary<Tkey, Tvalue>, IS
         }
     }
 
+    /// <summary>
+    /// 通过键值移除（不止删除引用）
+    /// </summary>
+    /// <param name="keyToRemove"></param>
     public void RemoveByKey(Tkey keyToRemove)
     {
         Dictionary<Tkey, Tvalue> newDictionary = new Dictionary<Tkey, Tvalue>();
