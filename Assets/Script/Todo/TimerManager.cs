@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TimerManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class TimerManager : MonoBehaviour
     public static TimerManager Instance;
     [SerializeField] private Transform todoFather;
     public SerializableDictionary<ClassifyButtonManager, List<TodoManager>> classifyToTodoManagers = new();
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,16 +20,16 @@ public class TimerManager : MonoBehaviour
             Destroy(Instance);
         }
     }
+
     private void Start()
     {
         Invoke(nameof(Init), 0.3f);
     }
+
     public void Init()
     {
         AddTodoManagersRecursively(todoFather);
-
     }
-
 
     /// <summary>
     /// 递归遍历所有子物体，检查 ClassifyButtonManager 和 TodoManager
@@ -63,7 +65,7 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         //更新所有TodoManager的定时器
         foreach (var classifyButtonManager in classifyToTodoManagers.Keys)
@@ -86,7 +88,6 @@ public class TimerManager : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// 注册 TodoManager
@@ -126,6 +127,21 @@ public class TimerManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 注销 classify
+    /// </summary>
+    /// <param name="todoManager"></param>
+    public void UnregisterClassify(ClassifyButtonManager classify)
+    {
+        foreach (var classifyButtonManager in classifyToTodoManagers.Keys.ToArray())
+        {
+            if (classifyButtonManager == classify)
+            {
+                classifyToTodoManagers.Remove(classify);
+            }
+        }
+    }
+
+    /// <summary>
     /// 重置所有定时器
     /// </summary>
     public void ResetAllTimers()
@@ -142,6 +158,7 @@ public class TimerManager : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// 为新的todo设置属性
     /// </summary>

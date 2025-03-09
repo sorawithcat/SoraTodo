@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,15 +20,21 @@ public class RightMenuManager : MonoBehaviour
     /// 目前所选内容（召唤出菜单的物体）
     /// </summary>
     private static Transform currentClickThing;
+
     private static List<Transform> currentClickChildsThing;
+
     [Header("按钮预制件")]
     [SerializeField] private GameObject rightMenuButtonPrefab;
+
     [Header("画布")]
     [SerializeField] private GameObject toolTipCanvas;
+
     [Header("base")]
     [SerializeField] private GameObject menuBase;
+
     [Header("按钮列表")]
     [SerializeField] private GameObject menuButtonList;
+
     private readonly float offsetX = 10;
 
     private List<Action> currentActions = new();
@@ -45,6 +52,7 @@ public class RightMenuManager : MonoBehaviour
         }
         HideRightMenu();
     }
+
     /// <summary>
     /// 获取信息并设置按钮
     /// </summary>
@@ -91,7 +99,9 @@ public class RightMenuManager : MonoBehaviour
                 "统一设置所有子待办的提醒",
                 "统一设置所有子待办的完成效果",
                 "添加新待办",
-                "添加新分类"
+                "添加新分类",
+                "删除该分类",
+                "删除该分类，同时删除所有子待办"
             }
         },
         {
@@ -102,7 +112,8 @@ public class RightMenuManager : MonoBehaviour
                 "修改背景末尾颜色",
                 "修改字体颜色",
                 "设置提醒",
-                "设置完成效果"
+                "设置完成效果",
+                "删除此待办"
             }
         }
     };
@@ -128,7 +139,9 @@ public class RightMenuManager : MonoBehaviour
                 SetChildsAlarm,
                 SetChildsClearFX,
                 AddToDo,
-                AddClass
+                AddClass,
+                RemoveClassifyButton,
+                RemoveClassifyButtonAndTodo
             }
         },
         {
@@ -139,7 +152,8 @@ public class RightMenuManager : MonoBehaviour
                 SetGradientEndColor,
                 SetTitleColor,
                 SetTodoAlarm,
-                SetClearFx
+                SetClearFx,
+                RemoveTodo
             }
         }
     };
@@ -167,7 +181,6 @@ public class RightMenuManager : MonoBehaviour
             maxWidth = Mathf.Max(maxWidth, newButton.GetComponentInChildren<TextMeshProUGUI>().GetComponent<RectTransform>().rect.width);
             newButton.GetComponentInParent<RightMenuButtonManager>().buttonID = i;
             newButton.GetComponentInParent<RightMenuButtonManager>().actions = _funs;
-
         }
         Vector2 listCellsize = menuButtonList.GetComponent<GridLayoutGroup>().cellSize;
         //设置base的宽度和高度
@@ -176,8 +189,6 @@ public class RightMenuManager : MonoBehaviour
         menuButtonList.GetComponent<GridLayoutGroup>().cellSize = new Vector2(maxWidth + offsetX, listCellsize.y);
 
         ChangeRightMenuPosition();
-
-
     }
 
     /// <summary>
@@ -193,6 +204,7 @@ public class RightMenuManager : MonoBehaviour
 
         this.GetComponent<RectTransform>().anchoredPosition = mousePosition;
     }
+
     /// <summary>
     /// 隐藏右键菜单
     /// </summary>
@@ -206,6 +218,7 @@ public class RightMenuManager : MonoBehaviour
     }
 
     #region None
+
     /// <summary>
     /// 空函数
     /// </summary>
@@ -214,8 +227,7 @@ public class RightMenuManager : MonoBehaviour
         TipWindowManager.Instance.ShowTip("你点击了一个空的按钮，如果此按钮是功能性按钮，请联系作者修改。", Color.red);
     }
 
-    #endregion
-
+    #endregion None
 
     #region todoThing
 
@@ -226,14 +238,15 @@ public class RightMenuManager : MonoBehaviour
         SetText.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetTitleColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetColor.Instance.setType = SetThingType.Text;
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
-
     }
+
     public static void SetTodoAlarm()
     {
         SetAlarm.Instance.setTransforms = new List<Transform>() { currentClickThing };
@@ -242,6 +255,7 @@ public class RightMenuManager : MonoBehaviour
         SetAlarm.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetChildsAlarm()
     {
         SetAlarm.Instance.setTransforms = currentClickChildsThing;
@@ -250,6 +264,7 @@ public class RightMenuManager : MonoBehaviour
         SetAlarm.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetChildsTitleColor()
     {
         SetColor.Instance.setTransforms = currentClickChildsThing;
@@ -258,6 +273,7 @@ public class RightMenuManager : MonoBehaviour
 
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetBGColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
@@ -265,18 +281,21 @@ public class RightMenuManager : MonoBehaviour
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetChildsClearFX()
     {
         SetClearFX.Instance.setTransforms = currentClickChildsThing;
         SetClearFX.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetClearFx()
     {
         SetClearFX.Instance.setTransforms = new List<Transform>() { currentClickThing };
         SetClearFX.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetGradientStartColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
@@ -284,6 +303,7 @@ public class RightMenuManager : MonoBehaviour
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetChildsGradientStartColor()
     {
         SetColor.Instance.setTransforms = currentClickChildsThing;
@@ -291,6 +311,7 @@ public class RightMenuManager : MonoBehaviour
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetGradientEndColor()
     {
         SetColor.Instance.setTransforms = new List<Transform>() { currentClickThing };
@@ -298,6 +319,7 @@ public class RightMenuManager : MonoBehaviour
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void SetChildsGradientEndColor()
     {
         SetColor.Instance.setTransforms = currentClickChildsThing;
@@ -305,25 +327,41 @@ public class RightMenuManager : MonoBehaviour
         SetColor.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
-    #endregion
+
+    public static void RemoveTodo()
+    {
+        TimerManager.Instance.UnregisterTodoManager(currentClickThing.GetComponent<TodoManager>());
+        LoadAllData.Instance.RemoveTodoManager(currentClickThing.GetComponent<TodoManager>().todoID, currentClickThing.GetComponent<TodoManager>().transform.parent.parent.GetSiblingIndex());
+        Destroy(currentClickThing.gameObject);
+    }
+
+    #endregion todoThing
 
     #region classifyButtonText
+
     public static void AddToDo()
     {
         AddTodoManager.Instance.setTransform = currentClickThing;
         AddTodoManager.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
+
     public static void AddClass()
     {
         AddClassifyButtonManager.Instance.setTransform = currentClickThing;
         AddClassifyButtonManager.Instance.OpenWindow();
         TodoWindowManager.Instance.CloseWindow();
     }
-    #endregion
 
-    #region menuThing
+    public static void RemoveClassifyButton()
+    {
+        LoadAllData.Instance.RemoveClassifyButton(currentClickThing.GetComponent<ClassifyButtonManager>().siblingIndex);
+    }
 
+    public static void RemoveClassifyButtonAndTodo()
+    {
+        LoadAllData.Instance.RemoveClassifyButtonAndTodo(currentClickThing.GetComponent<ClassifyButtonManager>().siblingIndex);
+    }
 
-    #endregion
+    #endregion classifyButtonText
 }

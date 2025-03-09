@@ -81,7 +81,7 @@ public class ErrorLogger : MonoBehaviour, ISaveManger
             // 更新该错误的最后发生时间
             lastErrorTimes[errorKey] = DateTime.Now;
 
-            TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, false, false);
+            TipWindowManager.Instance.ShowTip("错误日志已保存至: " + logFilePath, Color.red, true, logFilePath, true, true, 2, true, false);
         }
     }
 
