@@ -110,19 +110,19 @@ public class SaveManager : MonoBehaviour
             "@echo off",
             "echo wscript.sleep 5000 > sleep.vbs",
             "start /wait sleep.vbs",
-            "start /d \"{0}\" {1}",
+            "start /d \"{0}\" /b {1}",
             "del /f /s /q sleep.vbs",
             "exit"
          };
-        string path = Application.dataPath + "/../SoraTodo";
+        string path = Application.dataPath + "/../";
 
         List<string> prefabs = new List<string>();
-        prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../SoraTodo", "*.exe", SearchOption.AllDirectories));
-        if (prefabs.Count == 0)
-        {
-            path = Application.dataPath + "/../";
-            prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../", "*.exe", SearchOption.AllDirectories));
-        }
+        prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../", "*.exe", SearchOption.AllDirectories));
+        //if (prefabs.Count == 0)
+        //{
+        //    path = Application.dataPath + "/../";
+        //    prefabs = new List<string>(Directory.GetFiles(Application.dataPath + "/../", "*.exe", SearchOption.AllDirectories));
+        //}
         foreach (string keyx in prefabs)
         {
             string _path = Application.dataPath;

@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\GitHUB\\SoraTodo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|d:\\github\\soratodo\\assets\\cleaner\\editor\\classreferencecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\cleaner\\editor\\classreferencecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\textmesh pro\\shaders\\tmp_sdf-surface-mobile.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\textmesh pro\\shaders\\tmp_sdf-surface-mobile.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\saveandload\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|D:\\GitHUB\\SoraTodo\\assets\\script\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\setting\\settingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\setting\\settingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\saveandload\\loadalldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|d:\\github\\soratodo\\assets\\script\\other\\togglebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CD29046-AEC4-12EB-45E5-6FCFE317EC37}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\other\\togglebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B9F3B0D6-3392-D70F-448A-2E8ED522E06B}|XCharts.Editor.csproj|D:\\GitHUB\\SoraTodo\\assets\\xcharts\\editor\\maincomponents\\themeeditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,31 +43,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClassReferenceCollection.cs",
-              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Cleaner\\Editor\\ClassReferenceCollection.cs",
-              "RelativeDocumentMoniker": "Assets\\Cleaner\\Editor\\ClassReferenceCollection.cs",
-              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Cleaner\\Editor\\ClassReferenceCollection.cs",
-              "RelativeToolTip": "Assets\\Cleaner\\Editor\\ClassReferenceCollection.cs",
-              "ViewState": "AgIAANUAAAAAAAAAAAAmwOgAAABnAAAAAAAAAA==",
+              "Title": "SaveManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\SaveManager.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAcwHEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T11:50:29.376Z",
+              "WhenOpened": "2025-03-09T12:08:43.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TMP_SDF-Surface-Mobile.shader",
-              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader",
-              "RelativeDocumentMoniker": "Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader",
-              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader",
-              "RelativeToolTip": "Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAvwEEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-03-09T11:48:14.594Z"
+              "DocumentIndex": 3,
+              "Title": "LoadAllData.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
+              "RelativeToolTip": "Assets\\Script\\SaveAndLoad\\LoadAllData.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAgwHgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:08:29.4Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "SettingManager.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\setting\\SettingManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\setting\\SettingManager.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\setting\\SettingManager.cs",
+              "RelativeToolTip": "Assets\\Script\\setting\\SettingManager.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAowHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T12:06:29.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ToggleButton.cs",
+              "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\ToggleButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Other\\ToggleButton.cs",
+              "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Other\\ToggleButton.cs",
+              "RelativeToolTip": "Assets\\Script\\Other\\ToggleButton.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAowGAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T11:59:03.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ThemeEditor.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\XCharts\\Editor\\MainComponents\\ThemeEditor.cs",
               "RelativeDocumentMoniker": "Assets\\XCharts\\Editor\\MainComponents\\ThemeEditor.cs",
@@ -67,19 +102,21 @@
               "RelativeToolTip": "Assets\\XCharts\\Editor\\MainComponents\\ThemeEditor.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAnwDYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T11:46:04.974Z"
+              "WhenOpened": "2025-03-09T11:46:04.974Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Helper.cs",
               "DocumentMoniker": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Helper.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Helper.cs",
               "ToolTip": "D:\\GitHUB\\SoraTodo\\Assets\\Script\\Helper.cs",
               "RelativeToolTip": "Assets\\Script\\Helper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T09:59:43.344Z"
+              "WhenOpened": "2025-03-09T09:59:43.344Z",
+              "EditorCaption": ""
             }
           ]
         }
